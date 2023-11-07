@@ -1,0 +1,21 @@
+.img-header{
+	border-radius: 9px;
+	width: 90%;
+}
+
+.img-kepsek{
+	border-radius: 9px;
+	width: 70%;
+	height: 70%;
+}
+
+.card-informasi{
+	background-color: #5eb9f0;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-radius: 9px;
+}
+
+.video-content{
+	border-radius: 9px;
+}
