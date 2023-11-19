@@ -15,11 +15,6 @@ class Administrator extends CI_Controller
 		$this->load->view('layouts-admin/index', $data);
 	}
 
-	public function pengaduan(){
-		$data['content'] = $this->load->view('admin/pengaduan', false, true);
-		$this->load->view('layouts-admin/index', $data);
-	}
-
 	public function kotak_saran(){
 		$data['content'] = $this->load->view('admin/kotak_saran', false, true);
 		$this->load->view('layouts-admin/index', $data);
