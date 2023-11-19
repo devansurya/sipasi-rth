@@ -26,6 +26,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/scrollbar.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/animate.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/date-picker.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/photoswipe.css">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/bootstrap.css">

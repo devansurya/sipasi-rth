@@ -35403,7 +35403,7 @@ body[class*=dark-] .for-light {
 /**=====================
   4.2 Theme-customizer CSS Start
 ==========================**/
-.customizer-links {
+/* .customizer-links {
   position: fixed;
   right: 0px;
   top: 50%;
@@ -35493,7 +35493,7 @@ body[class*=dark-] .for-light {
   margin: 0;
   color: gray;
   border-radius: 5px;
-}
+} */
 
 .customizer-contain {
   direction: ltr;

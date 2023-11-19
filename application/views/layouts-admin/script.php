@@ -16,6 +16,11 @@
 <script src="<?= base_url(); ?>assets-admin/js/slick/slick.min.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/slick/slick.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/header-slick.js"></script>
+
+<script src="<?= base_url(); ?>assets-admin/js/photoswipe/photoswipe.min.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/photoswipe/photoswipe-ui-default.min.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/photoswipe/photoswipe.js"></script>
+
 <script src="<?= base_url(); ?>assets-admin/js/chart/apex-chart/apex-chart.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/chart/apex-chart/stock-prices.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/datepicker/date-picker/datepicker.js"></script>
@@ -23,6 +28,9 @@
 <script src="<?= base_url(); ?>assets-admin/js/datepicker/date-picker/datepicker.custom.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/general-widget.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/height-equal.js"></script>
+
+<script src="<?= base_url(); ?>assets-admin/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/datatable/datatables/datatable.custom.js"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?= base_url(); ?>assets-admin/js/script.js"></script>
