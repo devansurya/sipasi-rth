@@ -24,10 +24,4 @@ class Administrator extends CI_Controller
 		$data['content'] = $this->load->view('admin/user_management', false, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
-
-	public function detail_pengaduan(){
-		$data['content'] = $this->load->view('admin/detail_pengaduan', false, true);
-		$this->load->view('layouts-admin/index', $data);
-	}
-
 }
