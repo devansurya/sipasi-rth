@@ -35,17 +35,24 @@
   </head>
   <body>
     <!-- login page start-->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url('assets-admin/images/login/2.jpg'); ?>" alt="looginpage"></div>
-        <div class="col-xl-5 p-0">
+    <div class="container-fluid p-0"> 
+      <div class="row m-0">
+        <div class="col-12 p-0">    
           <div class="login-card login-dark">
             <div>
-              <!-- <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light" src="<?= base_url('assets-admin/images/logo/logo.png'); ?>" alt="looginpage"><img class="img-fluid for-dark" src="<?= base_url('assets/img/logo-detimihan.png'); ?>../assets/images/logo/logo_dark.png" alt="looginpage"></a></div> -->
+              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
               <div class="login-main"> 
                 <form class="theme-form">
-                  <h4>Sign in to account</h4>
-                  <p>Enter your email & password to login</p>
+                  <h4>Create your account</h4>
+                  <p>Enter your personal details to create account</p>
+                  <div class="form-group">
+                    <label class="col-form-label pt-0">Nama Lengkap</label>
+                    <input class="form-control" type="text" required="">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label pt-0">NIM</label>
+                    <input class="form-control" type="number" required="">
+                  </div>
                   <div class="form-group">
                     <label class="col-form-label">Email Address</label>
                     <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
@@ -54,13 +61,13 @@
                     <label class="col-form-label">Password</label>
                     <div class="form-input position-relative">
                       <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
-                      <div class="show-hide"><span class="show">                         </span></div>
+                      <div class="show-hide"><span class="show"></span></div>
                     </div>
                   </div>
                   <div class="form-group mb-0">
-                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                    <button class="btn btn-primary btn-block w-100" type="submit">Create Account</button>
                   </div>
-                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="<?= base_url('Auth/register')?>">Create Account</a></p>
+                  <p class="mt-4 mb-0">Already have an account?<a class="ms-2" href="<?= base_url('Auth')?>">Sign in</a></p>
                 </form>
               </div>
             </div>
