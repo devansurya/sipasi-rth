@@ -43,18 +43,21 @@
             <div>
               <!-- <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light" src="<?= base_url('assets-admin/images/logo/logo.png'); ?>" alt="looginpage"><img class="img-fluid for-dark" src="<?= base_url('assets/img/logo-detimihan.png'); ?>../assets/images/logo/logo_dark.png" alt="looginpage"></a></div> -->
               <div class="login-main"> 
-                <form class="theme-form">
+                <form class="theme-form" action="<?= base_url('Auth') ?>" method="POST">
                   <h4>Sign in to account</h4>
-                  <p>Enter your email & password to login</p>
+                  <p>Enter your NIM & password to login</p>
+                  <?= $this->session->flashdata('message') ?>
                   <div class="form-group">
-                    <label class="col-form-label">Email Address</label>
-                    <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                    <label class="col-form-label">NIM</label>
+                    <input class="form-control" type="number" required="" name="nim">
+                    <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
-                      <div class="show-hide"><span class="show">                         </span></div>
+                      <input class="form-control" type="password" name="password" required="">
+                      <!-- <div class="show-hide"><span class="show"></span></div> -->
+                      <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                   </div>
                   <div class="form-group mb-0">

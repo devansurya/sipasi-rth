@@ -11,8 +11,48 @@ class Auth extends CI_Controller
 	}
 
 	public function index(){
-		$this->load->view('login');
+		$this->form_validation->set_rules('nim', 'NIM', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('login');
+        } else {
+            $this->_login();
+        }
 	}
+
+	private function _login()
+    {
+        $nim = $this->input->post('nim');
+        $password = $this->input->post('password');
+
+        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama')
+		->from('user')->join('contact', 'user.id_contact = contact.id_contact', 'left')
+		->where('username', $nim)->get()
+		->row_array();
+        if ($user) {
+            if (md5($password, $user['password'])) {
+                $data = [
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'id_role' => $user['id_role'],
+                    'nama' => $user['nama'],
+                    'password' => $user['password'],
+                ];
+                $this->session->set_userdata($data);
+                if ($user['id_role'] == 1) {
+                    redirect('Administrator');
+                } elseif ($user['id_role'] == 2) {
+                    redirect('Mahasiswa');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Password salah.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                redirect('Auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Username belum terdaftar.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+            redirect('Auth');
+        }
+    }
 
 	public function register(){
 		$this->load->view('register');
