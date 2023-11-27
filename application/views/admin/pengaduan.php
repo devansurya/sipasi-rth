@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="table-responsive">
-                        <table class="display" id="basic-1">
+                        <table class="display" id="basic-2">
                         <thead>
                             <tr>
                             <th>Nama</th>
@@ -38,45 +38,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($data as $data): ?>
                             <tr>
-                                <td>Rifqy Zanuar</td>
-                                <td>19220144</td>
-                                <td><span class="badge rounded-pill badge-light-info">Baru</span></td>
-                                <td>Akademik</td>
-                                <td>2011/04/25</td>
+                                <td><?= $data['username'] ?></td>
+                                <td><?= $data['username'] ?></td>
+                                <td><?= getStatusbadge($data['status']) ?></td>
+                                <td><?= $data['kategori'] ?></td>
+                                <td><?php echo date('d/m/y H:i:s',strtotime($data['created_at'])) ?></td>
                                 <td> 
                                     <ul class="action"> 
-                                    <li class="edit"> <a href="<?= base_url('Pengaduan/detail_pengaduan')?>"><i class="icon-pencil-alt"></i></a></li>
+                                    <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil-alt"></i></a></li>
                                     <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Devan Surya</td>
-                                <td>19220134</td>
-                                <td><span class="badge rounded-pill badge-light-primary">Penanganan</span></td>
-                                <td>Layanan Kampus</td>
-                                <td>2011/04/25</td>
-                                <td> 
-                                    <ul class="action"> 
-                                    <li class="edit"> <a href="<?= base_url('Pengaduan/detail_pengaduan')?>"><i class="icon-pencil-alt"></i></a></li>
-                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nur Muhammad Hibatullah</td>
-                                <td>19220133</td>
-                                <td><span class="badge rounded-pill badge-light-success">Selesai</span></td>
-                                <td>Lingkungan Kampus</td>
-                                <td>2011/04/25</td>
-                                <td> 
-                                    <ul class="action"> 
-                                    <li class="edit"> <a href="<?= base_url('Pengaduan/detail_pengaduan')?>"><i class="icon-pencil-alt"></i></a></li>
-                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                         </table>
                     </div>
@@ -87,4 +63,5 @@
     </div>
     <!-- Container-fluid Ends-->
 </div>
-        
+
+<input id="base_url" value="<?= base_url() ?>">
