@@ -11,6 +11,12 @@ class Auth extends CI_Controller
 	}
 
 	public function index(){
+        if($this->session->userdata('id_role') == 1){
+            redirect('Administrator');
+        }elseif($this->session->userdata('id_role') == 2){
+            redirect('Mahasiswa');
+        }
+
 		$this->form_validation->set_rules('nim', 'NIM', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
@@ -57,4 +63,16 @@ class Auth extends CI_Controller
 	public function register(){
 		$this->load->view('register');
 	}
+
+    public function logout()
+    {
+        $this->session->unset_userdata('id');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('id_role');
+        $this->session->unset_userdata('nama');
+        $this->session->unset_userdata('password');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success dark alert-dismissible fade show" role="alert">Anda telah logout !!!<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+        redirect('Auth');
+    }
 }
