@@ -37,9 +37,9 @@ class Auth extends CI_Controller
 		->where('username', $nim)->get()
 		->row_array();
         if ($user) {
-            if (md5($password, $user['password'])) {
+            if (md5($password) == $user['password']) {
                 $data = [
-                    'id' => $user['id'],
+                    'id' => $user['id_user'],
                     'username' => $user['username'],
                     'id_role' => $user['id_role'],
                     'role' => $user['role'],
