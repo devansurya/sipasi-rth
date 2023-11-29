@@ -24,7 +24,7 @@
                         <h6 class="lan-1">General</h6>
                     </div>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Administrator')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Dashboard')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-home"></use>
                         </svg>
@@ -44,7 +44,7 @@
                         <svg class="fill-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-table"></use>
                         </svg><span>Pengaduan</span></a></li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Administrator/kotak_saran')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KotakSaran')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-email"></use>
                         </svg>
@@ -56,7 +56,7 @@
                         <h6>User Management</h6>
                     </div>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Administrator/user_management')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('UserManagement')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-user"></use>
                         </svg>

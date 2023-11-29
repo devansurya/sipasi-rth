@@ -11,17 +11,17 @@ class Administrator extends CI_Controller
 	}
 
 	public function index(){
-		$data['content'] = $this->load->view('admin/dashboard', false, true);
+		$data['content'] = $this->load->view('pages/dashboard/index', false, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
 
 	public function kotak_saran(){
-		$data['content'] = $this->load->view('admin/kotak_saran', false, true);
+		$data['content'] = $this->load->view('pages/kotak_saran/index', false, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
 
 	public function user_management(){
-		$data['content'] = $this->load->view('admin/user_management', false, true);
+		$data['content'] = $this->load->view('pages/user_management/index', false, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
 }

@@ -12,7 +12,7 @@ class Auth extends CI_Controller
 
 	public function index(){
         if($this->session->userdata('id_role') == 1){
-            redirect('Administrator');
+            redirect('Dashboard');
         }elseif($this->session->userdata('id_role') == 2){
             redirect('Mahasiswa');
         }
@@ -20,7 +20,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('nim', 'NIM', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
-            $this->load->view('login');
+            $this->load->view('auth/login');
         } else {
             $this->_login();
         }
@@ -31,8 +31,9 @@ class Auth extends CI_Controller
         $nim = $this->input->post('nim');
         $password = $this->input->post('password');
 
-        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama')
+        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama, role.role')
 		->from('user')->join('contact', 'user.id_contact = contact.id_contact', 'left')
+        ->join('role', 'user.id_role = role.id_role', 'left')
 		->where('username', $nim)->get()
 		->row_array();
         if ($user) {
@@ -41,12 +42,13 @@ class Auth extends CI_Controller
                     'id' => $user['id'],
                     'username' => $user['username'],
                     'id_role' => $user['id_role'],
+                    'role' => $user['role'],
                     'nama' => $user['nama'],
                     'password' => $user['password'],
                 ];
                 $this->session->set_userdata($data);
                 if ($user['id_role'] == 1) {
-                    redirect('Administrator');
+                    redirect('Dashboard');
                 } elseif ($user['id_role'] == 2) {
                     redirect('Mahasiswa');
                 }
@@ -61,7 +63,7 @@ class Auth extends CI_Controller
     }
 
 	public function register(){
-		$this->load->view('register');
+		$this->load->view('auth/register');
 	}
 
     public function logout()

@@ -52,8 +52,8 @@
             </li>
             <li class="profile-nav onhover-dropdown pe-0 py-0">
             <div class="media profile-media"><img class="b-r-10" src="<?= base_url(); ?>/assets-admin/images/dashboard/profile.png" alt="">
-                <div class="media-body"><span>Emay Walter</span>
-                <p class="mb-0">Admin <i class="middle fa fa-angle-down"></i></p>
+                <div class="media-body"><span><?= $this->session->userdata('nama') ? $this->session->userdata('nama') : 'John Doe'; ?></span>
+                <p class="mb-0"><?= $this->session->userdata('role') ? $this->session->userdata('role') : ''; ?> <i class="middle fa fa-angle-down"></i></p>
                 </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">

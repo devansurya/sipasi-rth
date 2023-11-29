@@ -13,7 +13,7 @@ class Pengaduan extends CI_Controller
 
 	public function index(){
 		$data['data'] = $this->M_Pengaduan->get();
-		$data['content'] = $this->load->view('admin/pengaduan', $data, true);
+		$data['content'] = $this->load->view('pages/pengaduan/index', $data, true);
 		$this->load->view('layouts-admin/index', $data);
 
 	}
@@ -24,7 +24,7 @@ class Pengaduan extends CI_Controller
 		$data['data'] = $this->M_Pengaduan->get_one($id);
 		$data['list_status'] = $this->M_status->get();
 
-		$data['content'] = $this->load->view('admin/detail_pengaduan', $data, true);
+		$data['content'] = $this->load->view('pages/pengaduan/detail', $data, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
 
