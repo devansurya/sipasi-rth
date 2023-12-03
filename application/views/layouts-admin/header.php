@@ -57,6 +57,7 @@
                 </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
+                <li><a href="<?= base_url('Auth/Profile'); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
                 <li><a href="<?= base_url('Auth/logout'); ?>"><i data-feather="log-in"> </i><span>Log out</span></a></li>
             </ul>
             </li>

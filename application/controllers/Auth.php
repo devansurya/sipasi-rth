@@ -77,4 +77,9 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success dark alert-dismissible fade show" role="alert">Anda telah logout !!!<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
         redirect('Auth');
     }
+
+    public function Profile(){
+		$data['content'] = $this->load->view('profile', false, true);
+		$this->load->view('layouts-admin/index', $data);
+	}
 }
