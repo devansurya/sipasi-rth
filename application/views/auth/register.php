@@ -40,28 +40,38 @@
         <div class="col-12 p-0">    
           <div class="login-card login-dark">
             <div>
-              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+              <div><a class="logo" href="<?= base_url() ?>"><img class="img-fluid for-light" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
               <div class="login-main"> 
-                <form class="theme-form">
+                <form class="theme-form" action="<?= base_url('Registrasi') ?>" method="POST">
                   <h4>Create your account</h4>
                   <p>Enter your personal details to create account</p>
+                  <?= $this->session->flashdata('message') ?>
                   <div class="form-group">
                     <label class="col-form-label pt-0">Nama Lengkap</label>
-                    <input class="form-control" type="text" required="">
+                    <input class="form-control" name="nama" type="text" required="">
+                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label pt-0">NIM</label>
-                    <input class="form-control" type="number" required="">
+                    <input class="form-control" name="nim" type="number" required="">
+                    <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label pt-0">No. Telepon</label>
+                    <input class="form-control" name="telp" type="number" required="">
+                    <?= form_error('telp', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Email Address</label>
-                    <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                    <input class="form-control" name="email" type="email" required="" placeholder="example@gmail.com">
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
+                      <input class="form-control" name="password" type="password" name="login[password]" required="" placeholder="*********">
                       <div class="show-hide"><span class="show"></span></div>
+                      <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                   </div>
                   <div class="form-group mb-0">
