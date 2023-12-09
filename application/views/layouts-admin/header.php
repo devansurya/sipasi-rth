@@ -1,3 +1,7 @@
+<?php
+    $profile = $this->db->select('*')->from('contact')->where('id_contact', $this->session->userdata('id'))->get()->row_array();
+?>
+
 <!-- Page Header Start-->
 <div class="page-header">
     <div class="header-wrapper row m-0">
@@ -51,13 +55,13 @@
             </div>
             </li>
             <li class="profile-nav onhover-dropdown pe-0 py-0">
-            <div class="media profile-media"><img class="b-r-10" src="<?= base_url(); ?>/assets-admin/images/dashboard/profile.png" alt="">
+            <div class="media profile-media"><img class="b-r-10" src="<?= base_url('upload-profile/'. $profile['image'])?>" alt="">
                 <div class="media-body"><span><?= $this->session->userdata('nama') ? $this->session->userdata('nama') : 'John Doe'; ?></span>
                 <p class="mb-0"><?= $this->session->userdata('role') ? $this->session->userdata('role') : ''; ?> <i class="middle fa fa-angle-down"></i></p>
                 </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
-                <li><a href="<?= base_url('Auth/Profile'); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
+                <li><a href="<?= base_url('User/Profile/' . $this->session->userdata('id')); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
                 <li><a href="<?= base_url('Auth/logout'); ?>"><i data-feather="log-in"> </i><span>Log out</span></a></li>
             </ul>
             </li>
