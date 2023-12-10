@@ -20,6 +20,7 @@
     </div>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
+        <?= $this->session->flashdata('pengaduan_message') ?>
         <div class="row">
             <!-- Zero Configuration  Starts-->
             <div class="col-xl-12 col-md-12 box-col-12 file-content">
