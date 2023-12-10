@@ -24,15 +24,14 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="row widget-grid">
-                <div class="col-xxl-4 col-sm-6 box-col-6"> 
+                <div class="col-xxl-4 col-sm-12 box-col-12"> 
                     <div class="card profile-box">
                         <div class="card-body">
                             <div class="media media-wrapper justify-content-between">
                             <div class="media-body"> 
                                 <div class="greeting-user">
-                                <h4 class="f-w-600">Welcome to cuba</h4>
-                                <p>Here whats happing in your account today</p>
-                                <div class="whatsnew-btn"><a class="btn btn-outline-white">Whats New !</a></div>
+                                    <h4 class="f-w-600">Selamat datang di Sistem Pengaduan Mahasiswa</h4><br>
+                                    <p>Aplikasi Pengaduan Mahasiswa adalah platform yang memungkinkan mahasiswa untuk melaporkan masalah atau permasalahan yang mereka hadapi di lingkungan kampus. Dengan aplikasi ini, mahasiswa dapat dengan mudah mengajukan pengaduan terkait fasilitas, akademik, keamanan, atau masalah lainnya yang memengaruhi pengalaman belajar mereka. </p>    
                                 </div>
                             </div>
                             <div>  
