@@ -7,14 +7,43 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_Dokumentasi');
-		$this->load->model('M_Guru');
+		$this->load->model('M_Publik');
+		$this->load->model('M_Ref');
+
 	}
 
 	public function index(){
-		$data['dokumentasi'] = $this->M_Dokumentasi->getdata();
-		$data['guru'] = $this->M_Guru->getdata();
-		$data['content'] = $this->load->view('index', $data, true);
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan(15);
+		// $data['guru'] = $this->M_Guru->getdata();
+		$data['content'] = $this->load->view('publik/index', $data, true);
 		$this->load->view('layouts/index', $data);
+	}
+
+	public function detail_pengaduan($id){
+
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);
+		$data['komentar'] = $this->M_Publik->get_komentar($id);
+		$data['content'] = $this->load->view('publik/detail_pengaduan', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
+	public function komentar_pengaduan(){
+
+		$id_pengaduan = $this->input->post('id_pengaduan');
+		$id_user = $this->session->userdata('id');
+		$komentar = $this->input->post('komentar');
+
+		$data = array(
+
+			'id_pengaduan' => $id_pengaduan,
+			'id_user' => $id_user,
+			'komentar' => $komentar
+
+		);
+
+		$insert = $this->M_Ref->insertTable('komentar', $data);
+
+		return redirect('Home/detail_pengaduan/'.$id_pengaduan);
 	}
 
 	public function visimisi(){
