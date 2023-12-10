@@ -17,7 +17,6 @@ class Pengaduan extends CI_Controller
 		$data['data'] = $this->M_Pengaduan->get();
 		$data['content'] = $this->load->view('pages/pengaduan/index', $data, true);
 		$this->load->view('layouts-admin/index', $data);
-
 	}
 
 	public function detail_pengaduan($id){
@@ -40,6 +39,16 @@ class Pengaduan extends CI_Controller
 
 	}
 
+	public function delete($id=null)
+	{
+		if (!$id) redirect('Pengaduan');
+		if ($this->M_Pengaduan->delete($id)) {
+			$this->setflashdata('pengaduan_message', 'Berhasil Hapus Pengaduan');
+			redirect('Pengaduan'); 
+		}
+		else return $this->output->set_status_header(401)->set_output('Unauthorized');
+	}
+
 	public function add(){
 
 		$config['upload_path'] = './assets/img/upload/';
@@ -54,7 +63,7 @@ class Pengaduan extends CI_Controller
 			$image = $this->upload->data();
 			$gambar = $image['file_name'];
 		} else {
-			$gambar = '';
+			$gambar = null;
 		}
 
 		$data = array(
@@ -68,12 +77,24 @@ class Pengaduan extends CI_Controller
 			'id_user' => $this->session->userdata('id'),
 
 		);
-		
 		$insert = $this->M_Ref->insertTable('pengaduan', $data);
 
 		if($insert){
+			$this->setflashdata('pengaduan_message', 'Berhasil Tambah Pengaduan');
+			redirect('Pengaduan');
+		}
+		else{
+			$this->setflashdata('pengaduan_message', 'Gagal Tambah Pengaduan', 'error');
 			redirect('Pengaduan');
 		}
 	}
 
+	public function setflashdata($flashId='message', $message='', $type='success')
+    {
+        $this->session->set_flashdata($flashId, "
+            <div class=\"alert alert-{$type} dark alert-dismissible fade show\" role=\"alert\">
+                {$message}
+                <button class=\"btn-close\" type=\"button\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
+            </div>");
+    }
 }

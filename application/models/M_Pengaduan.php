@@ -43,10 +43,22 @@ class M_Pengaduan extends CI_Model {
 
 		return $data;
 	}
+	public function delete($id='')
+	{	
+		if($this->session->userdata('id_role') == 2){
+			$this->db->where("id_user = {$this->session->userdata('id')} and id_pengaduan={$id}");
+		}
+		else if ($this->session->userdata('id_role') !== 2) {
+			$this->db->where("id_pengaduan={$id}");
+		}
+		else return false;
+		$this->db->delete('pengaduan');
+		return true;
+	}
 
 	public function get_one($id= ''){
 
-		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,ct.nama");
+		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,ct.nama, ct.nama username,p.foto");
 		$this->db->from('pengaduan p');
 		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
 		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');

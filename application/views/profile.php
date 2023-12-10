@@ -29,25 +29,17 @@
                         <div class="card-body">
                             <form>
                                 <div class="row mb-2">
-                                <div class="profile-title">
-                                    <div class="media"><img class="img-70 rounded-circle" alt="" src="<?= base_url('upload-profile/'. $profile['image'])?>">
-                                    <div class="media-body">
-                                        <h5 class="mb-1"><?= $profile['nama']; ?></h5>
-                                        <p>Mahasiswa</p>
+                                    <div class="profile-title">
+                                        <div class="media"><img class="img-70 rounded-circle" alt="" src="<?= base_url('upload-profile/'. $profile['image'])?>">
+                                        <div class="media-body">
+                                            <h5 class="mb-1"><?= $profile['nama']; ?></h5>
+                                            <p>Mahasiswa</p>
+                                        </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="mb-3">
-                                <label class="form-label">NIM</label>
-                                <input class="form-control" type="number" value="<?= $profile['nim']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input class="form-control" type="password" value="password">
                                 </div>
                                 <div class="form-footer">
-                                <button class="btn btn-primary btn-block">Save</button>
+                                    <a href="<?= base_url('User/editProfile/'. $profile['id_user'])?>" class="btn btn-primary btn-block">Update</a>
                                 </div>
                             </form>
                         </div>

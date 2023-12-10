@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/date-picker.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/datatables.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/sweetalert2.css">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/vendors/bootstrap.css">
@@ -35,5 +36,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/style.css">
     <link id="color" rel="stylesheet" href="<?= base_url(); ?>/assets-admin/css/color-1.css" media="screen">
     <!-- Responsive css-->
+
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets-admin/css/responsive.css">
 </head>
