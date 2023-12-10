@@ -55,7 +55,7 @@
             </div>
             </li>
             <li class="profile-nav onhover-dropdown pe-0 py-0">
-            <div class="media profile-media"><img class="b-r-10" src="<?= base_url('upload-profile/'. $profile['image'])?>" alt="">
+            <div class="media profile-media"><img class="img-40 rounded-circle" src="<?= base_url('upload-profile/'. $profile['image'])?>" alt="">
                 <div class="media-body"><span><?= $profile['nama'] ? $profile['nama'] : '-'; ?></span>
                     <p class="mb-0"><?= $this->session->userdata('role') ? $this->session->userdata('role') : ''; ?> <i class="middle fa fa-angle-down"></i></p>
                 </div>

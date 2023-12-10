@@ -27,7 +27,9 @@
                         <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="<?= base_url('User/ubahProfile')?>" method="POST" class="card" enctype="multipart/form-data">
+                                <input type="hidden" value="<?= $profile['id_contact']; ?>" name="id_contact">
+                                <input type="hidden" value="<?= $profile['id_user']; ?>" name="id_user">
                                 <div class="mb-3">
                                     <label class="form-label">Profile</label>
                                     <div class="row">
@@ -37,8 +39,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="file" class="form-control" id="lampiran" name="profile" accept="image/*" value="<?= $profile['image'];?>">
-                                            <span class="txt-sm txt-danger">* File harus berupa image dengan ukuran < 2MB</span>
+                                            <input type="file" class="form-control" id="lampiran" name="image" accept="image/*" value="<?= $profile['image'];?>">
+                                            <!-- <span class="txt-sm txt-danger">* File harus berupa image dengan ukuran < 2MB</span> -->
                                         </div>
                                     </div>                                    
                                 </div>
@@ -52,7 +54,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">NIM</label>
-                                    <input type="number" class="form-control" value="<?= $profile['nim']?>">
+                                    <input type="number" class="form-control" value="<?= $profile['nim']?>" name="nim" style="background-color: #DCDCDC;" readonly>
                                 </div>
                                 <div class="form-footer">
                                     <button class="btn btn-primary btn-block">Save</button>
