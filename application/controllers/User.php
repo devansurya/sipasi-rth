@@ -31,4 +31,12 @@ class User extends CI_Controller
         $this->db->update('contact', $update);
 		redirect('User/Profile/'. $this->input->post('id_user'));
 	}
+
+	public function editProfile($id)
+	{
+        $dataq['profile'] = $this->M_User->getProfile($id);
+
+		$data['content'] = $this->load->view('edit-profile', $dataq, true);
+		$this->load->view('layouts-admin/index', $data);
+	}
 }
