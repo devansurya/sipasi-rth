@@ -13,19 +13,19 @@
             </div>
             <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
               <ul class="navbar-nav">
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Profil</a>
                   <ul class="dropdown-menu">
                     <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Home/visimisi'); ?>">Visi Misi</a></li>
                     <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Home/sejarah'); ?>">Sejarah</a></li>
                     <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Home/struktur'); ?>">Struktur Organisasi</a></li>
                   </ul>
-                </li>
-                <li class="nav-item dropdown dropdown-mega">
+                </li> -->
+                <!-- <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" data-section="section-informasi" href="#">Informasi</a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" data-section="section-dokumentasi" href="#">Dokumentasi</a>
+                  <a class="nav-link scroll-section" data-section="section-dokumentasi" href="#">Pengaduan</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" data-section="section-kontak" href="#">Kontak</a>
