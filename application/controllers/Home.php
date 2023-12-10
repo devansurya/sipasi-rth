@@ -14,7 +14,9 @@ class Home extends CI_Controller
 
 	public function index(){
 		$data['pengaduan'] = $this->M_Publik->get_pengaduan(15);
-		// $data['guru'] = $this->M_Guru->getdata();
+		$data['jumlah_pengaduan_all'] = $this->M_Ref->getCountWhere('pengaduan',null,null);
+		$data['jumlah_pengaduan_selesai'] = $this->M_Ref->getCountWhere('pengaduan','status',3);
+		$data['jumlah_pengaduan_proses'] = $this->M_Ref->getCountWhere('pengaduan','status',2);
 		$data['content'] = $this->load->view('publik/index', $data, true);
 		$this->load->view('layouts/index', $data);
 	}

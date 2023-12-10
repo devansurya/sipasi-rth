@@ -45,4 +45,13 @@ class M_Ref extends CI_Model {
 		return $query;
 	}
 
+	public function getCountWhere($table,$field = null,$where = null)
+	{
+		
+		if($where){
+			$this->db->where($field, $where);
+		}
+		return $this->db->get($table)->num_rows();
+	}
+
 }
