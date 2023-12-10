@@ -13,9 +13,12 @@
 <!-- Plugins JS start-->
 <script src="<?= base_url(); ?>assets-admin/js/sidebar-menu.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/sidebar-pin.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/clock.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/dashboard/default.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/slick/slick.min.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/slick/slick.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/header-slick.js"></script>
+
 
 <script src="<?= base_url(); ?>assets-admin/js/photoswipe/photoswipe.min.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/photoswipe/photoswipe-ui-default.min.js"></script>
@@ -28,6 +31,7 @@
 <script src="<?= base_url(); ?>assets-admin/js/datepicker/date-picker/datepicker.custom.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/general-widget.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/height-equal.js"></script>
+<script src="<?= base_url(); ?>assets-admin/js/animation/wow/wow.min.js"></script>
 
 <script src="<?= base_url(); ?>assets-admin/js/datatable/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets-admin/js/datatable/datatables/datatable.custom.js"></script>
@@ -35,5 +39,6 @@
 <!-- Theme js-->
 <script src="<?= base_url(); ?>assets-admin/js/script.js"></script>
 <script src="<?= base_url('assets-admin/js/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+<script>new WOW().init();</script>
 
 <!-- <script src="<?= base_url(); ?>assets-admin/js/theme-customizer/customizer.js"></script> -->
