@@ -1,3 +1,5 @@
+<?php $image = (!empty($data->foto)) ? base_url()."assets/img/upload/{$data->foto}" : base_url().'assets-admin/images/lightgallry/01.jpg' ;?>
+
 <div class="page-body">
     <div class="container-fluid">
         <div class="col-xl-12">
@@ -22,8 +24,9 @@
                         <div class="col-12"> 
                             <label class="form-label" for="validationDefault04">Bukti Foto</label>
                             <div class="gallery my-gallery card-body row" itemscope="">
-                                <figure class="col-xl-4 col-md-5 col-7" itemprop="associatedMedia" itemscope=""><a href="<?= base_url(); ?>/assets-admin/images/big-lightgallry/01.jpg" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="<?= base_url(); ?>/assets-admin/images/lightgallry/01.jpg" itemprop="thumbnail" alt="Image description"></a>
-
+                                <figure class="col-xl-4 col-md-5 col-7" itemprop="associatedMedia" itemscope="">
+                                    <a href="<?=$image ?>" itemprop="contentUrl" data-size="1600x950">
+                                        <img class="img-thumbnail" src="<?=$image ?>" itemprop="thumbnail" alt="Image description"></a>
                                 </figure>
                             </div>
                         </div>
@@ -46,7 +49,6 @@
                         </div>
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>
-                            <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
                         </div>
                     </form>
                 </div>

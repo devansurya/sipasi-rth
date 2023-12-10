@@ -17,7 +17,6 @@ class Pengaduan extends CI_Controller
 		$data['data'] = $this->M_Pengaduan->get();
 		$data['content'] = $this->load->view('pages/pengaduan/index', $data, true);
 		$this->load->view('layouts-admin/index', $data);
-
 	}
 
 	public function detail_pengaduan($id){
@@ -38,6 +37,15 @@ class Pengaduan extends CI_Controller
 
 		return $this->load->view('layouts-admin/index', $data);
 
+	}
+
+	public function delete($id=null)
+	{
+		if (!$id) redirect('Pengaduan');
+		if ($this->M_Pengaduan->delete($id)) {
+			redirect('Pengaduan'); 
+		}
+		else return $this->output->set_status_header(401)->set_output('Unauthorized');
 	}
 
 	public function add(){

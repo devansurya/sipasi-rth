@@ -34,4 +34,6 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?= base_url(); ?>assets-admin/js/script.js"></script>
+<script src="<?= base_url('assets-admin/js/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+
 <!-- <script src="<?= base_url(); ?>assets-admin/js/theme-customizer/customizer.js"></script> -->

@@ -76,7 +76,7 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -91,5 +91,23 @@
     </div>
     <!-- Container-fluid Ends-->
 </div>
+
+<script type="text/javascript">
+    function deleteId(id) {
+        if (!id) return false;
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            window.location = `<?= base_url('Pengaduan/delete/')?>${id}`;
+        });
+    }
+</script>
 
 <input id="base_url" value="<?= base_url() ?>">
