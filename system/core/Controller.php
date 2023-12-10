@@ -71,7 +71,7 @@ class CI_Controller {
 	 * @return	void
 	 */
 	public function __construct()
-	{
+	{	
 		self::$instance =& $this;
 
 		// Assign all the class objects that were instantiated by the
@@ -85,6 +85,26 @@ class CI_Controller {
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
+
+		$CI =& get_instance();
+
+		if ($CI->session->userdata('id')) {
+			$profile = $CI->db->select('*')
+			->from('user u')
+			->join('contact c', 'c.id_contact = u.id_contact', 'inner')
+			->where('u.id_user', $CI->session->userdata('id'))
+			->get()
+			->row_array();
+
+			$CI->load->vars(array(
+				'profile'    => $profile,
+			));
+		} else {
+			$CI->load->vars(array(
+				'profile' => []
+			));
+		}
+    
 	}
 
 	// --------------------------------------------------------------------

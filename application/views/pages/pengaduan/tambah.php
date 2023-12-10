@@ -28,6 +28,10 @@
                             </select>
                         </div>
                         <div class="col-12"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Subjek</label>
+                            <input type="text" class="form-control" name="subjek" placeholder="Masukkan subjek pengaduan">
+                        </div>
+                        <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Deskripsi</label>
                             <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="Deskripsi dapat memuat info berupa detail permasalahan, waktu kejadian, jenis pelanggaran, dsb." required=""></textarea>
                         </div>

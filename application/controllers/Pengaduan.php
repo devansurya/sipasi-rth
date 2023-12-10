@@ -68,6 +68,7 @@ class Pengaduan extends CI_Controller
 
 		$data = array(
 			'id_kategori' => $this->input->post('kategori'),
+			'subjek' => $this->input->post('subjek'),
 			'deskripsi' => $this->input->post('deskripsi'),
 			'foto' => $gambar,
 			'lokasi' => $this->input->post('lokasi'),
