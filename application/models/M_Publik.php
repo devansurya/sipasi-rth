@@ -98,5 +98,20 @@ class M_Publik extends CI_Model {
 		return $data;
 	}
 
+	public function get_kategori_pengaduan_favorit(){
+
+		$this->db->select('k.*, count(p.id_pengaduan) as total');
+		$this->db->from('kategori_pengaduan k');
+		$this->db->join('pengaduan p', 'p.id_kategori = k.id_kategori', 'left');
+
+		$this->db->order_by('total', 'desc');
+		$this->db->group_by('k.id_kategori');
+		$this->db->limit(3);
+
+		$data = $this->db->get()->result_array();
+
+		return $data;
+	}
+
 
 }

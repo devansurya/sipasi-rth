@@ -17,6 +17,7 @@ class Home extends CI_Controller
 		$data['jumlah_pengaduan_all'] = $this->M_Ref->getCountWhere('pengaduan',null,null);
 		$data['jumlah_pengaduan_selesai'] = $this->M_Ref->getCountWhere('pengaduan','status',3);
 		$data['jumlah_pengaduan_proses'] = $this->M_Ref->getCountWhere('pengaduan','status',2);
+		$data['kategori_favorit'] = $this->M_Publik->get_kategori_pengaduan_favorit();
 		$data['content'] = $this->load->view('publik/index', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
@@ -80,31 +81,8 @@ class Home extends CI_Controller
 		return redirect('Home/detail_pengaduan/'.$id_pengaduan);
 	}
 
-	public function visimisi(){
-		$data['content'] = $this->load->view('visimisi', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function sejarah(){
-		$data['content'] = $this->load->view('sejarah', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function struktur(){
-		$data['content'] = $this->load->view('struktur', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function guru(){
-		$data['guru'] = $this->M_Guru->getdata();
-		$data['content'] = $this->load->view('guru', $data, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function detail_dokumentasi(){
-		$id = $this->input->get('id');
-		$data['dokumentasi'] = $this->M_Dokumentasi->getdatawhere($id);
-		$data['content'] = $this->load->view('detail-dokumentasi', $data, true);
+	public function kontak(){
+		$data['content'] = $this->load->view('publik/kontak', null, true);
 		$this->load->view('layouts/index', $data);
 	}
 }

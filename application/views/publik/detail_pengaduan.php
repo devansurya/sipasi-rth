@@ -120,7 +120,7 @@
             </div>
             <!-- /#comments -->
             <?php if(!empty($komentar)){ ?>
-            <nav class="d-flex mt-10" aria-label="pagination">
+            <nav class="d-flex mt-10 float-end" aria-label="pagination">
               <ul class="pagination">
                 <li class="page-item" id="prev-li">
                   <a class="page-link" aria-label="Previous">

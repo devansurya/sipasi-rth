@@ -31,7 +31,7 @@
                   <a class="nav-link scroll-section" href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" href="#">Kontak</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home/kontak'); ?>">Kontak</a>
                 </li>
               </ul>
               <!-- /.navbar-nav -->
