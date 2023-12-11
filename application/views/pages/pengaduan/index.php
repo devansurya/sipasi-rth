@@ -108,7 +108,8 @@
           cancelButtonColor: "#d33",
           confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            window.location = `<?= base_url('Pengaduan/delete/')?>${id}`;
+            console.log(result);
+            if (result.isConfirmed) window.location = `<?= base_url('Pengaduan/delete/')?>${id}`;
         });
     }
 </script>

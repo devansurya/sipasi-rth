@@ -6,26 +6,31 @@
                     <h4>User Baru</h4>
                 </div>
                 <div class="card-body custom-input">
-                    <form class="row g-3" method="POST" action="<?= base_url('UserManagement/add'); ?>" enctype="multipart/form-data">
+                    <form class="row g-3" method="POST" action="<?= base_url('UserManagement/tambah'); ?>" enctype="multipart/form-data">
                         <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Nama Lengkap</label>
                             <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap" required>
+                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">NIM</label>
                             <input type="number" class="form-control" name="nim" placeholder="Masukkan NIM" required>
+                            <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">No Telepon</label>
                             <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telepon" required>
+                            <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Email</label>
                             <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required>
+                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-12"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Role</label>
@@ -37,7 +42,7 @@
                             </select>
                         </div>
                         <div class="col-12 text-end">
-                            <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>
+                            <a href="<?= base_url('UserManagement')?>" class="btn btn-danger">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>
