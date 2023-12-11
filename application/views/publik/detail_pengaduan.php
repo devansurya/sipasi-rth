@@ -16,6 +16,7 @@
       <div class="container py-14 py-md-16">
         <div class="row gx-md-8 gx-xl-12 gy-8">
           <div class="col-lg-6">
+          <div class="shape rounded-circle bg-line red rellax w-18 h-18 d-none d-lg-block" data-rellax-speed="1" style="bottom: 2.5rem; left: 2.5rem;"></div>
             <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
               <div class="swiper">
                 <div class="swiper-wrapper">
@@ -89,21 +90,24 @@
                 <?php if(!empty($komentar)){ 
                   foreach($komentar as $k){
                 ?>
-                  <li class="comment">
-                  <div class="comment-header d-md-flex align-items-center">
-                    <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
-                    <div>
-                      <h6 class="comment-author"><a href="#" class="link-dark"><?= $k['nama']; ?></a></h6>
-                      <ul class="post-meta">
-                        <li><i class="uil uil-calendar-alt"></i><?= $k['created_at']; ?></li>
-                      </ul>
-                      <!-- /.post-meta -->
+                <li class="comment">
+                  <div class="card card-sm card-border-start border-primary" style="height: 8rem">
+                    <div class="card-body">
+                      <div class="comment-header d-md-flex align-items-center">
+                        <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
+                        <div>
+                          <h6 class="comment-author"><a href="#" class="link-dark"><?= $k['nama']; ?></a></h6>
+                          <ul class="post-meta">
+                            <li><i class="uil uil-calendar-alt"></i><?= $k['created_at']; ?></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /div -->
+                      </div>
+                      <!-- /.comment-header -->
+                      <p><?= $k['komentar']; ?></p>
                     </div>
-                    <!-- /div -->
                   </div>
-                  <!-- /.comment-header -->
-                  <p><?= $k['komentar']; ?></p>
-                  
                 </li>
 
 
