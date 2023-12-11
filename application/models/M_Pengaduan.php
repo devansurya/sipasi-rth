@@ -58,10 +58,11 @@ class M_Pengaduan extends CI_Model {
 
 	public function get_one($id= ''){
 
-		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,ct.nama, ct.nama username,p.foto");
+		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,ct.nama, ct.nama username,p.foto,v.visibilitas as privasi_status");
 		$this->db->from('pengaduan p');
 		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
 		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
+		$this->db->join('visibilitas v', 'v.id_visibilitas = p.visibilitas', 'left');
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
 		$this->db->join('contact ct', 'u.id_contact = ct.id_contact', 'left');
 		$this->db->where("p.id_pengaduan={$id}");

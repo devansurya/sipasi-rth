@@ -77,6 +77,46 @@
           <!-- /column -->
         </div>
         <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+            <h2 class="display-4 mb-3 text-center">Kontak Kami</h2>
+            <p class="lead text-center mb-10">Silahkan berikan saran atau ajukan pertanyaan terkait aplikasi SIDUMA.</p>
+            <form class="contact-form" method="post" action="<?= base_url('Home/hubungi_kami'); ?>">
+              <div class="messages"></div>
+              <div class="row gx-4">
+                <div class="col-md-6">
+                  <div class="form-floating mb-4">
+                    <input id="form_name" type="text" name="nama" class="form-control" placeholder="Jane" required>
+                    <label for="form_name">Nama</label>
+                  </div>
+                </div>
+                <!-- /column -->
+                <div class="col-md-6">
+                  <div class="form-floating mb-4">
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="jane.doe@example.com" required>
+                    <label for="form_email">Email *</label>
+                  </div>
+                </div>
+                <!-- /column -->
+                <div class="col-12">
+                  <div class="form-floating mb-4">
+                    <textarea id="form_message" name="isi" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
+                    <label for="form_message">Message *</label>
+                  </div>
+                </div>
+                <!-- /column -->
+                <div class="col-12 text-center">
+                  <input type="submit" class="btn btn-primary rounded-pill btn-send mb-3" value="Send message">
+                  <p class="text-muted"><strong>*</strong> Semua isian wajib terisi.</p>
+                </div>
+                <!-- /column -->
+              </div>
+              <!-- /.row -->
+            </form>
+            <!-- /form -->
+          </div>
+          <!-- /column -->
+        </div>
         <!-- /.row -->
       </div>
       <!-- /.container -->

@@ -45,13 +45,13 @@
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-table"></use>
                         </svg><span>Pengaduan</span></a>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KotakSaran')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KotakMasuk')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-email"></use>
                         </svg>
                         <svg class="fill-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-email"></use>
-                        </svg><span>Kotak Saran</span></a>
+                        </svg><span>Kotak Masuk</span></a>
                     </li>
                     <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('UserManagement')?>">
                         <svg class="stroke-icon">
@@ -112,13 +112,13 @@
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-table"></use>
                         </svg><span>Pengaduan</span></a>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KotakSaran')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KotakMasuk')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-email"></use>
                         </svg>
                         <svg class="fill-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-email"></use>
-                        </svg><span>Kotak Saran</span></a>
+                        </svg><span>Kotak Masuk</span></a>
                     </li>
                 </ul>
             <?php } ?>

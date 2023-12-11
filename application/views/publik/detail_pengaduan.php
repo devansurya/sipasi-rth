@@ -93,6 +93,10 @@
                 <li class="comment">
                   <div class="card card-sm card-border-start border-primary" style="height: 8rem">
                     <div class="card-body">
+                      <?php if($this->session->userdata('id')){ ?>
+                        <?php if($this->session->userdata('id') == $k['id_user']){ ?>
+                          <a href="<?= base_url('Home/hapus_komentar'); ?>/<?= $k['id_komentar']; ?>/<?= $pengaduan->id_pengaduan; ?>" onclick="return confirm('Anda yakin untuk menghapus komentar ini?')" class="float-end text-danger"><i class="uil uil-trash-alt"></i></a>
+                        <?php }} ?>
                       <div class="comment-header d-md-flex align-items-center">
                         <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
                         <div>

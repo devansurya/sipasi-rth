@@ -6,7 +6,7 @@
 				$html = "<span class=\"badge rounded-pill badge-light-info\">{$statusName}</span>";
 				break;
 			case 'penanganan':
-				$html = "<span class=\"badge rounded-pill badge-light-primary\">{$statusName}</span>";
+				$html = "<span class=\"badge rounded-pill badge-light-warning\">{$statusName}</span>";
 				break;
 			case 'selesai':
 				$html = "<span class=\"badge rounded-pill badge-light-success\">{$statusName}</span>";
