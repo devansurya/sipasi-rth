@@ -68,14 +68,15 @@
       <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
         <div class="row text-center">
           <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <h2 class="fs-16 text-uppercase text-primary mb-3">Apa Yang Baru?</h2>
             <h3 class="display-3 mb-10 px-xxl-10">Pengaduan Terbaru</h3>
           </div>
           <!-- /column -->
         </div>
         <!-- /.row -->
         <div class="position-relative">
-          <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: 0; left: -1.7rem;"></div>
-          <div class="swiper-container grid-view nav-bottom nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
+          <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: -1.7rem; left: -1.7rem;"></div>
+          <div class="swiper-container grid-view nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
             <div class="swiper">
               <div class="swiper-wrapper delay-section">
                 <?php if(isset($pengaduan)){
@@ -136,7 +137,12 @@
               <!-- /.swiper -->
             </div>
             <!-- /.swiper-container -->
+            <a style="margin-top: -10px" href="<?= base_url('Home/pengaduan'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
+              <i class="uil uil-arrow-right"></i>
+              <span>Semua Pengaduan</span>
+            </a>
           </div>
+
         <!--/.row -->
       </div>
       <!-- /.container -->

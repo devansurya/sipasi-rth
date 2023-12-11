@@ -21,6 +21,38 @@ class Home extends CI_Controller
 		$this->load->view('layouts/index', $data);
 	}
 
+	public function pengaduan(){
+
+		$ktg = $this->input->get('ktg');
+		$data['kategori_filter'] = [];
+		$implode_ktg = null;
+
+		if($ktg){
+			$ktg = base64_decode($ktg);
+			$ktg = json_decode($ktg, true);
+			$data['kategori_filter'] = $ktg;
+			$implode_ktg = '('.implode(',', $ktg).')';
+		}
+
+		$status = $this->input->get('status');
+		$data['status_filter'] = [];
+		$implode_status = null;
+
+		if($status){
+			$status = base64_decode($status);
+			$status = json_decode($status, true);
+			$data['status_filter'] = $status;
+			$implode_status = '('.implode(',', $status).')';
+		}	
+
+		
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan(null,$implode_ktg,$implode_status);
+		$data['kategori'] = $this->M_Publik->get_kategori_pengaduan();
+		$data['status'] = $this->M_Publik->get_status_pengaduan();
+		$data['content'] = $this->load->view('publik/pengaduan', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
 	public function detail_pengaduan($id){
 
 		$data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);

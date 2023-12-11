@@ -5,7 +5,7 @@
   <meta name="keywords" content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
   <meta name="author" content="elemis">
   <title>SIDUMA</title>
-  <link rel="shortcut icon" href="<?= base_url(); ?>/assets-admin/images/logo/logo-icon.png">
+  <link rel="icon" href="<?= base_url(); ?>/assets-admin/images/logo/logo-icon.ico">
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">

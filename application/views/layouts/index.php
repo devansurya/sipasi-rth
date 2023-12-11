@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<?php $this->load->view('layouts/loader'); ?>
 <?php $this->load->view('layouts/head'); ?>
 <body>
   <div class="content-wrapper">
@@ -8,3 +9,4 @@
   </div>
   <?php $this->load->view('layouts/footer'); ?>
 </body>
+
