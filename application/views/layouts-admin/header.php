@@ -61,7 +61,9 @@
                 </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
-                <li><a href="<?= base_url('User/Profile/' . $this->session->userdata('id')); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
+                <?php if($this->session->userdata('role') == 'Mahasiswa') : ?>
+                    <li><a href="<?= base_url('User/Profile/' . $this->session->userdata('id')); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
+                <?php endif;?>
                 <li><a href="<?= base_url('Auth/logout'); ?>"><i data-feather="log-in"> </i><span>Log out</span></a></li>
             </ul>
             </li>

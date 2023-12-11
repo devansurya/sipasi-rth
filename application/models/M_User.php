@@ -20,4 +20,14 @@ class M_User extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	public function getListUser()
+	{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('contact', 'contact.id_contact = user.id_contact');
+		$this->db->join('role', 'role.id_role = user.id_role');
+
+		return $this->db->get()->result_array();
+	}
+
 }
