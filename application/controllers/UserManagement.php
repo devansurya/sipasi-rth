@@ -18,11 +18,55 @@ class UserManagement extends CI_Controller
 	}
 
 	public function tambah(){
-		
-		$data['role'] = $this->M_Ref->getAllResult('role');
-		$data['content'] = $this->load->view('pages/user_management/tambah', $data, true);
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
+        $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[user.username]');
+        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required');  
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[contact.email]');  
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[15]');  
+        if ($this->form_validation->run() == false) {
+            $data['role'] = $this->M_Ref->getAllResult('role');
+			$data['content'] = $this->load->view('pages/user_management/tambah', $data, true);
 
-		return $this->load->view('layouts-admin/index', $data);
+			return $this->load->view('layouts-admin/index', $data);
+        } else {
+            $this->_addUser();
+        }
 
 	}
+
+	private function _addUser()
+    {
+        $nim = $this->input->post('nim');
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+        $telp = $this->input->post('no_telp');
+        $id_role = $this->input->post('role');
+
+        $data1 = array(
+            'nim' => $nim,
+            'nama' => $nama,
+            'email' => $email,
+            'telp' => $telp,
+            'status' => 1
+        );
+        $this->M_Ref->insertTable('contact', $data1);
+
+        $id_contact = $this->db->insert_id();
+
+        $password = $this->input->post('password');  
+        $passhash = hash('md5', $password);  
+        $saltid = md5($email);
+
+        $data2 = array( 
+            'username' => $nim,  
+            'password' => $passhash,
+            'id_role' => $id_role,
+            'id_contact' => $id_contact  
+        );  
+		
+		$this->M_Ref->insertTable('user', $data2);
+
+		$this->session->set_flashdata('message', '<div class="alert txt-success border-success outline-2x alert-dismissible fade show alert-icons" role="alert"><p><b> Success </b>Akun berhasil ditambahkan.<p><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');  
+        redirect('UserManagement');  
+    }
 }
