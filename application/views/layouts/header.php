@@ -25,10 +25,13 @@
                   <a class="nav-link scroll-section" data-section="section-informasi" href="#">Informasi</a>
                 </li> -->
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" data-section="section-dokumentasi" href="#">Pengaduan</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home'); ?>">Home</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" data-section="section-kontak" href="#">Kontak</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a>
+                </li>
+                <li class="nav-item dropdown dropdown-mega">
+                  <a class="nav-link scroll-section" href="<?= base_url('Home/kontak'); ?>">Kontak</a>
                 </li>
               </ul>
               <!-- /.navbar-nav -->

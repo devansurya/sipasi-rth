@@ -17,7 +17,40 @@ class Home extends CI_Controller
 		$data['jumlah_pengaduan_all'] = $this->M_Ref->getCountWhere('pengaduan',null,null);
 		$data['jumlah_pengaduan_selesai'] = $this->M_Ref->getCountWhere('pengaduan','status',3);
 		$data['jumlah_pengaduan_proses'] = $this->M_Ref->getCountWhere('pengaduan','status',2);
+		$data['kategori_favorit'] = $this->M_Publik->get_kategori_pengaduan_favorit();
 		$data['content'] = $this->load->view('publik/index', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
+	public function pengaduan(){
+
+		$ktg = $this->input->get('ktg');
+		$data['kategori_filter'] = [];
+		$implode_ktg = null;
+
+		if($ktg){
+			$ktg = base64_decode($ktg);
+			$ktg = json_decode($ktg, true);
+			$data['kategori_filter'] = $ktg;
+			$implode_ktg = '('.implode(',', $ktg).')';
+		}
+
+		$status = $this->input->get('status');
+		$data['status_filter'] = [];
+		$implode_status = null;
+
+		if($status){
+			$status = base64_decode($status);
+			$status = json_decode($status, true);
+			$data['status_filter'] = $status;
+			$implode_status = '('.implode(',', $status).')';
+		}	
+
+		
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan(null,$implode_ktg,$implode_status);
+		$data['kategori'] = $this->M_Publik->get_kategori_pengaduan();
+		$data['status'] = $this->M_Publik->get_status_pengaduan();
+		$data['content'] = $this->load->view('publik/pengaduan', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 
@@ -48,31 +81,8 @@ class Home extends CI_Controller
 		return redirect('Home/detail_pengaduan/'.$id_pengaduan);
 	}
 
-	public function visimisi(){
-		$data['content'] = $this->load->view('visimisi', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function sejarah(){
-		$data['content'] = $this->load->view('sejarah', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function struktur(){
-		$data['content'] = $this->load->view('struktur', null, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function guru(){
-		$data['guru'] = $this->M_Guru->getdata();
-		$data['content'] = $this->load->view('guru', $data, true);
-		$this->load->view('layouts/index', $data);
-	}
-
-	public function detail_dokumentasi(){
-		$id = $this->input->get('id');
-		$data['dokumentasi'] = $this->M_Dokumentasi->getdatawhere($id);
-		$data['content'] = $this->load->view('detail-dokumentasi', $data, true);
+	public function kontak(){
+		$data['content'] = $this->load->view('publik/kontak', null, true);
 		$this->load->view('layouts/index', $data);
 	}
 }

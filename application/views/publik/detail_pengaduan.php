@@ -1,9 +1,22 @@
-
+<section class="wrapper bg-gray">
+  <div class="container py-3 py-md-5">
+    <nav class="d-inline-block" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="<?= base_url('Home'); ?>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+      </ol>
+    </nav>
+    <!-- /nav -->
+  </div>
+  <!-- /.container -->
+</section>
     <!-- /section -->
     <section class="wrapper bg-light">
       <div class="container py-14 py-md-16">
         <div class="row gx-md-8 gx-xl-12 gy-8">
           <div class="col-lg-6">
+          <div class="shape rounded-circle bg-line red rellax w-18 h-18 d-none d-lg-block" data-rellax-speed="1" style="bottom: 2.5rem; left: 2.5rem;"></div>
             <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
               <div class="swiper">
                 <div class="swiper-wrapper">
@@ -77,21 +90,24 @@
                 <?php if(!empty($komentar)){ 
                   foreach($komentar as $k){
                 ?>
-                  <li class="comment">
-                  <div class="comment-header d-md-flex align-items-center">
-                    <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
-                    <div>
-                      <h6 class="comment-author"><a href="#" class="link-dark"><?= $k['nama']; ?></a></h6>
-                      <ul class="post-meta">
-                        <li><i class="uil uil-calendar-alt"></i><?= $k['created_at']; ?></li>
-                      </ul>
-                      <!-- /.post-meta -->
+                <li class="comment">
+                  <div class="card card-sm card-border-start border-primary" style="height: 8rem">
+                    <div class="card-body">
+                      <div class="comment-header d-md-flex align-items-center">
+                        <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
+                        <div>
+                          <h6 class="comment-author"><a href="#" class="link-dark"><?= $k['nama']; ?></a></h6>
+                          <ul class="post-meta">
+                            <li><i class="uil uil-calendar-alt"></i><?= $k['created_at']; ?></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /div -->
+                      </div>
+                      <!-- /.comment-header -->
+                      <p><?= $k['komentar']; ?></p>
                     </div>
-                    <!-- /div -->
                   </div>
-                  <!-- /.comment-header -->
-                  <p><?= $k['komentar']; ?></p>
-                  
                 </li>
 
 
@@ -104,7 +120,7 @@
             </div>
             <!-- /#comments -->
             <?php if(!empty($komentar)){ ?>
-            <nav class="d-flex mt-10" aria-label="pagination">
+            <nav class="d-flex mt-10 float-end" aria-label="pagination">
               <ul class="pagination">
                 <li class="page-item" id="prev-li">
                   <a class="page-link" aria-label="Previous">

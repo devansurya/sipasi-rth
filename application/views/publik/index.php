@@ -68,14 +68,15 @@
       <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
         <div class="row text-center">
           <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <h2 class="fs-16 text-uppercase text-primary mb-3">Apa Yang Baru?</h2>
             <h3 class="display-3 mb-10 px-xxl-10">Pengaduan Terbaru</h3>
           </div>
           <!-- /column -->
         </div>
         <!-- /.row -->
         <div class="position-relative">
-          <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: 0; left: -1.7rem;"></div>
-          <div class="swiper-container grid-view nav-bottom nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
+          <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: -1.7rem; left: -1.7rem;"></div>
+          <div class="swiper-container grid-view nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
             <div class="swiper">
               <div class="swiper-wrapper delay-section">
                 <?php if(isset($pengaduan)){
@@ -136,7 +137,12 @@
               <!-- /.swiper -->
             </div>
             <!-- /.swiper-container -->
+            <a style="margin-top: -10px" href="<?= base_url('Home/pengaduan'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
+              <i class="uil uil-arrow-right"></i>
+              <span>Semua Pengaduan</span>
+            </a>
           </div>
+
         <!--/.row -->
       </div>
       <!-- /.container -->
@@ -146,59 +152,35 @@
       <div class="container pb-14 pb-md-17">
         <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center">
           <div class="col-lg-6 order-lg-2">
-            <div class="card shadow-lg me-lg-6">
+            <?php
+            $class = ['me-lg-6','ms-lg-13 mt-6','mx-lg-6 mt-6'];
+            $index = 0;
+            $no = 1;
+             if(!empty($kategori_favorit)){
+              foreach ($kategori_favorit as $k) { ?>
+                
+            <div class="card shadow-lg <?= $class[$index]; ?>">
               <div class="card-body p-6">
                 <div class="d-flex flex-row">
                   <div>
-                    <span class="icon btn btn-circle btn-lg btn-soft-primary pe-none me-4"><span class="number">01</span></span>
+                    <span class="icon btn btn-circle btn-lg btn-soft-primary pe-none me-4"><span class="number"><?= $no; ?></span></span>
                   </div>
                   <div>
-                    <h4 class="mb-1">Collect Ideas</h4>
-                    <p class="mb-0">Nulla vitae elit libero pharetra augue dapibus.</p>
+                    <h4 class="mb-1"><?= $k['kategori']; ?></h4>
+                    <p class="mb-0">Dengan jumlah <?= $k['total']; ?> pengaduan.</p>
                   </div>
                 </div>
               </div>
               <!--/.card-body -->
             </div>
-            <!--/.card -->
-            <div class="card shadow-lg ms-lg-13 mt-6">
-              <div class="card-body p-6">
-                <div class="d-flex flex-row">
-                  <div>
-                    <span class="icon btn btn-circle btn-lg btn-soft-primary pe-none me-4"><span class="number">02</span></span>
-                  </div>
-                  <div>
-                    <h4 class="mb-1">Data Analysis</h4>
-                    <p class="mb-0">Vivamus sagittis lacus vel augue laoreet.</p>
-                  </div>
-                </div>
-              </div>
-              <!--/.card-body -->
-            </div>
-            <!--/.card -->
-            <div class="card shadow-lg mx-lg-6 mt-6">
-              <div class="card-body p-6">
-                <div class="d-flex flex-row">
-                  <div>
-                    <span class="icon btn btn-circle btn-lg btn-soft-primary pe-none me-4"><span class="number">03</span></span>
-                  </div>
-                  <div>
-                    <h4 class="mb-1">Finalize Product</h4>
-                    <p class="mb-0">Cras mattis consectetur purus sit amet.</p>
-                  </div>
-                </div>
-              </div>
-              <!--/.card-body -->
-            </div>
-            <!--/.card -->
+
+          <?php $index++;$no++; }} ?>
           </div>
           <!--/column -->
           <div class="col-lg-6">
-            <h2 class="fs-16 text-uppercase text-primary mb-3">Our Strategy</h2>
-            <h3 class="display-3 mb-4">Here are 3 working steps to organize our projects.</h3>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis.</p>
-            <p class="mb-6">Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <a href="#" class="btn btn-primary rounded-pill mb-0">Learn More</a>
+            <h2 class="fs-16 text-uppercase text-primary mb-3">Paling Sering</h2>
+            <h3 class="display-3 mb-4">Ini adalah 3 kategori favorit yang sering terlibat dalam pengaduan.</h3>
+            <p class="mb-6">Dalam SIDUMA terdapat banyak kategori yang bisa dibahas kedalam sebuah pengaduan, berikut adalah 3 kategori favorit yang sering di bahas dalam sebuah pengaduan.</p>
           </div>
           <!--/column -->
         </div>
@@ -215,17 +197,17 @@
           </div>
           <!--/column -->
           <div class="col-lg-5">
-            <h2 class="fs-15 text-uppercase text-primary mb-3">Why Choose Us?</h2>
-            <h3 class="display-3 mb-7">We bring solutions to make life easier.</h3>
+            <h2 class="fs-15 text-uppercase text-primary mb-3">Aman tidak ya?</h2>
+            <h3 class="display-3 mb-7">Sistem Menjaga Privasi dan Keamanan Mahasiswa.</h3>
             <div class="accordion accordion-wrapper" id="accordionExample">
               <div class="card plain accordion-item">
                 <div class="card-header" id="headingOne">
-                  <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Professional Design </button>
+                  <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Publik </button>
                 </div>
                 <!--/.card-header -->
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel.</p>
+                    <p>Pengaduan dengan visibilitas publik akan ditampilkan pada Portal SIDUMA UBSI dan dapat dilihat oleh siapapun beserta informasi pembuat.</p>
                   </div>
                   <!--/.card-body -->
                 </div>
@@ -234,12 +216,12 @@
               <!--/.accordion-item -->
               <div class="card plain accordion-item">
                 <div class="card-header" id="headingTwo">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Top-Notch Support </button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Anonim </button>
                 </div>
                 <!--/.card-header -->
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel.</p>
+                    <p>Pengaduan dengan visibilitas anonim tetap ditampilkan pada Portal SIDUMA UBSI dan dapat dilihat oleh siapapun, namun informasi pembuat akan di sembunyikan.</p>
                   </div>
                   <!--/.card-body -->
                 </div>
@@ -248,12 +230,12 @@
               <!--/.accordion-item -->
               <div class="card plain accordion-item">
                 <div class="card-header" id="headingThree">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Header and Slider Options </button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Private </button>
                 </div>
                 <!--/.card-header -->
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel.</p>
+                    <p>Pengaduan dengan visibilitas private akan disembunyikan dari Portal SIDUMA BSI, namun tetap masuk ke dalam sistem.</p>
                   </div>
                   <!--/.card-body -->
                 </div>
@@ -279,167 +261,26 @@
     </section>
     <!-- /section -->
     
-    <!-- /section -->
-    <section class="wrapper bg-gradient-primary">
-      <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
-        <div class="row text-center">
-          <div class="col-lg-8 offset-lg-2">
-            <h2 class="fs-16 text-uppercase text-primary mb-3">Happy Customers</h2>
-            <h3 class="display-3 mb-10 px-xxl-10">Don't take our word for it. See what customers are saying about us.</h3>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="grid">
-          <div class="row isotope gy-6">
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper. Cras justo odio dapibus facilisis sociis natoque penatibus.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te1.jpg" srcset="./assets/img/avatars/te1@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Coriss Ambady</h5>
-                        <p class="mb-0">Financial Analyst</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Fusce dapibus, tellus ac cursus tortor mauris condimentum fermentum massa justo sit amet. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te2.jpg" srcset="./assets/img/avatars/te2@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Cory Zamora</h5>
-                        <p class="mb-0">Marketing Specialist</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget porta ac consectetur vestibulum. Donec sed odio dui consectetur adipiscing elit.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te3.jpg" srcset="./assets/img/avatars/te3@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Nikolas Brooten</h5>
-                        <p class="mb-0">Sales Manager</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Etiam adipiscing tincidunt elit convallis felis suscipit ut. Phasellus rhoncus tincidunt auctor. Nullam eu sagittis mauris. Donec non dolor ac elit aliquam tincidunt at at sapien. Aenean tortor libero condimentum ac laoreet vitae.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te4.jpg" srcset="./assets/img/avatars/te4@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Coriss Ambady</h5>
-                        <p class="mb-0">Financial Analyst</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus magnis dis montes, nascetur ridiculus mus. Donec sed odio dui. Nulla vitae elit libero.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te5.jpg" srcset="./assets/img/avatars/te5@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Jackie Sanders</h5>
-                        <p class="mb-0">Investment Planner</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-            <div class="item col-md-6 col-xl-4">
-              <div class="card shadow-lg">
-                <div class="card-body">
-                  <span class="ratings five mb-2"></span>
-                  <blockquote class="border-0 mb-0">
-                    <p>“Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.”</p>
-                    <div class="blockquote-details">
-                      <img class="rounded-circle w-12" src="./assets/img/avatars/te6.jpg" srcset="./assets/img/avatars/te6@2x.jpg 2x" alt="" />
-                      <div class="info">
-                        <h5 class="mb-1">Laura Widerski</h5>
-                        <p class="mb-0">Sales Specialist</p>
-                      </div>
-                    </div>
-                  </blockquote>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/column -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.grid-view -->
-      </div>
-      <!-- /.container -->
-    </section>
-    <!-- /section -->
+   
     <section class="wrapper bg-light">
       <div class="container pt-6 pb-14 pb-md-16">
         <div class="row gx-lg-8 gx-xl-12 gy-10">
           <div class="col-lg-6 mb-0">
             <h2 class="fs-16 text-uppercase text-primary mb-4">FAQ</h2>
-            <h3 class="display-3 mb-4">If you don't see an answer to your question, you can send us an email from our contact form.</h3>
-            <p class="mb-6">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam quis risus eget urna mollis ornare.</p>
-            <a href="#" class="btn btn-primary rounded-pill">All FAQ</a>
+            <h3 class="display-3 mb-4">Tidak Menemukan Jawaban?</h3>
+            <p class="mb-6">Jika kamu tidak menemukan jawaban dari pertanyaanmu, kamu dapat mengirim pertanyaan ke email kami yang tertera pada menu kontak.</p>
           </div>
           <!--/column -->
           <div class="col-lg-6">
             <div id="accordion-3" class="accordion-wrapper">
               <div class="card accordion-item shadow-lg">
                 <div class="card-header" id="accordion-heading-3-1">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-1" aria-expanded="false" aria-controls="accordion-collapse-3-1">How do I get my subscription receipt?</button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-1" aria-expanded="false" aria-controls="accordion-collapse-3-1">Bagaimana cara membuat pengaduan?</button>
                 </div>
                 <!-- /.card-header -->
                 <div id="accordion-collapse-3-1" class="collapse" aria-labelledby="accordion-heading-3-1" data-bs-target="#accordion-3">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis.</p>
+                    <p>Kamu perlu login dengan akun siduma, lalu masuk ke dalam aplikasi pengaduanku, disana kamu dapat melihat menu untuk membuat pengaduanmu.</p>
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -448,12 +289,12 @@
               <!-- /.card -->
               <div class="card accordion-item shadow-lg">
                 <div class="card-header" id="accordion-heading-3-2">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-2" aria-expanded="false" aria-controls="accordion-collapse-3-2">Are there any discounts for people in need?</button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-2" aria-expanded="false" aria-controls="accordion-collapse-3-2">Apakah privasi mahasiswa terjaga?</button>
                 </div>
                 <!-- /.card-header -->
                 <div id="accordion-collapse-3-2" class="collapse" aria-labelledby="accordion-heading-3-2" data-bs-target="#accordion-3">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis.</p>
+                    <p>Sangat amat terjaga, kami menyediakan jenis privasi yang akan menjaga identitas dari pelapor mungkin untuk konten pengaduan yang lumayan sensitif.</p>
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -462,12 +303,12 @@
               <!-- /.card -->
               <div class="card accordion-item shadow-lg">
                 <div class="card-header" id="accordion-heading-3-3">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-3" aria-expanded="false" aria-controls="accordion-collapse-3-3">Do you offer a free trial edit?</button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-3" aria-expanded="false" aria-controls="accordion-collapse-3-3">Bagaimana cara mengomentari pengaduan?</button>
                 </div>
                 <!-- /.card-header -->
                 <div id="accordion-collapse-3-3" class="collapse" aria-labelledby="accordion-heading-3-3" data-bs-target="#accordion-3">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis.</p>
+                    <p>Kamu bisa mengomentari pengaduan pada portal SIDUMA dengan cara masuk ke dalam detail pengaduan yang ingin kamu komentari.</p>
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -476,12 +317,12 @@
               <!-- /.card -->
               <div class="card accordion-item shadow-lg">
                 <div class="card-header" id="accordion-heading-3-4">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-4" aria-expanded="false" aria-controls="accordion-collapse-3-4">How do I reset my Account password?</button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-4" aria-expanded="false" aria-controls="accordion-collapse-3-4">Bagaimana cara mengubah profile akun SIDUMA?</button>
                 </div>
                 <!-- /.card-header -->
                 <div id="accordion-collapse-3-4" class="collapse" aria-labelledby="accordion-heading-3-4" data-bs-target="#accordion-3">
                   <div class="card-body">
-                    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis.</p>
+                    <p>Kamu bisa masuk ke dalam aplikasi pengelola atau admin SIDUMA dan mengubah profile kamu disana.</p>
                   </div>
                   <!-- /.card-body -->
                 </div>
