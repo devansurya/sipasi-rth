@@ -9,6 +9,7 @@
                 </div>
                 <div class="card-body custom-input">
                     <form class="row g-3" method="post" action="<?= base_url('Pengaduan/ubah_status'); ?>/<?= $data->id_pengaduan ?>">
+                        <input class="form-control" type="hidden" name="id_user" required  value="<?= $data->id_user ?>">
                         <div class="col-6"> 
                             <label class="form-label" for="first-name">Nama Mahasiswa</label>
                             <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->username ?>"  disabled>

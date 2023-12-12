@@ -96,12 +96,23 @@ class CI_Controller {
 			->get()
 			->row_array();
 
+			$notifikasi = $CI->db->select('*,TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS menit,TIMESTAMPDIFF(HOUR, created_at, NOW()) AS jam')
+			->from('notifikasi n')
+			->where('n.id_user', $CI->session->userdata('id'))
+			->where('TIMESTAMPDIFF(HOUR, created_at, NOW()) < 2')
+			->limit(3)
+			->get()
+			->result_array();
+
+
 			$CI->load->vars(array(
 				'profile'    => $profile,
+				'notifikasi'    => $notifikasi,
 			));
 		} else {
 			$CI->load->vars(array(
-				'profile' => []
+				'profile' => [],
+				'notifikasi' => []
 			));
 		}
     

@@ -29,19 +29,37 @@
                 </svg>
             </div>
             </li>
-            <!-- <li class="onhover-dropdown">
+            <?php if($this->session->userdata('id_role') == 2) { ?>
+            <li class="onhover-dropdown">
                 <div class="notification-box">
                     <svg>
-                    <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#notification"></use>
-                    </svg><span class="badge rounded-pill badge-secondary">4 </span>
+                        <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#notification"></use>
+                    </svg><?php if(count($notifikasi) > 0) { ?><span class="badge rounded-pill badge-secondary"><?= count($notifikasi); ?> </span><?php } ?>
                 </div>
                 <div class="onhover-show-div notification-dropdown">
                     <h6 class="f-18 mb-0 dropdown-title">Notitications                               </h6>
                     <ul>
-                    <li class="b-l-primary border-4">
-                        <p>Delivery processing <span class="font-danger">10 min.</span></p>
-                    </li>
-                    <li class="b-l-success border-4">
+                        <?php if(!empty($notifikasi)){
+                            foreach ($notifikasi as $n) { ?>
+                                <a class="mb-2 " href="<?= base_url("Pengaduan/detail_pengaduan/{$n['id_pengaduan']}")?>?notif=<?= $n['id_notifikasi']; ?>">
+                                    <li class="b-l-<?= $n['color']; ?> border-4 text-start mb-2">
+                                        <p class="font-dark"><?= $n['pesan']; ?></p>
+                                        <p class="font-<?= $n['color']; ?>">
+                                            <?php if($n['jam'] > 0){ ?>
+
+                                                <?= $n['jam']; ?> jam
+
+                                            <?php }else{ ?>
+                                                <?= $n['menit']; ?> menit
+                                            <?php } ?>
+
+                                        </p>
+                                    </li>
+                                </a>
+                            <?php }}else{ ?>
+                                <p class="text-center">Belum ada notifikasi</p>
+                            <?php } ?>
+                    <!-- <li class="b-l-success border-4">
                         <p>Order Complete<span class="font-success">1 hr</span></p>
                     </li>
                     <li class="b-l-secondary border-4">
@@ -49,11 +67,12 @@
                     </li>
                     <li class="b-l-warning border-4">
                         <p>Delivery Complete<span class="font-warning">6 hr</span></p>
-                    </li>
-                    <li><a class="f-w-700" href="#">Check all</a></li>
-                    </ul>
-                </div>
-            </li> -->
+                    </li> -->
+                    <!-- <li><a class="f-w-700" href="#">Check all</a></li> -->
+                </ul>
+            </div>
+        </li>
+    <?php } ?>
             <li class="profile-nav onhover-dropdown pe-0 py-0">
             <div class="media profile-media"><img class="img-40 rounded-circle" src="<?= base_url('upload-profile/'. $profile['image'])?>" alt="">
                 <div class="media-body"><span><?= $profile['nama'] ? $profile['nama'] : '-'; ?></span>

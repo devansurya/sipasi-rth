@@ -21,6 +21,14 @@ class Pengaduan extends CI_Controller
 
 	public function detail_pengaduan($id){
 		if (!is_numeric($id)) return $this->output->set_status_header(400);
+
+		if($this->input->get('notif')){
+			$dataUpdate =  array(
+				'status_baca' => 1
+			);
+			$this->db->where('id_notifikasi', $this->input->get('notif'));
+			$updateNotif = $this->db->update('notifikasi', $dataUpdate);
+		}
 		
 		$data['data'] = $this->M_Pengaduan->get_one($id);
 		$data['list_status'] = $this->M_Status->get();
@@ -140,12 +148,36 @@ class Pengaduan extends CI_Controller
 
 	public function ubah_status($id){
 
+		$status = $this->input->post('status');
+		$id_user = $this->input->post('id_user');
+
 		$data =  array(
-			'status' => $this->input->post('status')
+			'status' => $status
 		);
 		$this->db->where('id_pengaduan', $id);
 		$update = $this->db->update('pengaduan', $data);
 		if($update){
+			if($status != '1'){
+				$pesan = null;
+				$color = 'primary';
+				if($status == 2){
+					$pesan = 'Pengaduan anda sedang dalam status penanganan';
+					$color = 'warning';
+				}elseif($status == 3){
+					$pesan = 'Pengaduan anda telah selesai';
+					$color = 'success';
+				}
+
+				$data = array(
+					'id_user' => $id_user,
+					'id_pengaduan' => $id,
+					'pesan' => $pesan,
+					'color' => $color
+
+				);
+				$insert = $this->M_Ref->insertTable('notifikasi', $data);
+
+			}
 			$this->setflashdata('pengaduan_message', 'Berhasil Update Status Pengaduan');
 			redirect('Pengaduan');
 		}
