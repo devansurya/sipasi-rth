@@ -98,7 +98,7 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <?php if (strtolower($data['status']) !== 'selesai'): ?>
+                                    <?php if (strtolower($data['status']) !== 'selesai' && strtolower($data['status']) !== 'penanganan'): ?>
                                         <li class="edit"> <a href="<?= base_url("Pengaduan/ubah_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil"></i></a></li>
                                     <?php endif ?>
                                     <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
