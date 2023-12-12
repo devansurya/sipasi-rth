@@ -22,4 +22,15 @@
 	{
 		return date('d/m/y H:i:s',strtotime('20130409163705'));
 	}
+
+	function cek_login()
+	{
+		$ci = get_instance();
+		if (!$ci->session->userdata('id')) {
+			$ci->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akses ditolak. Anda belum login!!
+				</div>');
+			return redirect('Auth');
+		}
+	}
+
  ?>
