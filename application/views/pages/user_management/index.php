@@ -62,7 +62,7 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("UserManagement/detail_user/{$data['id_user']}")?>"><i class="icon-pencil"></i></a></li>
-                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_user'] ?>')"><i class="icon-trash"></i></a></li>
+                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_user'] ?>', '<?= $data['id_contact'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -79,8 +79,8 @@
 </div>
 
 <script type="text/javascript">
-    function deleteId(id) {
-        if (!id) return false;
+    function deleteId(id_user, id_contact) {
+        if (!id_user) return false;
 
         Swal.fire({
           title: "Are you sure?",
@@ -92,7 +92,7 @@
           confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             console.log(result);
-            if (result.isConfirmed) window.location = `<?= base_url('UserManagement/delete/')?>${id}`;
+            if (result.isConfirmed) window.location = `<?= base_url('UserManagement/delete/')?>${id_user}/${id_contact}`;
         });
     }
 </script>

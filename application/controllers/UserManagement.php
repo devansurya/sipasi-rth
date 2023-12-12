@@ -89,7 +89,16 @@ class UserManagement extends CI_Controller
         $this->db->where('id_contact', $this->input->post('id_contact'));
         $this->db->update('contact', $data);
 
-        $this->session->set_flashdata('message', '<div class="alert alert-light-success" role="alert"> Akun berhasil diUpdate.</div>'); 
+        $this->session->set_flashdata('user_management_message', '<div class="alert alert-light-success" role="alert"> Akun berhasil diUpdate.</div>'); 
         redirect('UserManagement'); 
+    }
+
+    public function delete($id_user, $id_contact)
+    {
+        $this->M_Ref->deleteData('contact', 'id_contact',$id_contact);
+        $this->M_Ref->deleteData('user', 'id_user',$id_user);
+        
+        $this->session->set_flashdata('user_management_message', '<div class="alert alert-light-danger" role="alert"> Data berhasil dihapus.</div>');  
+		redirect('UserManagement');
     }
 }
