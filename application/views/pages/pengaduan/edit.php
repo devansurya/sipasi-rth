@@ -47,6 +47,7 @@
                                 <figure class="col-xl-4 col-md-5 col-7" itemprop="associatedMedia" itemscope="">
                                     <a href="<?=$image ?>" itemprop="contentUrl" data-size="1600x950">
                                         <img class="img-thumbnail" src="<?=$image ?>" itemprop="thumbnail" alt="Image description"></a>
+                                        <input class="form-control" type="hidden" name="old_pict" value="<?= $data->foto ?>">
                                 </figure>
                             </div>
                         </div>

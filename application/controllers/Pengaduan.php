@@ -61,10 +61,13 @@ class Pengaduan extends CI_Controller
 
 		if ($this->upload->do_upload('lampiran')) {
 			$image = $this->upload->data();
+			unlink('assets/img/upload/' . $this->input->post('old_pict', TRUE));
 			$gambar = $image['file_name'];
+
 		} else {
-			$gambar = null;
+			$gambar = $this->input->post('old_pict');
 		}
+
 
 		$data = array(
 			'id_kategori' => $this->input->post('kategori'),
