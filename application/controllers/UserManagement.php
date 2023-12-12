@@ -69,4 +69,12 @@ class UserManagement extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert txt-success border-success outline-2x alert-dismissible fade show alert-icons" role="alert"><p><b> Success </b>Akun berhasil ditambahkan.<p><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');  
         redirect('UserManagement');  
     }
+
+	public function detail_user($id)
+	{
+        $dataq['profile'] = $this->M_User->getProfile($id);
+
+		$data['content'] = $this->load->view('pages/user_management/detail-user', $dataq, true);
+		$this->load->view('layouts-admin/index', $data);
+	}
 }
