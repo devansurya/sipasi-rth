@@ -31,30 +31,35 @@ class Auth extends CI_Controller
         $nim = $this->input->post('nim');
         $password = $this->input->post('password');
 
-        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama, role.role')
+        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama, role.role, contact.status')
 		->from('user')->join('contact', 'user.id_contact = contact.id_contact', 'left')
         ->join('role', 'user.id_role = role.id_role', 'left')
 		->where('username', $nim)->get()
 		->row_array();
         if ($user) {
-            if (md5($password) == $user['password']) {
-                $data = [
-                    'id' => $user['id_user'],
-                    'username' => $user['username'],
-                    'id_role' => $user['id_role'],
-                    'role' => $user['role'],
-                    'nama' => $user['nama'],
-                    'password' => $user['password'],
-                ];
-                $this->session->set_userdata($data);
-                if ($user['id_role'] == 1) {
-                    redirect('Dashboard');
-                } elseif ($user['id_role'] == 2) {
-                    redirect('Mahasiswa');
+            if ($user['status'] == 1){
+                if (md5($password) == $user['password']) {
+                    $data = [
+                        'id' => $user['id_user'],
+                        'username' => $user['username'],
+                        'id_role' => $user['id_role'],
+                        'role' => $user['role'],
+                        'nama' => $user['nama'],
+                        'password' => $user['password'],
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['id_role'] == 1) {
+                        redirect('Dashboard');
+                    } elseif ($user['id_role'] == 2) {
+                        redirect('Mahasiswa');
+                    }
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Password salah.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                    redirect('Auth');
                 }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Password salah.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                redirect('Auth');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Akun belum di Aktivasi oleh Admin.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                    redirect('Auth');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Username belum terdaftar.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');

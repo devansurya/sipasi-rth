@@ -61,26 +61,31 @@ class Registrasi extends CI_Controller
             'id_contact' => $id_contact  
         );  
 
+        $this->M_Ref->insertTable('user', $data2);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Akun berhasil dibuat. Tunggu di Aktivasi oleh Admin</div>');  
+        redirect('Registrasi');
+
         // Insert data2 to 'user' table
-        if ($this->M_Ref->insertTable('user', $data2))  
-        {  
-            if ($this->sendemail($email, $saltid))  
-            {  
-                // successfully sent mail to user email  
-                $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Please confirm the mail sent to your email id to complete the registration.</div>');  
-                redirect('Registrasi');  
-            }  
-            else  
-            {  
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Please try again ...</div>');  
-                redirect('Registrasi');  
-            }  
-        }  
-        else  
-        {  
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Something Wrong. Please try again ...</div>');  
-            redirect('Registrasi');  
-        }  
+        // if ($this->M_Ref->insertTable('user', $data2))  
+        // {  
+        //     if ($this->sendemail($email, $saltid))  
+        //     {  
+        //         // successfully sent mail to user email  
+        //         $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Please confirm the mail sent to your email id to complete the registration.</div>');  
+        //         redirect('Registrasi');  
+        //     }  
+        //     else  
+        //     {  
+        //         $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Please try again ...</div>');  
+        //         redirect('Registrasi');  
+        //     }  
+        // }  
+        // else  
+        // {  
+        //     $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Something Wrong. Please try again ...</div>');  
+        //     redirect('Registrasi');  
+        // }  
     }
 
 

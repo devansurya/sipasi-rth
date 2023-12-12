@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-xl-8">
-                    <form action="<?= base_url('User/updateProfile')?>" method="POST" class="card">
+                    <form action="<?= base_url('UserManagement/aktivasiAkun')?>" method="POST" class="card">
                         <input type="hidden" value="<?= $profile['id_contact']; ?>" name="id_contact">
                         <input type="hidden" value="<?= $profile['id_user']; ?>" name="id_user">
                         <div class="card-header">
@@ -95,11 +95,22 @@
                                     </select>
                                 </div>
                                 </div>
+                                <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Aktivasi Akun</label>
+                                    <select class="form-control btn-square" name="status">
+                                        <option value="">Pilih Status</option>
+                                        <option value="1" <?= ($profile['status'] == 1) ? 'selected' : '' ?>>Aktif</option>
+                                        <option value="0" <?= ($profile['status'] != 1) ? 'selected' : '' ?>>Non Aktif</option>
+                                    </select>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- <div class="card-footer text-end">
-                        <button class="btn btn-primary" type="submit">Update Profile</button>
-                        </div> -->
+                        <div class="card-footer text-end">
+                            <a href="<?= base_url('UserManagement')?>" class="btn btn-danger">Kembali</a>
+                            <button class="btn btn-primary" type="submit">Update Profile</button>
+                        </div>
                     </form>
                 </div>
                 </div>
