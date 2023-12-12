@@ -3,7 +3,7 @@
     <div class="page-title">
         <div class="row">
         <div class="col-6">
-            <h4>Pengaduan</h4>
+            <h4>Kotak Masuk</h4>
         </div>
         <div class="col-6">
             <ol class="breadcrumb">
@@ -12,7 +12,7 @@
                     <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
                 </svg></a></li>
             <li class="breadcrumb-item">Application</li>
-            <li class="breadcrumb-item active">Pengaduan</li>
+            <li class="breadcrumb-item active">Kotak Masuk</li>
             </ol>
         </div>
         </div>
@@ -20,17 +20,13 @@
     </div>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <?= $this->session->flashdata('pengaduan_message') ?>
+        <?= $this->session->flashdata('kotak_masuk_message') ?>
         <div class="row">
             <!-- Zero Configuration  Starts-->
             <div class="col-xl-12 col-md-12 box-col-12 file-content">
                 <div class="card">
                     <div class="card-header">
-                        <div class="text-end">
-                            <?php if($this->session->userdata('id_role') != 1){ ?>
-                                <a href="<?= base_url('Pengaduan/tambah'); ?>" class="btn btn-primary"> <i data-feather="plus-square"></i>Pengaduan Baru</a>
-                            <?php } ?>
-                        </div>
+                        
                     </div>
                     <div class="card-body">
                     <div class="table-responsive">
@@ -38,13 +34,9 @@
                         <thead>
                             <tr>
                             <th>No</th>
-                            <?php if($this->session->userdata('id_role') != 2){ ?>
-                                <th>Nama / NIM</th>
-                            <?php } ?>
-                            <th width="150">Deskripsi</th>
-                            <th>Kategori</th>
-                            <th>Status</th>
-                            <th>Tanggal</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th width="150">Pesan</th>
                             <th>Action</th>
                             </tr>
                         </thead>
@@ -52,13 +44,12 @@
                             <?php $no = 1; foreach ($data as $data): ?>
                             <tr>
                                 <td><?= $no; ?></td>
-                                <?php if($this->session->userdata('id_role') != 2){ ?>
-                                    <td><?= $data['nama'] ?><br><?= $data['nim'] ?></td>
-                                <?php } ?>
+                                <td><?= $data['nama'] ?></td>
+                                <td><?= $data['email'] ?></td>
                                 <td>
                                     <?php 
-                                    $text = $data['deskripsi'];
-                                    $limit = 100;
+                                    $text = $data['isi'];
+                                    $limit = 200;
 
                                     if (strlen($text) > $limit) {
                                         $shortenedText = substr($text, 0, $limit);
@@ -73,13 +64,10 @@
                                     ?>
                                         
                                 </td>
-                                <td><?= $data['kategori'] ?></td>
-                                <td><?= getStatusbadge($data['status']) ?></td>
-                                <td><?php echo date('d/m/y H:i:s',strtotime($data['created_at'])) ?></td>
                                 <td> 
                                     <ul class="action"> 
-                                    <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
+                                    <!-- <li class="edit"> <a href="<?= base_url("KotakMasuk/detail/{$data['id_kotak_masuk']}")?>"><i class="icon-eye"></i></a></li> -->
+                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_kotak_masuk'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -108,8 +96,9 @@
           cancelButtonColor: "#d33",
           confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            console.log(result);
-            if (result.isConfirmed) window.location = `<?= base_url('Pengaduan/delete/')?>${id}`;
+            if (result.isConfirmed) {
+                window.location = `<?= base_url('KotakMasuk/delete/')?>${id}`;
+            }
         });
     }
 </script>

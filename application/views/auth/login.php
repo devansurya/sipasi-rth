@@ -37,7 +37,8 @@
     <!-- login page start-->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url('assets-admin/images/login/2.jpg'); ?>" alt="looginpage"></div>
+
+        <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url('assets-admin/images/login/2.jpg'); ?>" alt="looginpage"><img class="img-fluid for-light mt-4 ms-4" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" width="150" alt="loginlogo"></div>
         <div class="col-xl-5 p-0">
           <div class="login-card login-dark">
             <div>

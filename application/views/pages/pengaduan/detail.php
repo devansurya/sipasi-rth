@@ -8,7 +8,7 @@
                     <h4>Detail Pengaduan</h4>
                 </div>
                 <div class="card-body custom-input">
-                    <form class="row g-3">
+                    <form class="row g-3" method="post" action="<?= base_url('Pengaduan/ubah_status'); ?>/<?= $data->id_pengaduan ?>">
                         <div class="col-6"> 
                             <label class="form-label" for="first-name">Nama Mahasiswa</label>
                             <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->username ?>"  disabled>
@@ -17,9 +17,17 @@
                             <label class="form-label" for="exampleFormControlInput1">NIM</label>
                             <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nim ?>" disabled>
                         </div>
-                        <div class="col-12"> 
+                        <div class="col-4"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Kategori Pengaduan</label>
                             <input class="form-control" type="text" required value="<?= $data->kategori ?>" disabled>
+                        </div>
+                        <div class="col-4"> 
+                            <label class="col-sm-12 col-form-label" for="inputPassword2">Status Privasi</label>
+                            <input class="form-control" type="text" required value="<?= $data->privasi_status ?>" disabled>
+                        </div>
+                        <div class="col-4"> 
+                            <label class="col-sm-12 col-form-label" for="inputPassword2">Tanggal Pengaduan</label>
+                            <input class="form-control" type="text" required disabled value="<?= $data->created_at ?>">
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="validationDefault04">Bukti Foto</label>
@@ -30,17 +38,22 @@
                                 </figure>
                             </div>
                         </div>
+                        
                         <div class="col-12"> 
-                            <label class="col-sm-12 col-form-label" for="inputPassword2">Tanggal Pengaduan</label>
-                            <input class="form-control" type="text" required disabled value="<?= $data->created_at ?>">
+                            <label class="col-sm-12 col-form-label" for="inputPassword2">Subjek</label>
+                            <input class="form-control" type="text" required disabled value="<?= $data->subjek ?>">
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $data->deskripsi ?></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly disabled><?= $data->deskripsi ?></textarea>
+                        </div>
+                        <div class="col-12"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Lokasi</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly disabled><?= $data->lokasi ?></textarea>
                         </div>
                         <div class="col-12 mb-3"> 
                             <label class="form-label" for="validationDefault04">Status Pengaduan</label>
-                            <select class="form-select" id="validationDefault04" required="">
+                            <select class="form-select" id="validationDefault04" name="status" required="">
                                 <option selected="" disabled="" >Pilih Status</option>
                                 <?php foreach ($list_status as $status): ?>
                                 <option value="<?= $status->id_status ?>" <?php if($status->id_status === $data->id_status) echo "selected" ?>><?= $status->status ?> </option>
@@ -49,6 +62,7 @@
                         </div>
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

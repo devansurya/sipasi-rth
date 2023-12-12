@@ -89,6 +89,23 @@ class Pengaduan extends CI_Controller
 		}
 	}
 
+	public function ubah_status($id){
+
+		$data =  array(
+			'status' => $this->input->post('status')
+		);
+		$this->db->where('id_pengaduan', $id);
+		$update = $this->db->update('pengaduan', $data);
+		if($update){
+			$this->setflashdata('pengaduan_message', 'Berhasil Update Status Pengaduan');
+			redirect('Pengaduan');
+		}
+		else{
+			$this->setflashdata('pengaduan_message', 'Gagal Update Status Pengaduan', 'error');
+			redirect('Pengaduan');
+		}
+	}
+
 	public function setflashdata($flashId='message', $message='', $type='success')
     {
         $this->session->set_flashdata($flashId, "

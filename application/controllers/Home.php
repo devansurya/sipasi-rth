@@ -81,8 +81,36 @@ class Home extends CI_Controller
 		return redirect('Home/detail_pengaduan/'.$id_pengaduan);
 	}
 
+	public function hapus_komentar($id,$id_pengaduan_callback = null){
+
+		$this->db->where('id_komentar', $id);
+		$delete = $this->db->delete('komentar');
+
+		return redirect('Home/detail_pengaduan/'.$id_pengaduan_callback);
+	}
+
 	public function kontak(){
 		$data['content'] = $this->load->view('publik/kontak', null, true);
 		$this->load->view('layouts/index', $data);
+	}
+
+	public function hubungi_kami(){
+
+		$nama = $this->input->post('nama');
+		$id_user = $this->session->userdata('id');
+		$email = $this->input->post('email');
+		$isi = $this->input->post('isi');
+
+		$data = array(
+
+			'id_user' => $id_user,
+			'nama' => $nama,
+			'email' => $email,
+			'isi' => $isi
+		);
+
+		$insert = $this->M_Ref->insertTable('kotak_masuk', $data);
+
+		return redirect('Home/kontak');
 	}
 }
