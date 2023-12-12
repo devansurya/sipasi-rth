@@ -77,4 +77,19 @@ class UserManagement extends CI_Controller
 		$data['content'] = $this->load->view('pages/user_management/detail-user', $dataq, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
+
+    public function aktivasiAkun()
+    {
+        $status = $this->input->post('status');
+
+        $data = array(
+            'status' => $status,
+        );
+
+        $this->db->where('id_contact', $this->input->post('id_contact'));
+        $this->db->update('contact', $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-light-success" role="alert"> Akun berhasil diUpdate.</div>'); 
+        redirect('UserManagement'); 
+    }
 }
