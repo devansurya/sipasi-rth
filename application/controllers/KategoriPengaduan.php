@@ -26,7 +26,7 @@ class KategoriPengaduan extends CI_Controller
 		$insert = $this->M_Ref->insertTable('kategori_pengaduan', $data);
 
 		if($insert){
-            $this->session->set_flashdata('message', '<div class="alert alert-light-success" role="alert"> Kategori berhasil ditambahkan.</div>');  
+            $this->session->set_flashdata('kategori_pengaduan_message', '<div class="alert alert-light-success" role="alert"> Kategori berhasil ditambahkan.</div>');  
 			redirect('KategoriPengaduan');
 		}
     }
@@ -35,7 +35,7 @@ class KategoriPengaduan extends CI_Controller
     {
         $this->M_Ref->deleteData('kategori_pengaduan', 'id_kategori',$id);
         
-        $this->session->set_flashdata('message', '<div class="alert alert-light-danger" role="alert"> Kategori berhasil dihapus.</div>');  
+        $this->session->set_flashdata('kategori_pengaduan_message', '<div class="alert alert-light-danger" role="alert"> Kategori berhasil dihapus.</div>');  
 		redirect('KategoriPengaduan');
     }
 
@@ -55,7 +55,7 @@ class KategoriPengaduan extends CI_Controller
 		$this->db->where('id_kategori', $this->input->post('id_kategori'));
         $this->db->update('kategori_pengaduan', $data);
         
-        $this->session->set_flashdata('message', '<div class="alert alert-light-primary" role="alert"> Kategori berhasil diupdate.</div>');  
+        $this->session->set_flashdata('kategori_pengaduan_message', '<div class="alert alert-light-primary" role="alert"> Kategori berhasil diupdate.</div>');  
 		redirect('KategoriPengaduan');
     }
     
