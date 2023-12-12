@@ -83,9 +83,9 @@
           cancelButtonColor: "#d33",
           confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            window.location = `<?= base_url('UserManagement/delete/')?>${id}`;
+            console.log(result);
+            if (result.isConfirmed) window.location = `<?= base_url('UserManagement/delete/')?>${id}`;
         });
     }
 </script>
-
 <input id="base_url" value="<?= base_url() ?>">

@@ -66,7 +66,7 @@
                         <h6>Data Master</h6>
                     </div>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('UserManagement')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KategoriPengaduan')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-gallery"></use>
                         </svg>

@@ -65,8 +65,8 @@ class UserManagement extends CI_Controller
         );  
 		
 		$this->M_Ref->insertTable('user', $data2);
-
-		$this->session->set_flashdata('message', '<div class="alert txt-success border-success outline-2x alert-dismissible fade show alert-icons" role="alert"><p><b> Success </b>Akun berhasil ditambahkan.<p><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');  
+		
+		$this->session->set_flashdata('message', '<div class="alert alert-light-success" role="alert"> Akun berhasil ditambahkan.</div>'); 
         redirect('UserManagement');  
     }
 
