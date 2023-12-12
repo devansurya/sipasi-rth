@@ -39,6 +39,52 @@ class Pengaduan extends CI_Controller
 
 	}
 
+	public function ubah_pengaduan($id=null){
+		if (!$id) return $this->output->set_status_header(404);
+		$data['data'] =  $this->M_Pengaduan->get_one($id);
+		$data['visibilitas'] = $this->M_Ref->getAllResult('visibilitas');
+		$data['kategori'] = $this->M_Ref->getAllResult('kategori_pengaduan');
+		$data['content'] = $this->load->view('pages/pengaduan/edit', $data, true);
+
+		return $this->load->view('layouts-admin/index', $data);
+	}
+
+	public function edit($id){
+		if (!$id) return false;
+		$config['upload_path'] = './assets/img/upload/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		// $config['max_size'] = '3000';
+		// $config['max_width'] = '1024';
+		// $config['max_height'] = '1000';
+		$config['file_name'] = 'img' . time();
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('lampiran')) {
+			$image = $this->upload->data();
+			$gambar = $image['file_name'];
+		} else {
+			$gambar = null;
+		}
+
+		$data = array(
+			'id_kategori' => $this->input->post('kategori'),
+			'subjek' => $this->input->post('subjek'),
+			'deskripsi' => $this->input->post('deskripsi'),
+			'foto' => $gambar,
+			'lokasi' => $this->input->post('lokasi'),
+			'visibilitas' => $this->input->post('visibilitas'),
+		);
+		
+		if($this->M_Pengaduan->update($id, $data)){
+			$this->setflashdata('pengaduan_message', 'Berhasil Edit Pengaduan');
+			redirect('Pengaduan');
+		}
+		else{
+			$this->setflashdata('pengaduan_message', 'Gagal Edit Pengaduan', 'error');
+			redirect('Pengaduan');
+		}
+	}
+
 	public function delete($id=null)
 	{
 		if (!$id) redirect('Pengaduan');

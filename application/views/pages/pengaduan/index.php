@@ -20,7 +20,7 @@
     </div>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <?= $this->session->flashdata('pengaduan_message') ?>
+        <?= $this->session->flashdata('pengaduan_message');unset($_SESSION['pengaduan_message']); ?>
         <div class="row">
             <!-- Zero Configuration  Starts-->
             <div class="col-xl-12 col-md-12 box-col-12 file-content">
@@ -41,6 +41,7 @@
                             <?php if($this->session->userdata('id_role') != 2){ ?>
                                 <th>Nama / NIM</th>
                             <?php } ?>
+                            <th width="150">Subject</th>
                             <th width="150">Deskripsi</th>
                             <th>Kategori</th>
                             <th>Status</th>
@@ -55,6 +56,24 @@
                                 <?php if($this->session->userdata('id_role') != 2){ ?>
                                     <td><?= $data['nama'] ?><br><?= $data['nim'] ?></td>
                                 <?php } ?>
+                                <td>
+                                    <?php 
+                                    $text = $data['subjek'];
+                                    $limit = 100;
+
+                                    if (strlen($text) > $limit) {
+                                        $shortenedText = substr($text, 0, $limit);
+
+                                        $shortenedText .= " ...";
+
+                                        echo $shortenedText;
+                                    } else {
+                                        echo $text; 
+                                    }
+
+                                    ?>
+                                        
+                                </td>
                                 <td>
                                     <?php 
                                     $text = $data['deskripsi'];
@@ -79,6 +98,9 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
+                                    <?php if (strtolower($data['status']) !== 'selesai'): ?>
+                                        <li class="edit"> <a href="<?= base_url("Pengaduan/ubah_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil"></i></a></li>
+                                    <?php endif ?>
                                     <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>

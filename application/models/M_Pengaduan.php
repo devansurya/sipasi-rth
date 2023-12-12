@@ -24,6 +24,18 @@ class M_Pengaduan extends CI_Model {
 		return $data;
 	}
 
+	public function update($id,$data){
+		if($this->session->userdata('id_role') == 2){
+			$this->db->where("id_user = {$this->session->userdata('id')} and id_pengaduan={$id}");
+		}
+		else if ($this->session->userdata('id_role') !== 2) {
+			$this->db->where("id_pengaduan={$id}");
+		}
+
+	    $this->db->update('pengaduan', $data);
+	    return true;
+	}
+
 	public function get_all($limit = null){
 
 		$this->db->select('p.*, kp.kategori, u.username, sp.status, c.nim, c.nama');
