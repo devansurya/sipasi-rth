@@ -47,7 +47,7 @@
                                     <td><?= $data->kategori ?></td>
                                     <td> 
                                         <ul class="action"> 
-                                        <li class="edit"> <a href="<?= base_url("UserManagement/detail_user/{$data->id_kategori}")?>"><i class="icon-eye"></i></a></li>
+                                        <li class="edit"> <a href="<?= base_url("KategoriPengaduan/edit_kategori/{$data->id_kategori}")?>"><i class="icon-pencil"></i></a></li>
                                         <li class="delete"><a href="#" onclick="deleteId('<?= $data->id_kategori ?>')"><i class="icon-trash"></i></a></li>
                                         </ul>
                                     </td>

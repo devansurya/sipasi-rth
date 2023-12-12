@@ -30,6 +30,35 @@ class KategoriPengaduan extends CI_Controller
 			redirect('KategoriPengaduan');
 		}
     }
+
+    public function delete($id)
+    {
+        $this->M_Ref->deleteData('kategori_pengaduan', 'id_kategori',$id);
+        
+        $this->session->set_flashdata('message', '<div class="alert alert-light-danger" role="alert"> Kategori berhasil dihapus.</div>');  
+		redirect('KategoriPengaduan');
+    }
+
+    public function edit_kategori($id)
+    {
+        $data['kategori'] = $this->M_Ref->getWhereRow('kategori_pengaduan', 'id_kategori', $id);
+
+		$data['content'] = $this->load->view('pages/kategori_pengaduan/edit', $data, true);
+		$this->load->view('layouts-admin/index', $data);
+    }
+
+    public function update()
+    {
+        $data =  array(
+			'kategori' => $this->input->post('kategori')
+		);
+		$this->db->where('id_kategori', $this->input->post('id_kategori'));
+        $this->db->update('kategori_pengaduan', $data);
+        
+        $this->session->set_flashdata('message', '<div class="alert alert-light-primary" role="alert"> Kategori berhasil diupdate.</div>');  
+		redirect('KategoriPengaduan');
+    }
+    
     
 }
 

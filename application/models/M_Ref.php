@@ -54,4 +54,10 @@ class M_Ref extends CI_Model {
 		return $this->db->get($table)->num_rows();
 	}
 
+	public function deleteData($table, $field, $where)
+	{
+		$this->db->where($field, $where);
+		$this->db->delete($table);
+	}
+
 }
