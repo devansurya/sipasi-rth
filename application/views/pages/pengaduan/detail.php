@@ -61,9 +61,12 @@
                                 <?php endforeach ?>
                             </select>
                         </div>
+                        
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <?php if($this->session->userdata('role') == 'Admin') : ?>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            <?php endif; ?>
                         </div>
                     </form>
                 </div>
