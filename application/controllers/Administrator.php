@@ -8,6 +8,8 @@ class Administrator extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_Dokumentasi');
 		$this->load->model('M_Guru');
+		$this->load->helper('view_helper');
+        cek_login();
 	}
 
 	public function index(){

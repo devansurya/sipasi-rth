@@ -1,7 +1,3 @@
-<?php
-    $profile = $this->db->select('*')->from('contact')->where('id_contact', $this->session->userdata('id'))->get()->row_array();
-?>
-
 <!-- Page Header Start-->
 <div class="page-header">
     <div class="header-wrapper row m-0">

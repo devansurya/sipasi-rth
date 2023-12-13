@@ -84,8 +84,8 @@
                                     <label class="form-label">Jenis Kelamin</label>
                                     <select class="form-control btn-square" name="jenis_kelamin">
                                         <option value="">Jenis Kelamin</option>
+                                        <option value="Laki-Laki" <?= ($profile['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?>>Laki - Laki</option>
                                         <option value="Perempuan" <?= ($profile['jenis_kelamin'] == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
-                                        <option value="Laki-Laki" <?= ($profile['jenis_kelamin'] == 'Laki-laki') ? 'selected' : '' ?>>Laki - Laki</option>
                                     </select>
                                 </div>
                                 </div>

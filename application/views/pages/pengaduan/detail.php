@@ -54,16 +54,19 @@
                         </div>
                         <div class="col-12 mb-3"> 
                             <label class="form-label" for="validationDefault04">Status Pengaduan</label>
-                            <select class="form-select" id="validationDefault04" name="status" required="">
+                            <select <?php if($this->session->userdata('role') != 'Admin') { echo 'disabled'; } ?> class="form-select" id="validationDefault04" name="status" required="">
                                 <option selected="" disabled="" >Pilih Status</option>
                                 <?php foreach ($list_status as $status): ?>
                                 <option value="<?= $status->id_status ?>" <?php if($status->id_status === $data->id_status) echo "selected" ?>><?= $status->status ?> </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
+                        
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <?php if($this->session->userdata('role') == 'Admin') : ?>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            <?php endif; ?>
                         </div>
                     </form>
                 </div>
