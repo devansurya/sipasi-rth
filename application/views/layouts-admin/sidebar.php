@@ -1,5 +1,6 @@
 <!-- Page Sidebar Start-->
 <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
+    
     <div>
     <div class="logo-wrapper"><a href="<?= base_url('Home'); ?>"><img class="img-fluid for-light" src="<?= base_url(); ?>/assets-admin/images/logo/logo.png" width="160" alt=""><img class="img-fluid for-dark" src="<?= base_url(); ?>/assets-admin/images/logo/logo_dark.png" width="160" alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
