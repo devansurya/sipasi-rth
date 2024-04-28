@@ -12,6 +12,31 @@ class Pengaduan extends CI_Controller
 		$this->load->model('M_Ref');
 	}
 
+	public function testing(){
+		$this->load->library('unit_test');
+		$test = 1 + 1;
+
+		$expected_result = 2;
+
+		$test_name = 'Adds one plus one';
+
+		$this->unit->run($test, $expected_result, $test_name);
+
+		$str = '
+		<table border="0" cellpadding="4" cellspacing="1">
+		{rows}
+		<tr>
+		<td>{item}</td>
+		<td>{result}</td>
+		</tr>
+		{/rows}
+		</table>';
+
+		$this->unit->set_template($str);
+
+		echo $this->unit->report();
+	}
+
 	public function index(){
 
 		$data['data'] = $this->M_Pengaduan->get();

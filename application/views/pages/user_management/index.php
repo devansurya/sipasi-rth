@@ -3,7 +3,7 @@
     <div class="page-title">
         <div class="row">
         <div class="col-6">
-            <h4>Pengaduan</h4>
+            <h4>User Management</h4>
         </div>
         <div class="col-6">
             <ol class="breadcrumb">
