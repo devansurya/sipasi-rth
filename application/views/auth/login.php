@@ -46,12 +46,12 @@
               <div class="login-main"> 
                 <form class="theme-form" action="<?= base_url('Auth') ?>" method="POST">
                   <h4>Sign in to account</h4>
-                  <p>Enter your NIM & password to login</p>
+                  <p>Enter your Username & password to login</p>
                   <?= $this->session->flashdata('message') ?>
                   <div class="form-group">
-                    <label class="col-form-label">NIM</label>
-                    <input class="form-control" type="number" required="" name="nim">
-                    <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <label class="col-form-label">Username</label>
+                    <input class="form-control" type="text" required="" name="username">
+                    <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>

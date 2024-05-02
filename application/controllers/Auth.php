@@ -17,7 +17,7 @@ class Auth extends CI_Controller
             redirect('Mahasiswa');
         }
 
-		$this->form_validation->set_rules('nim', 'NIM', 'trim|required');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/login');
@@ -28,13 +28,13 @@ class Auth extends CI_Controller
 
 	private function _login()
     {
-        $nim = $this->input->post('nim');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
 
         $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama, role.role, contact.status')
 		->from('user')->join('contact', 'user.id_contact = contact.id_contact', 'left')
         ->join('role', 'user.id_role = role.id_role', 'left')
-		->where('username', $nim)->get()
+		->where('username', $username)->get()
 		->row_array();
         if ($user) {
             if ($user['status'] == 1){
