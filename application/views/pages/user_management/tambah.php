@@ -3,7 +3,7 @@
         <div class="col-xl-12">
             <div class="card height-equal">
                 <div class="card-header">
-                    <h4>User Baru</h4>
+                    <h4>Petugas Baru</h4>
                 </div>
                 <div class="card-body custom-input">
                     <form class="row g-3" method="POST" action="<?= base_url('UserManagement/tambah'); ?>" enctype="multipart/form-data">
@@ -13,11 +13,6 @@
                             <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-6"> 
-                            <label class="form-label" for="exampleFormControlTextarea1">NIM</label>
-                            <input type="number" class="form-control" name="nim" placeholder="Masukkan NIM" required>
-                            <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                        <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">No Telepon</label>
                             <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telepon" required>
                             <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -31,6 +26,21 @@
                             <label class="form-label" for="exampleFormControlTextarea1">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col-6"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Kecamatan</label>
+                            <input type="email" class="form-control" name="email" placeholder="Masukkan Kecamatan" required>
+                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col-6"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Kelurahan</label>
+                            <input type="password" class="form-control" name="password" placeholder="Masukkan Kelurahan" required>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col-12"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Alamat</label>
+                            <textarea type="password" class="form-control" name="password" placeholder="Masukkan Alamat" required>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?></textarea>
                         </div>
                         <div class="col-12"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Role</label>

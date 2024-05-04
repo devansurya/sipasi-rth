@@ -52,11 +52,6 @@
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
                   <div class="form-group">
-                    <label class="col-form-label pt-0">NIM</label>
-                    <input class="form-control" name="nim" type="number" required="">
-                    <?= form_error('nim', '<small class="text-danger pl-3">', '</small>'); ?>
-                  </div>
-                  <div class="form-group">
                     <label class="col-form-label pt-0">No. Telepon</label>
                     <input class="form-control" name="telp" type="number" required="">
                     <?= form_error('telp', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -68,6 +63,14 @@
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
+                    <div class="form-input position-relative">
+                      <input class="form-control" name="password" type="password" name="login[password]" required="" placeholder="*********">
+                      <div class="show-hide"><span class="show"></span></div>
+                      <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label">Ulangi Password</label>
                     <div class="form-input position-relative">
                       <input class="form-control" name="password" type="password" name="login[password]" required="" placeholder="*********">
                       <div class="show-hide"><span class="show"></span></div>
