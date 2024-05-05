@@ -37,55 +37,37 @@
                             <tr>
                             <th>No</th>
                             <th width="150">Nama</th>
-                            <th>Kelurahan</th>
                             <th>Kecamatan</th>
-                            <th width="150">Alamat</th>
+                            <th>Kelurahan</th>
+                            <th width="150">Reservasi</th>
                             <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Studio Alam TVRI</td>
-                                <td>Sukmajaya</td>
-                                <td>Sukmajaya</td>
-                                <td>Jalan Raden Saleh No.90, Kampung Cikumpa, Sukmajaya, Sukmajaya, Depok</td>
-                                <td> 
-                                    <ul class="action"> 
-                                    <li class="edit"> <a href=""><i class="icon-eye"></i></a></li>
-                                        <li class="edit"> <a href=""><i class="icon-pencil"></i></a></li>
-                                    <li class="delete"><a href="#" onclick=""><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Tepian Situ Jatijajar</td>
-                                <td>Jatijajar</td>
-                                <td>Tapos</td>
-                                <td>Jalan Raya Bogor Km. 37, Jatijajar, Tapos, Depok</td>
-                                 <td> 
-                                    <ul class="action"> 
-                                    <li class="edit"> <a href=""><i class="icon-eye"></i></a></li>
-                                        <li class="edit"> <a href=""><i class="icon-pencil"></i></a></li>
-                                    <li class="delete"><a href="#" onclick=""><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Taman Tole Iskandar</td>
-                                <td>Ratujaya</td>
-                                <td>Cipayung</td>
-                                <td>Jalan Rawa Geni Swadaya, Ratujaya, Cipayung, Depok</td>
-                                 <td> 
-                                    <ul class="action"> 
-                                    <li class="edit"> <a href=""><i class="icon-eye"></i></a></li>
-                                        <li class="edit"> <a href=""><i class="icon-pencil"></i></a></li>
-                                    <li class="delete"><a href="#" onclick=""><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <?php 
+                            $no = 1;
+                            foreach($data as $d): ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $d['nama_rth']?></td>
+                                    <td><?= $d['kecamatan']?></td>
+                                    <td><?= $d['kelurahan']?></td>
+                                    <td>
+                                        <?php if($d['status_reservasi'] == 1){ ?>
+                                            Aktif
+                                        <?php }else{ ?>
+                                            Tidak Aktif
+                                        <?php }?>
+                                    </td>
+                                    <td>
+                                        <ul class="action"> 
+                                        <li class="edit"> <a href=""><i class="icon-eye"></i></a></li>
+                                            <li class="edit"> <a href=""><i class="icon-pencil"></i></a></li>
+                                        <li class="delete"><a href="#" onclick=""><i class="icon-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
                             
                         </tbody>
                         </table>
