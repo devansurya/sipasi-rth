@@ -17,7 +17,7 @@ Author:		elemis
   --bs-gray-800: #21262c;
   --bs-gray-900: #1e2228;
   --bs-blue: #3f78e0;
-  --bs-sky: #5eb9f0;
+  --bs-sky: #60a14e;
   --bs-purple: #747ed1;
   --bs-grape: #605dba;
   --bs-violet: #a07cc5;
@@ -3928,19 +3928,19 @@ fieldset:disabled .btn {
 }
 .btn-sky {
   --bs-btn-color: #343f52;
-  --bs-btn-bg: #5eb9f0;
-  --bs-btn-border-color: #5eb9f0;
+  --bs-btn-bg: #60a14e;
+  --bs-btn-border-color: #60a14e;
   --bs-btn-hover-color: #343f52;
-  --bs-btn-hover-bg: #5eb9f0;
-  --bs-btn-hover-border-color: #5eb9f0;
+  --bs-btn-hover-bg: #60a14e;
+  --bs-btn-hover-border-color: #60a14e;
   --bs-btn-focus-shadow-rgb: 88, 167, 216;
   --bs-btn-active-color: #343f52;
-  --bs-btn-active-bg: #5eb9f0;
-  --bs-btn-active-border-color: #5eb9f0;
+  --bs-btn-active-bg: #60a14e;
+  --bs-btn-active-border-color: #60a14e;
   --bs-btn-active-shadow: 0rem 0.25rem 0.75rem rgba(30, 34, 40, 0.15);
   --bs-btn-disabled-color: #343f52;
-  --bs-btn-disabled-bg: #5eb9f0;
-  --bs-btn-disabled-border-color: #5eb9f0;
+  --bs-btn-disabled-bg: #60a14e;
+  --bs-btn-disabled-border-color: #60a14e;
 }
 .btn-purple {
   --bs-btn-color: #fff;
@@ -4327,19 +4327,19 @@ fieldset:disabled .btn {
   --bs-gradient: none;
 }
 .btn-outline-sky {
-  --bs-btn-color: #5eb9f0;
-  --bs-btn-border-color: #5eb9f0;
+  --bs-btn-color: #60a14e;
+  --bs-btn-border-color: #60a14e;
   --bs-btn-hover-color: #343f52;
-  --bs-btn-hover-bg: #5eb9f0;
-  --bs-btn-hover-border-color: #5eb9f0;
+  --bs-btn-hover-bg: #60a14e;
+  --bs-btn-hover-border-color: #60a14e;
   --bs-btn-focus-shadow-rgb: 94, 185, 240;
   --bs-btn-active-color: #343f52;
-  --bs-btn-active-bg: #5eb9f0;
-  --bs-btn-active-border-color: #5eb9f0;
+  --bs-btn-active-bg: #60a14e;
+  --bs-btn-active-border-color: #60a14e;
   --bs-btn-active-shadow: 0rem 0.25rem 0.75rem rgba(30, 34, 40, 0.15);
-  --bs-btn-disabled-color: #5eb9f0;
+  --bs-btn-disabled-color: #60a14e;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #5eb9f0;
+  --bs-btn-disabled-border-color: #60a14e;
   --bs-gradient: none;
 }
 .btn-outline-purple {
@@ -11075,7 +11075,7 @@ fieldset:disabled .btn {
 }
 .text-sky {
   --bs-text-opacity: 1;
-  color: #5eb9f0 !important;
+  color: #60a14e !important;
 }
 .text-purple {
   --bs-text-opacity: 1;
@@ -21808,7 +21808,7 @@ a.hover-2.link-blue:before {
   background: #3f78e0;
 }
 a.hover-2.link-sky:before {
-  background: #5eb9f0;
+  background: #60a14e;
 }
 a.hover-2.link-purple:before {
   background: #747ed1;
@@ -22172,7 +22172,7 @@ h6,
   background-color: #3f78e0;
 }
 .text-line.text-sky:before {
-  background-color: #5eb9f0;
+  background-color: #60a14e;
 }
 .text-line.text-purple:before {
   background-color: #747ed1;
@@ -22343,7 +22343,7 @@ h6,
   background: #3f78e0;
 }
 .underline-2.sky:after {
-  background: #5eb9f0;
+  background: #60a14e;
 }
 .underline-2.purple:after {
   background: #747ed1;
@@ -22471,7 +22471,7 @@ h6,
 }
 .underline-3.style-1.sky:before,
 .underline-3.style-1.sky:after {
-  border-color: #5eb9f0;
+  border-color: #60a14e;
 }
 .underline-3.style-1.purple:before,
 .underline-3.style-1.purple:after {
@@ -23283,11 +23283,11 @@ figure img {
 }
 .wrapper.bg-sky.angled.lower-start:after,
 .wrapper.bg-sky.angled.upper-start:before {
-  border-left-color: #5eb9f0;
+  border-left-color: #60a14e;
 }
 .wrapper.bg-sky.angled.lower-end:after,
 .wrapper.bg-sky.angled.upper-end:before {
-  border-right-color: #5eb9f0;
+  border-right-color: #60a14e;
 }
 .wrapper.bg-soft-sky.angled.lower-start:after,
 .wrapper.bg-soft-sky.angled.upper-start:before {
@@ -23784,11 +23784,11 @@ figure img {
   color: #3f78e0;
 }
 .link-sky {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .link-sky:hover,
 .link-sky:focus {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .link-purple {
   color: #747ed1;
@@ -24062,7 +24062,7 @@ blockquote.text-center.icon-top:before {
   color: #3f78e0;
 }
 .unordered-list.bullet-sky li:before {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .unordered-list.bullet-purple li:before {
   color: #747ed1;
@@ -24140,14 +24140,14 @@ blockquote.text-center.icon-top:before {
   color: #3f78e0 !important;
 }
 .icon-list.bullet-soft-sky i {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .icon-list.bullet-soft-sky.bullet-bg i {
   background-color: #e2f2fc;
 }
 .icon-list.bullet-bg i[class*=bullet-soft-sky] {
   background-color: #e2f2fc !important;
-  color: #5eb9f0 !important;
+  color: #60a14e !important;
 }
 .icon-list.bullet-soft-purple i {
   color: #747ed1;
@@ -24339,14 +24339,14 @@ blockquote.text-center.icon-top:before {
   color: white !important;
 }
 .icon-list.bullet-sky i {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .icon-list.bullet-sky.bullet-bg i {
-  background-color: #5eb9f0;
+  background-color: #60a14e;
   color: #fff;
 }
 .icon-list.bullet-bg i[class*=bullet-sky] {
-  background-color: #5eb9f0 !important;
+  background-color: #60a14e !important;
   color: white !important;
 }
 .icon-list.bullet-purple i {
@@ -26862,25 +26862,25 @@ button:focus {
   --bs-btn-active-border-color: $value;
   --bs-btn-active-shadow: var(--bs-btn-box-shadow);
   --bs-btn-color: #fff;
-  --bs-btn-bg: #5eb9f0;
-  --bs-btn-border-color: #5eb9f0;
+  --bs-btn-bg: #60a14e;
+  --bs-btn-border-color: #60a14e;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #5eb9f0;
-  --bs-btn-hover-border-color: #5eb9f0;
+  --bs-btn-hover-bg: #60a14e;
+  --bs-btn-hover-border-color: #60a14e;
   --bs-btn-focus-shadow-rgb: 118, 196, 242;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #5eb9f0;
-  --bs-btn-active-border-color: #5eb9f0;
+  --bs-btn-active-bg: #60a14e;
+  --bs-btn-active-border-color: #60a14e;
   --bs-btn-active-shadow: 0rem 0.25rem 0.75rem rgba(30, 34, 40, 0.15);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #5eb9f0;
-  --bs-btn-disabled-border-color: #5eb9f0;
+  --bs-btn-disabled-bg: #60a14e;
+  --bs-btn-disabled-border-color: #60a14e;
 }
 .btn-sky.btn-expand {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .btn-sky.btn-expand:before {
-  background-color: #5eb9f0;
+  background-color: #60a14e;
 }
 .btn-purple {
   --bs-btn-active-bg: $value;
@@ -27463,29 +27463,29 @@ button:focus {
 }
 .btn-soft-sky {
   --bs-btn-active-shadow: 0rem 0.25rem 0.75rem rgba(30, 34, 40, 0.05) !important;
-  --bs-btn-color: #5eb9f0;
+  --bs-btn-color: #60a14e;
   --bs-btn-bg: #e5f4fd;
   --bs-btn-border-color: #e5f4fd;
-  --bs-btn-hover-color: #5eb9f0;
+  --bs-btn-hover-color: #60a14e;
   --bs-btn-hover-bg: #e5f4fd;
   --bs-btn-hover-border-color: #e5f4fd;
   --bs-btn-focus-shadow-rgb: 209, 235, 251;
-  --bs-btn-active-color: #5eb9f0;
+  --bs-btn-active-color: #60a14e;
   --bs-btn-active-bg: #e5f4fd;
   --bs-btn-active-border-color: #e5f4fd;
   --bs-btn-active-shadow: 0rem 0.25rem 0.75rem rgba(30, 34, 40, 0.15);
-  --bs-btn-disabled-color: #5eb9f0;
+  --bs-btn-disabled-color: #60a14e;
   --bs-btn-disabled-bg: #e5f4fd;
   --bs-btn-disabled-border-color: #e5f4fd;
 }
 .btn-soft-sky.btn-expand {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .btn-soft-sky.btn-expand i,
 .btn-soft-sky.btn-expand:before,
 .btn-soft-sky.btn-expand:hover,
 .btn-soft-sky.btn-expand:hover:before {
-  color: #5eb9f0;
+  color: #60a14e;
 }
 .btn-soft-sky.btn-expand:before {
   background-color: #e5f4fd;
@@ -31771,7 +31771,7 @@ button.hamburger span {
   stroke: rgba(63, 120, 224, 0.1);
 }
 .progressbar.sky svg path:last-child {
-  stroke: #5eb9f0;
+  stroke: #60a14e;
 }
 .progressbar.semi-circle.sky svg path:first-child {
   stroke: rgba(94, 185, 240, 0.1);
@@ -32733,7 +32733,7 @@ img.svg-inject {
   fill: #c5d7f6;
 }
 .solid-mono.text-sky .fill-primary {
-  fill: #5eb9f0;
+  fill: #60a14e;
 }
 .solid-mono.text-sky .fill-secondary {
   fill: #cfeafb;
@@ -32874,7 +32874,7 @@ img.svg-inject {
   fill: #414b64;
 }
 .solid-duo.text-navy-sky .fill-secondary {
-  fill: #5eb9f0;
+  fill: #60a14e;
 }
 .solid-duo.text-blue-pink .fill-primary {
   fill: #3f78e0;
@@ -32895,7 +32895,7 @@ img.svg-inject {
   fill: #fab758;
 }
 .solid-duo.text-sky-pink .fill-primary {
-  fill: #5eb9f0;
+  fill: #60a14e;
 }
 .solid-duo.text-sky-pink .fill-secondary {
   fill: #ff98ab;
@@ -37262,7 +37262,7 @@ video.player {
 }
 .btn-sky.btn-circle.ripple::before,
 .btn-sky.btn-circle.ripple::after {
-  background: #5eb9f0;
+  background: #60a14e;
 }
 .btn-purple.btn-circle.ripple::before,
 .btn-purple.btn-circle.ripple::after {
@@ -37898,7 +37898,7 @@ table.shopping-cart td {
   background-image: radial-gradient(#3f78e0 2px, transparent 2.5px);
 }
 .bg-dot.sky {
-  background-image: radial-gradient(#5eb9f0 2px, transparent 2.5px);
+  background-image: radial-gradient(#60a14e 2px, transparent 2.5px);
 }
 .bg-dot.purple {
   background-image: radial-gradient(#747ed1 2px, transparent 2.5px);
@@ -37958,7 +37958,7 @@ table.shopping-cart td {
   background: repeating-linear-gradient(-55deg, rgba(255, 255, 255, 0) 0.8px, #3f78e0 1.6px, #3f78e0 3px, rgba(255, 255, 255, 0) 3.8px, rgba(255, 255, 255, 0) 10px);
 }
 .bg-line.sky {
-  background: repeating-linear-gradient(-55deg, rgba(255, 255, 255, 0) 0.8px, #5eb9f0 1.6px, #5eb9f0 3px, rgba(255, 255, 255, 0) 3.8px, rgba(255, 255, 255, 0) 10px);
+  background: repeating-linear-gradient(-55deg, rgba(255, 255, 255, 0) 0.8px, #60a14e 1.6px, #60a14e 3px, rgba(255, 255, 255, 0) 3.8px, rgba(255, 255, 255, 0) 10px);
 }
 .bg-line.purple {
   background: repeating-linear-gradient(-55deg, rgba(255, 255, 255, 0) 0.8px, #747ed1 1.6px, #747ed1 3px, rgba(255, 255, 255, 0) 3.8px, rgba(255, 255, 255, 0) 10px);
@@ -38029,7 +38029,7 @@ table.shopping-cart td {
   fill: #e0e9fa;
 }
 .shape.sky .svg-fill {
-  fill: #5eb9f0;
+  fill: #60a14e;
 }
 .shape.soft-sky .svg-fill {
   fill: #f3fafe;

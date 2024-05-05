@@ -3,7 +3,7 @@
         <div class="container flex-lg-row flex-nowrap align-items-center">
           <div class="navbar-brand w-100">
             <a href="<?= base_url('Home') ?>" class="nav-link text-dark">
-              <img class="img-fluid for-light" src="<?= base_url(); ?>/assets-admin/images/logo/logo.png" width="140" alt="">
+              <img class="img-fluid for-light" src="<?= base_url(); ?>/assets-admin/images/logo/logo.png" width="240" alt="">
             </a>
           </div>
           <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">

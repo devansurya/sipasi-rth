@@ -1,11 +1,11 @@
 <!-- Page Sidebar Start-->
 <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
     <div>
-    <div class="logo-wrapper"><a href="<?= base_url('Home'); ?>"><img class="img-fluid for-light" src="<?= base_url(); ?>/assets-admin/images/logo/logo.png" width="160" alt=""><img class="img-fluid for-dark" src="<?= base_url(); ?>/assets-admin/images/logo/logo_dark.png" width="160" alt=""></a>
+    <div class="logo-wrapper"><a href="<?= base_url('Home'); ?>"><img class="img-fluid for-light" src="<?= base_url(); ?>/assets-admin/images/logo/logo.png" width="180" alt=""><img class="img-fluid for-dark" src="<?= base_url(); ?>/assets-admin/images/logo/logo_dark.png" width="180" alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
     </div>
-    <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid" src="<?= base_url(); ?>/assets-admin/images/logo/logo-icon.png" width="38" alt=""></a></div>
+    <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid" src="<?= base_url(); ?>/assets-admin/images/logo/logo-icon.png" width="50" alt=""></a></div>
     <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
         <div id="sidebar-menu">
