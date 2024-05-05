@@ -25,10 +25,10 @@
                   <a class="nav-link scroll-section" data-section="section-informasi" href="#">Informasi</a>
                 </li> -->
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" href="<?= base_url('Home'); ?>">Home</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home'); ?>">Beranda</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home/pengaduan'); ?>">RTH</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" href="<?= base_url('Home/kontak'); ?>">Kontak</a>
@@ -37,14 +37,14 @@
               <!-- /.navbar-nav -->
               <div class="offcanvas-footer d-lg-none">
                 <div>
-                  <a href="mailto:first.last@email.com" class="link-inverse">siduma@email.com</a>
+                  <a href="mailto:first.last@email.com" class="link-inverse">sipasirth@email.com</a>
                   <br /> +62 896 2603 3120 <br />
                   <nav class="nav social social-white mt-4">
-                    <a href="#"><i class="uil uil-twitter"></i></a>
+                    <!-- <a href="#"><i class="uil uil-twitter"></i></a>
                     <a href="#"><i class="uil uil-facebook-f"></i></a>
                     <a href="#"><i class="uil uil-dribbble"></i></a>
                     <a href="#"><i class="uil uil-instagram"></i></a>
-                    <a href="#"><i class="uil uil-youtube"></i></a>
+                    <a href="#"><i class="uil uil-youtube"></i></a> -->
                   </nav>
                   <!-- /.social -->
                 </div>
@@ -61,14 +61,14 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><?= !empty($profile) ? $profile['nama'] : ''; ?> </a>
                   <ul class="dropdown-menu">
-                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/index'); ?>">Pengaduanku</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/logout'); ?>">Log out</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/index'); ?>">Reservasiku</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/logout'); ?>">Keluar</a></li>
                   </ul>
                 </li>
 
               <?php }else{ ?>
               <li class="nav-item d-none d-md-block">
-                <a href="<?= base_url('Auth'); ?>" class="btn btn-sm btn-primary rounded-pill">Log in</a>
+                <a href="<?= base_url('Auth'); ?>" class="btn btn-sm btn-primary rounded-pill">Masuk</a>
               </li>
             <?php } ?>
               

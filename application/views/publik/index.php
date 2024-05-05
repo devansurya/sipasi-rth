@@ -4,34 +4,16 @@
           <div class="card-body p-md-10 py-xl-11 px-xl-15">
             <div class="row gx-lg-8 gx-xl-0 gy-10 align-items-center">
               <div class="col-lg-6 order-lg-2 d-flex position-relative">
-                <img class="img-fluid ms-auto mx-auto me-lg-8" src="./assets/img/photos/co3.png" srcset="./assets/img/photos/co3@2x.png 2x" alt="" data-cue="fadeIn">
-                <div data-cue="slideInRight" data-delay="300">
-                  <div class="card shadow-lg position-absolute" style="bottom: 10%; right: -3%;">
-                    <div class="card-body py-4 px-5">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <div class="icon btn btn-circle btn-md btn-soft-primary pe-none mx-auto me-3"> <i class="uil uil-users-alt"></i> </div>
-                        </div>
-                        <div>
-                          <h3 class="counter mb-0 text-nowrap">25000+</h3>
-                          <p class="fs-14 lh-sm mb-0 text-nowrap">Happy Clients</p>
-                        </div>
-                      </div>
-                    </div>
-                    <!--/.card-body -->
-                  </div>
-                  <!--/.card -->
-                </div>
+                <figure><img class="img-auto" src="./assets/img/illustrations/ui-custom.png"  alt="" /></figure>
+                
                 <!--/div -->
               </div>
               <!--/column -->
               <div class="col-lg-6 text-center text-lg-start" data-cues="slideInDown" data-group="page-title" data-delay="600">
-                <h1 class="display-2 mb-5">Crafting project specific solutions with expertise.</h1>
-                <p class="lead fs-lg lh-sm mb-7 pe-xl-10">We're a company that focuses on establishing long-term relationships with customers.</p>
-                <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
-                  <span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2">Explore Now</a></span>
-                  <span><a href="#" class="btn btn-lg btn-outline-primary rounded-pill">Contact Us</a></span>
-                </div>
+                <h1 class="display-2 mb-5">Sistem Pemeliharaan dan Reservasi RTH.</h1>
+                <p class="lead fs-lg lh-sm mb-7 pe-xl-10">Sistem yang dapat memudahkan pengguna dalam menjaga kebersihan dan keamanan dari RTH (Ruang Terbuka Hijau), serta memanfaatkannya untuk kegiatan sosial atau rekreasi yang lebih terorganisir.</p>
+                <span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2" id="btn-jelajahi">Mulai Jelajahi</a></span>
+
               </div>
               <!--/column -->
             </div>
@@ -39,45 +21,36 @@
           </div>
           <!--/.card-body -->
         </div>
-        <!--/.card -->
-        <div class="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0 mb-13 mb-md-17">
+      </div>
+      
+    </section>
+
+    <section class="wrapper bg-light">
+      <div class="container">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0 mb-11">
           <div class="col-lg-4">
-            <h2 class="display-4 mb-3 pe-xxl-5">Trusted by over 25000+ clients</h2>
-            <p class="lead fs-lg mb-0 pe-xxl-5">We <span class="underline">bring solutions</span> to make life easier for our customers.</p>
+            <h3 class="display-4 mb-3 pe-xl-10">We are proud of our creative team</h3>
+            <p class="lead fs-lg mb-0 pe-xxl-10">Just sit back and relax while we <span class="underline">take care</span> of your business needs.</p>
           </div>
           <!-- /column -->
-          <div class="col-lg-8">
-            <div class="row row-cols-2 row-cols-md-4 gx-0 gx-md-8 gx-xl-12 gy-11 mt-n10">
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c10.png" alt="" /></figure>
+          <div class="col-lg-8 mt-lg-2">
+            <div class="row align-items-center counter-wrapper gy-6 text-center">
+              <div class="col-md-4">
+                <img src="./assets/img/icons/lineal/check.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
+                <h3 class="counter">7518</h3>
+                <p>Completed Projects</p>
               </div>
               <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c2.png" alt="" /></figure>
+              <div class="col-md-4">
+                <img src="./assets/img/icons/lineal/user.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
+                <h3 class="counter">3472</h3>
+                <p>Happy Customers</p>
               </div>
               <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c3.png" alt="" /></figure>
-              </div>
-              <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c4.png" alt="" /></figure>
-              </div>
-              <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c5.png" alt="" /></figure>
-              </div>
-              <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c6.png" alt="" /></figure>
-              </div>
-              <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c7.png" alt="" /></figure>
-              </div>
-              <!--/column -->
-              <div class="col">
-                <figure class="px-4 px-lg-3 px-xxl-5"><img src="./assets/img/brands/c8.png" alt="" /></figure>
+              <div class="col-md-4">
+                <img src="./assets/img/icons/lineal/briefcase-2.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
+                <h3 class="counter">2184</h3>
+                <p>Expert Employees</p>
               </div>
               <!--/column -->
             </div>
@@ -85,7 +58,162 @@
           </div>
           <!-- /column -->
         </div>
+      </div>
+      <div class="overflow-hidden">
+        <div class="divider text-soft-primary mx-n2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="currentColor" d="M1260,1.65c-60-5.07-119.82,2.47-179.83,10.13s-120,11.48-180,9.57-120-7.66-180-6.42c-60,1.63-120,11.21-180,16a1129.52,1129.52,0,0,1-180,0c-60-4.78-120-14.36-180-19.14S60,7,30,7H0v93H1440V30.89C1380.07,23.2,1319.93,6.15,1260,1.65Z" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrapper bg-gradient-primary" id="pengaduan-terbaru-section">
+      <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
+        <div class="row text-center">
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <h2 class="fs-16 text-uppercase text-primary mb-3"></h2>
+            <h3 class="display-3 mb-10 px-xxl-10">Ruang Terbuka Hijau</h3>
+          </div>
+          <!-- /column -->
+        </div>
         <!-- /.row -->
+        <div class="position-relative">
+          <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: -1.7rem; left: -1.7rem;"></div>
+          <div class="swiper-container grid-view nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
+            <div class="swiper">
+              <div class="swiper-wrapper delay-section">
+                    <div class="swiper-slide">
+                      <article>
+                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
+                          <figcaption>
+                            <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                          </figcaption>
+                        </figure>
+                        <div class="post-header">
+                          <div class="post-category text-line">
+                            <a href="" class="hover" rel="category">lorem</a>
+                          </div>
+                          <!-- /.post-category -->
+                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
+                        </div>
+                        <!-- /.post-header -->
+
+                        <div class="post-content">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                          </p>
+                        </div>
+
+                        <div class="post-footer">
+                          <ul class="post-meta">
+                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>12-12-2024</span></li>
+                            <li class="post-comments"><a href=""><i class="uil uil-comment"></i>12</a></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /.post-footer -->
+                      </article>
+                      <!-- /article -->
+                    </div>
+                    <!--/.swiper-slide -->
+                    <div class="swiper-slide">
+                      <article>
+                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
+                          <figcaption>
+                            <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                          </figcaption>
+                        </figure>
+                        <div class="post-header">
+                          <div class="post-category text-line">
+                            <a href="" class="hover" rel="category">lorem</a>
+                          </div>
+                          <!-- /.post-category -->
+                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
+                        </div>
+                        <!-- /.post-header -->
+
+                        <div class="post-content">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                          </p>
+                        </div>
+
+                        <div class="post-footer">
+                          <ul class="post-meta">
+                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>12-12-2024</span></li>
+                            <li class="post-comments"><a href=""><i class="uil uil-comment"></i>12</a></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /.post-footer -->
+                      </article>
+                      <!-- /article -->
+                    </div>
+                    <!--/.swiper-slide -->
+                    <div class="swiper-slide">
+                      <article>
+                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
+                          <figcaption>
+                            <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                          </figcaption>
+                        </figure>
+                        <div class="post-header">
+                          <div class="post-category text-line">
+                            <a href="" class="hover" rel="category">lorem</a>
+                          </div>
+                          <!-- /.post-category -->
+                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
+                        </div>
+                        <!-- /.post-header -->
+
+                        <div class="post-content">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                          </p>
+                        </div>
+
+                        <div class="post-footer">
+                          <ul class="post-meta">
+                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>12-12-2024</span></li>
+                            <li class="post-comments"><a href=""><i class="uil uil-comment"></i>12</a></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /.post-footer -->
+                      </article>
+                      <!-- /article -->
+                    </div>
+                    <!--/.swiper-slide -->
+
+                </div>
+                <!-- /.swiper-wrapper -->
+              </div>
+              <!-- /.swiper -->
+            </div>
+            <!-- /.swiper-container -->
+            <a style="margin-top: -10px" href="<?= base_url('Home/pengaduan'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
+              <i class="uil uil-arrow-right"></i>
+              <span>Semua RTH</span>
+            </a>
+          </div>
+
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+        <!--/.card -->
+        <section class="wrapper bg-light">
+      <div class="container ">
         <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
           <div class="col-md-8 col-lg-6 position-relative">
             <div class="shape bg-soft-primary rounded-circle rellax w-20 h-20" data-rellax-speed="1" style="top: -2rem; left: -1.9rem;"></div>
@@ -126,7 +254,11 @@
           </div>
           <!--/column -->
         </div>
+      </div>
+    </section>
         <!--/.row -->
+        <section class="wrapper bg-light">
+      <div class="container  ">
         <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-20 align-items-center">
           <div class="col-md-8 col-lg-6 order-lg-2 position-relative">
             <div class="shape bg-soft-primary rounded-circle rellax w-20 h-20" data-rellax-speed="1" style="top: -2rem; right: -1.9rem;"></div>
@@ -190,7 +322,11 @@
           </div>
           <!--/column -->
         </div>
+      </div>
+    </section>
         <!--/.row -->
+        <section class="wrapper bg-light">
+      <div class="container  ">
         <div class="card bg-soft-primary rounded-4 mb-14 mb-md-18">
           <div class="card-body p-md-10 py-xxl-16 position-relative">
             <div class="position-absolute d-none d-lg-block" style="bottom:0; left:10%; width: 28%; z-index:2">
@@ -215,39 +351,13 @@
           </div>
           <!--/.card-body -->
         </div>
+      </div>
+    </section>
         <!--/.card -->
-        <div class="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0 mb-11">
-          <div class="col-lg-4">
-            <h3 class="display-4 mb-3 pe-xl-10">We are proud of our creative team</h3>
-            <p class="lead fs-lg mb-0 pe-xxl-10">Just sit back and relax while we <span class="underline">take care</span> of your business needs.</p>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-8 mt-lg-2">
-            <div class="row align-items-center counter-wrapper gy-6 text-center">
-              <div class="col-md-4">
-                <img src="./assets/img/icons/lineal/check.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">7518</h3>
-                <p>Completed Projects</p>
-              </div>
-              <!--/column -->
-              <div class="col-md-4">
-                <img src="./assets/img/icons/lineal/user.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">3472</h3>
-                <p>Happy Customers</p>
-              </div>
-              <!--/column -->
-              <div class="col-md-4">
-                <img src="./assets/img/icons/lineal/briefcase-2.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">2184</h3>
-                <p>Expert Employees</p>
-              </div>
-              <!--/column -->
-            </div>
-            <!--/.row -->
-          </div>
-          <!-- /column -->
-        </div>
+        
         <!-- /.row -->
+        <section class="wrapper bg-light">
+      <div class="container">
         <div class="row grid-view gx-md-8 gx-xl-10 gy-8 gy-lg-0 mb-16 mb-md-19">
           <div class="col-md-6 col-lg-3">
             <div class="position-relative">
@@ -314,7 +424,11 @@
           </div>
           <!--/column -->
         </div>
+      </div>
+    </section>
         <!--/.row -->
+        <section class="wrapper bg-light">
+      <div class="container">
         <div class="row gy-10 gy-sm-13 gx-lg-3 align-items-center mb-14 mb-md-18">
           <div class="col-md-8 col-lg-6 position-relative">
             <a href="./assets/media/movie.mp4" class="btn btn-circle btn-primary btn-play ripple mx-auto mb-5 position-absolute" style="top:50%; left: 50%; transform: translate(-50%,-50%); z-index:3;" data-glightbox><i class="icn-caret-right"></i></a>
@@ -338,13 +452,16 @@
                 <p>Development</p>
                 <div class="progressbar line primary" data-value="85"></div>
               </li>
-              <li>
             </ul>
             <!-- /.progress-list -->
           </div>
           <!--/column -->
         </div>
+      </div>
+    </section>
         <!--/.row -->
+        <section class="wrapper bg-light">
+      <div class="container ">
         <div class="row gy-6 align-items-center mb-14 mb-md-18">
           <div class="col-lg-4">
             <h3 class="display-4 mb-5">We offer great and premium prices.</h3>
@@ -414,7 +531,11 @@
           </div>
           <!--/column -->
         </div>
+      </div>
+    </section>
         <!--/.row -->
+        <section class="wrapper bg-light">
+      <div class="container">
         <div class="card bg-soft-primary rounded-4">
           <div class="card-body p-md-10 p-xl-11">
             <div class="row gx-lg-8 gx-xl-12 gy-10">
@@ -490,7 +611,23 @@
           </div>
           <!--/.card-body -->
         </div>
+      </div>
+    </section>
         <!--/.card -->
       </div>
       <!-- /.container -->
     </section>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+        setTimeout(function() {
+          $('.delay-section').css("visibility", "visible");
+        });
+
+        $("#btn-jelajahi").on('click', function() {
+          $("html, body").animate({ scrollTop: $("#pengaduan-terbaru-section").offset().top }, 1000);
+        });
+
+      });
+    </script>
