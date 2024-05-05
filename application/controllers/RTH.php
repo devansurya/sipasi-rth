@@ -11,7 +11,8 @@ class RTH extends CI_Controller
 	public function index(){
 
 		// $data['data'] = null;
-		$data['content'] = $this->load->view('pages/rth/index', false, true);
+		$data['data'] = $this->M_RTH->get();
+		$data['content'] = $this->load->view('pages/rth/index', $data, true);
 		$this->load->view('layouts-admin/index', $data);
 	}
 
