@@ -12,6 +12,10 @@
                             <label class="form-label" for="exampleFormControlTextarea1">Nama RTH</label>
                             <input type="text" class="form-control" name="subjek" placeholder="Masukkan nama RTH">
                         </div>
+                        <div class="col-12"> 
+                            <label class="form-label" for="exampleFormControlTextarea1">Deskripsi RTH</label>
+                            <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="" required=""></textarea>
+                        </div>
                         <div class="col-6"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Kelurahan</label>
                             <select class="form-select" name="kategori" required="">

@@ -91,23 +91,23 @@ class CI_Controller {
 		if ($CI->session->userdata('id')) {
 			$profile = $CI->db->select('*')
 			->from('user u')
-			->join('contact c', 'c.id_contact = u.id_contact', 'inner')
+			->join('user_profile up', 'up.id_user = u.id_user', 'inner')
 			->where('u.id_user', $CI->session->userdata('id'))
 			->get()
 			->row_array();
 
-			$notifikasi = $CI->db->select('*,TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS menit,TIMESTAMPDIFF(HOUR, created_at, NOW()) AS jam')
-			->from('notifikasi n')
-			->where('n.id_user', $CI->session->userdata('id'))
-			->where('TIMESTAMPDIFF(HOUR, created_at, NOW()) < 2')
-			->limit(3)
-			->get()
-			->result_array();
+			// $notifikasi = $CI->db->select('*,TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS menit,TIMESTAMPDIFF(HOUR, created_at, NOW()) AS jam')
+			// ->from('notifikasi n')
+			// ->where('n.id_user', $CI->session->userdata('id'))
+			// ->where('TIMESTAMPDIFF(HOUR, created_at, NOW()) < 2')
+			// ->limit(3)
+			// ->get()
+			// ->result_array();
 
 
 			$CI->load->vars(array(
 				'profile'    => $profile,
-				'notifikasi'    => $notifikasi,
+				// 'notifikasi'    => $notifikasi,
 			));
 		} else {
 			$CI->load->vars(array(

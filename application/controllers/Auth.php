@@ -17,7 +17,7 @@ class Auth extends CI_Controller
             redirect('Mahasiswa');
         }
 
-		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/login');
@@ -28,20 +28,21 @@ class Auth extends CI_Controller
 
 	private function _login()
     {
-        $username = $this->input->post('username');
+        $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $user = $this->db->select('user.id_user, user.username, user.password, user.id_role, contact.nama, role.role, contact.status')
-		->from('user')->join('contact', 'user.id_contact = contact.id_contact', 'left')
-        ->join('role', 'user.id_role = role.id_role', 'left')
-		->where('username', $username)->get()
+        $user = $this->db->select('user.id_user, user.email, user.password, user_role.id_role, user_profile.nama, role.role, user.is_active')
+		->from('user')->join('user_profile', 'user.id_user = user_profile.id_user', 'left')
+        ->join('user_role', 'user.id_user = user_role.id_user', 'left')
+        ->join('role', 'user_role.id_role = role.id_role', 'left')
+		->where('email', $email)->get()
 		->row_array();
         if ($user) {
-            if ($user['status'] == 1){
+            if ($user['is_active'] == 1){
                 if (md5($password) == $user['password']) {
                     $data = [
                         'id' => $user['id_user'],
-                        'username' => $user['username'],
+                        'email' => $user['email'],
                         'id_role' => $user['id_role'],
                         'role' => $user['role'],
                         'nama' => $user['nama'],

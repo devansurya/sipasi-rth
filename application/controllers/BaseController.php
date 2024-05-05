@@ -8,7 +8,7 @@ class ControllerBase extends CI_Controller {
 
      if($this->session->userdata('id')){
          $profile = $this->db->select('*')->from('user u')
-         ->join('contact c', 'c.id_contact = u.id_contact', 'inner');
+         ->join('user_profile up', 'up.id_user = u.id_user', 'inner');
          where('u.id_user', $this->session->userdata('id'))->get()->row_array();
 
          $this->load->vars(array(

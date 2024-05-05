@@ -14,7 +14,7 @@ class M_User extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('user');
-		$this->db->join('contact', 'contact.id_contact = user.id_contact');
+		$this->db->join('user_profile', 'user_profile.id_user = user.id_user');
 		$this->db->where('user.id_user', $id);
 
 		return $this->db->get()->row_array();
@@ -24,8 +24,9 @@ class M_User extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('user');
-		$this->db->join('contact', 'contact.id_contact = user.id_contact');
-		$this->db->join('role', 'role.id_role = user.id_role');
+		$this->db->join('user_profile', 'user_profile.id_user = user.id_user');
+		$this->db->join('user_role', 'user_role.id_user = user.id_user');
+		$this->db->join('role', 'role.id_role = user_role.id_role');
 
 		return $this->db->get()->result_array();
 	}
