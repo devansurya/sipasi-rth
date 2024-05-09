@@ -15,7 +15,7 @@ class Registrasi extends CI_Controller
     {
         //$this->load->view('auth/register');
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
-        $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[user.username]');
+        // $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('telp', 'No Telepon', 'required');  
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[contact.email]');  
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[15]');  
