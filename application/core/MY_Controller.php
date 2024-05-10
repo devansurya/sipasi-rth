@@ -16,14 +16,17 @@ class MY_Controller extends CI_Controller {
 		$this->secret_key = 'painandsuffering';
 	}
 
-	public function sendResponse(){
+	protected function sendResponse()
+	{
 		$this->output
 			->set_status_header($this->response->code)
 			->set_content_type('application/json')
-			->set_output(json_encode($this->response));
+			->set_output(json_encode($this->response))
+			->_display();
+		die();
 	}
 
-	public function verify()
+	protected function verify()
 	{
 		try {
 			$token = $this->input->request_headers()['Authorization'] ?? '';
@@ -33,15 +36,27 @@ class MY_Controller extends CI_Controller {
 			$decoded = JWT::decode($token, new Key($this->secret_key, 'HS512'));
 
 			if (!$decoded) throw new Exception('Unauthorized', 401);
+			$this->user_data = (object) $decoded;
 
 		} catch (Exception $e) {
 			$this->response->code = empty($e->getCode()) ? 500 : $e->getCode();
 			$this->response->error = "{$e->getMessage()}";
 			$this->sendResponse();
 		}
-
 	}
 
+	//handle every request based on their request method
+	protected function handleRequest($class)
+	{
+		$reqType = $this->input->server('REQUEST_METHOD');
+		if (!method_exists($class, $reqType)) {
+			$this->response->error = 'Method Not Allowed';
+			$this->response->code = 403;
+			return $this->sendResponse();
+		}
+		$this->$reqType();
+		$this->sendResponse();
+	}
 }
 
 /* End of file baseApiController.php */

@@ -12,16 +12,10 @@ class Auth extends \MY_Controller {
 
 	public function index()
 	{
-		$reqType = $this->input->server('REQUEST_METHOD');
-		if (!method_exists($this, $reqType)) {
-			$this->response->error = 'Method Not Allowed';
-			$this->response->code = 403;
-			return $this->sendResponse();
-		}
-		$this->$reqType();
+		$this->handleRequest($this);
 	}
 
-	private function POST()
+	protected function post()
 	{
 		try {
 			$data = [
@@ -51,21 +45,23 @@ class Auth extends \MY_Controller {
 			$data['nbf'] = $createDate->getTimestamp();
 			$data['exp'] = $expireDate;
 
-			$this->response->data = JWT::encode(
-			    $data,
-			    $this->secret_key,
-			    'HS512'
-			);
+			$this->response->data = [
+				'token' =>  JWT::encode(
+							    $data,
+							    $this->secret_key,
+							    'HS512'
+							),
+				'expire' => $expireDate
+			];
+
 			$this->response->message = 'Success';
 
 		} catch (Exception $e) {
 			$this->response->code = $e->getCode();
 			$this->response->error = "{$e->getMessage()}";
 		}
-
-		$this->sendResponse();
 	}
-
+	//test verify token
 	public function verifyToken()
 	{
 		$this->verify();
