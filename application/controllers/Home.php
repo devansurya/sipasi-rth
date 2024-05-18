@@ -54,11 +54,11 @@ class Home extends CI_Controller
 		$this->load->view('layouts/index', $data);
 	}
 
-	public function detail_pengaduan($id){
+	public function detail_pengaduan($id = null){
 
-		$data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);
-		$data['komentar'] = $this->M_Publik->get_komentar($id);
-		$data['content'] = $this->load->view('publik/detail_pengaduan', $data, true);
+		// $data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);
+		// $data['komentar'] = $this->M_Publik->get_komentar($id);
+		$data['content'] = $this->load->view('publik/detail_pengaduan', false, true);
 		$this->load->view('layouts/index', $data);
 	}
 

@@ -44,7 +44,7 @@ class Pengaduan extends CI_Controller
 		$this->load->view('layouts-admin/index', $data);
 	}
 
-	public function detail_pengaduan($id){
+	public function detail_pengaduan($id = null){
 		if (!is_numeric($id)) return $this->output->set_status_header(400);
 
 		if($this->input->get('notif')){
