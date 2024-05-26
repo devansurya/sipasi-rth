@@ -21,7 +21,7 @@
               <div class="swiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <figure class="rounded"><img src="<?= base_url(); ?>assets/img/upload/<?= $pengaduan->foto; ?>" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $pengaduan->foto; ?>" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                    <figure class="rounded"><img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
                   </div>
                  
                   <!--/.swiper-slide -->
@@ -40,110 +40,23 @@
           <!-- /column -->
           <div class="col-lg-6">
             <div class="post-header mb-5">
-              <h2 class="post-title display-5"><?= $pengaduan->subjek; ?></h2>
-              <p class="price fs-20 mb-2"><span class="amount"><?= $pengaduan->kategori; ?></span></p>
-              <p class="price fs-20 mb-2"><span class="badge bg-<?= $pengaduan->status_color; ?>"><?= $pengaduan->status; ?></span></p>
+              <h2 class="post-title display-5">RTH Taman Kelurahan Tapos</h2>
+              <p class="price fs-20 mb-2"><span class="amount">Kerusakan Fasilitas</span></p>
+              <p class="price fs-20 mb-2"><span class="badge bg-info">Baru</span></p>
               <div class="post-category text-line">
 
-                <a href="javascript:;" rel="category"><i class="uil uil-file-alt fs-15"></i> Oleh : <?= $pengaduan->visibilitas == 1 ? $pengaduan->nama : 'Anonim'; ?> | <?= $pengaduan->created_at; ?></a>
+                <a href="javascript:;" rel="category"><i class="uil uil-file-alt fs-15"></i> Oleh : Rohimah | 08 Mei 2024</a>
               </div>
             </div>
             <!-- /.post-header -->
-            <p class="mb-6"><?= $pengaduan->deskripsi; ?></p>
-            <p>Lokasi : <?= $pengaduan->lokasi ? $pengaduan->lokasi : '-'; ?></p>
+            <p class="mb-6">Rumput dekat lahan parkir ada sedikit kerusakan, mungkin karena banyak anak anak yang bermain di halaman tersebut</p>
+            <p>Lokasi : Lahan Parkir Taman Kelurahan Tapos</p>
 
 
 
             <!-- /form -->
           </div>
-          <div class="col-lg-6">
-            <div class="col-12">
-              <?php if($this->session->userdata('id')){ ?>
-              <p>Berikan komentar sebagai <?= $this->session->userdata('nama'); ?></p>
-              <form method="post" action="<?= base_url('Home/komentar_pengaduan'); ?>">
-                <input type="hidden" name="id_pengaduan" value="<?= $pengaduan->id_pengaduan; ?>">
-                <div class="form-floating mb-4">
-                  <textarea id="form_message" name="komentar" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
-                  <label for="form_message">Komentar anda</label>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">Kirim</button>
-              </form>
-            <?php }else{ ?>
-              <p>Berikan komentar</p>
-              <a href="<?= base_url('Auth'); ?>" class="btn btn-primary btn-sm">Log in</a>
-            <?php } ?>
-            </div>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-6">
-
-            <div class="row align-items-center mb-10 position-relative zindex-1">
-              <div class="col-md-7 col-xl-8 pe-xl-20">
-                <h2 class="display-6 mb-0">Komentar</h2>
-              </div>
-              
-              <!--/column -->
-            </div>
-            <!--/.row -->
-            <div id="comments">
-              <ol id="singlecomments" class="commentlist">
-                <?php if(!empty($komentar)){ 
-                  foreach($komentar as $k){
-                ?>
-                <li class="comment">
-                  <div class="card card-sm card-border-start border-primary" style="height: 8rem">
-                    <div class="card-body">
-                      <?php if($this->session->userdata('id')){ ?>
-                        <?php if($this->session->userdata('id') == $k['id_user']){ ?>
-                          <a href="<?= base_url('Home/hapus_komentar'); ?>/<?= $k['id_komentar']; ?>/<?= $pengaduan->id_pengaduan; ?>" onclick="return confirm('Anda yakin untuk menghapus komentar ini?')" class="float-end text-danger"><i class="uil uil-trash-alt"></i></a>
-                        <?php }} ?>
-                      <div class="comment-header d-md-flex align-items-center">
-                        <figure class="user-avatar"><img class="rounded-circle" alt="" src="<?= base_url();?>upload-profile/<?= $k['image'] ? $k['image'] : 'user.png'; ?>" /></figure>
-                        <div>
-                          <h6 class="comment-author"><a href="#" class="link-dark"><?= $k['nama']; ?></a></h6>
-                          <ul class="post-meta">
-                            <li><i class="uil uil-calendar-alt"></i><?= $k['created_at']; ?></li>
-                          </ul>
-                          <!-- /.post-meta -->
-                        </div>
-                        <!-- /div -->
-                      </div>
-                      <!-- /.comment-header -->
-                      <p><?= $k['komentar']; ?></p>
-                    </div>
-                  </div>
-                </li>
-
-
-              <?php }}else{ ?>
-                <p class="">Belum ada komentar</p>
-
-              <?php } ?>
-                
-              </ol>
-            </div>
-            <!-- /#comments -->
-            <?php if(!empty($komentar)){ ?>
-            <nav class="d-flex mt-10 float-end" aria-label="pagination">
-              <ul class="pagination">
-                <li class="page-item" id="prev-li">
-                  <a class="page-link" aria-label="Previous">
-                    <span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
-                  </a>
-                </li>
-                <ul class="pagination" id="pagination-number">
-                </ul>
-                <li class="page-item" id="next-li">
-                  <a class="page-link" aria-label="Next">
-                    <span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
-                  </a>
-                </li>
-              </ul>
-              <!-- /.pagination -->
-            </nav>
-          <?php } ?>
-            <!-- /nav -->
-          </div>
+         
         </div>
        
         <!-- /.tab-content -->
