@@ -9,20 +9,21 @@ class Home extends CI_Controller
 		$this->load->model('M_Dokumentasi');
 		$this->load->model('M_Publik');
 		$this->load->model('M_Ref');
+		$this->load->model('M_RTH');
 
 	}
 
 	public function index(){
-		// $data['pengaduan'] = $this->M_Publik->get_pengaduan(15);
+		$data['rth'] = $this->M_RTH->get();
 		// $data['jumlah_pengaduan_all'] = $this->M_Ref->getCountWhere('pengaduan',null,null);
 		// $data['jumlah_pengaduan_selesai'] = $this->M_Ref->getCountWhere('pengaduan','status',3);
 		// $data['jumlah_pengaduan_proses'] = $this->M_Ref->getCountWhere('pengaduan','status',2);
 		// $data['kategori_favorit'] = $this->M_Publik->get_kategori_pengaduan_favorit();
-		$data['content'] = $this->load->view('publik/index', false, true);
+		$data['content'] = $this->load->view('publik/index', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 
-	public function pengaduan(){
+	public function rth(){
 
 		$ktg = $this->input->get('ktg');
 		$data['kategori_filter'] = [];
@@ -50,15 +51,14 @@ class Home extends CI_Controller
 		$data['pengaduan'] = $this->M_Publik->get_pengaduan(null,$implode_ktg,$implode_status);
 		$data['kategori'] = $this->M_Publik->get_kategori_pengaduan();
 		$data['status'] = $this->M_Publik->get_status_pengaduan();
-		$data['content'] = $this->load->view('publik/pengaduan', $data, true);
+		$data['content'] = $this->load->view('publik/rth', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 
-	public function detail_pengaduan($id = null){
-
-		// $data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);
+	public function detail_rth($id = null){
+		$data['rth'] = $this->M_Publik->get_rth_where($id);
 		// $data['komentar'] = $this->M_Publik->get_komentar($id);
-		$data['content'] = $this->load->view('publik/detail_pengaduan', false, true);
+		$data['content'] = $this->load->view('publik/detail_rth', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 

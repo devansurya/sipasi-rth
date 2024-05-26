@@ -229,10 +229,10 @@ blockquote,
   fill: #e5f4fd;
 }
 ::-moz-selection {
-  background: rgba(94, 185, 240, 0.7);
+  background: rgba(96, 161, 78, 0.7);
 }
 ::selection {
-  background: rgba(94, 185, 240, 0.7);
+  background: rgba(96, 161, 78, 0.7);
 }
 .underline.primary:after,
 .underline:after {
@@ -318,17 +318,17 @@ form.dark-fields .form-control:focus {
 }
 .swiper-container.nav-color .swiper-slide figure .item-link,
 .swiper-container.nav-color .swiper-navigation .swiper-button {
-  background: rgba(94, 185, 240, 0.9) !important;
+  background: rgba(96, 161, 78, 0.9) !important;
 }
 .swiper-container.nav-color .swiper-navigation .swiper-button-disabled {
-  background: rgba(94, 185, 240, 0.7) !important;
+  background: rgba(96, 161, 78, 0.7) !important;
 }
 .overlay.color span.bg {
-  background: rgba(94, 185, 240, 0.7);
+  background: rgba(96, 161, 78, 0.7);
 }
 .itooltip-color.itooltip-inner,
 .itooltip-primary.itooltip-inner {
-  background: rgba(94, 185, 240, 0.9);
+  background: rgba(96, 161, 78, 0.9);
 }
 .bg-dot.primary {
   background-image: radial-gradient(#60a14e 2px, transparent 2.5px);
