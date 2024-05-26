@@ -5,19 +5,19 @@ class M_Pengaduan extends CI_Model {
 
 	public function get($where= ''){
 
-		$this->db->select('p.*, kp.kategori, u.username, sp.status, c.nim, c.nama');
+		$this->db->select('p.*, jp.jenis_pengaduan, rth.nama_rth');
 		$this->db->from('pengaduan p');
-		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
-		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
+		$this->db->join('jenis_pengaduan jp', 'p.id_jenispengaduan = jp.id_jenispengaduan', 'left');
+		$this->db->join('rth', 'rth.id_rth = p.id_rth', 'left');
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
-		$this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
+		// $this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
 
 		if($this->session->userdata('id_role') == 2){
 			$this->db->where('p.id_user', $this->session->userdata('id'));
 		}
 
 		if (!empty($where)) $this->db->where($where);
-		$this->db->order_by('p.created_at', 'desc');
+		$this->db->order_by('p.create_date', 'desc');
 
 		$data = $this->db->get()->result_array();
 
