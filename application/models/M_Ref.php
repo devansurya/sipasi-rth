@@ -60,4 +60,17 @@ class M_Ref extends CI_Model {
 		$this->db->delete($table);
 	}
 
+	public function getKec(){
+		$query = $this->db->query('SELECT DISTINCT kd_kecamatan, kecamatan from wilayah WHERE jenis = "kecamatan"')->result();
+		return $query;
+
+	}
+
+	public function getKel(){
+		$id = $this->input->post('id');
+		$query = $this->db->query('SELECT DISTINCT kd_kelurahan, kelurahan from wilayah WHERE jenis = "kelurahan" AND  kd_kecamatan = "' . $id . '"')->result();
+		return $query;
+
+	}
+
 }

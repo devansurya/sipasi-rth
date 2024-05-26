@@ -83,9 +83,11 @@
           <div class="swiper-container grid-view nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
             <div class="swiper">
               <div class="swiper-wrapper delay-section">
+                <?php if(isset($rth)){
+                  foreach($rth as $r){ ?>
                     <div class="swiper-slide">
                       <article>
-                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
+                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_rth') ?>/<?= $r['id_rth']; ?>"> <img src="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" alt="Foto RTH" /></a>
                           <figcaption>
                             <h5 class="from-top mb-0">Baca Selengkapnya</h5>
                           </figcaption>
@@ -95,16 +97,27 @@
                             <a href="" class="hover" rel="category">lorem</a>
                           </div>
                           <!-- /.post-category -->
-                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
+                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="<?= base_url('Home/detail_rth') ?>/<?= $r['id_rth']; ?>"><?= $r['nama_rth']; ?></a></h2>
                         </div>
                         <!-- /.post-header -->
 
                         <div class="post-content">
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.
+                            <?php 
+                            $text = $r['deskripsi_rth'];
+                            $limit = 200;
+
+                            if (strlen($text) > $limit) {
+                              $shortenedText = substr($text, 0, $limit);
+
+                              $shortenedText .= " ...";
+
+                              echo $shortenedText;
+                            } else {
+                              echo $text; 
+                            }
+
+                            ?>
                           </p>
                         </div>
 
@@ -120,80 +133,7 @@
                       <!-- /article -->
                     </div>
                     <!--/.swiper-slide -->
-                    <div class="swiper-slide">
-                      <article>
-                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
-                          <figcaption>
-                            <h5 class="from-top mb-0">Baca Selengkapnya</h5>
-                          </figcaption>
-                        </figure>
-                        <div class="post-header">
-                          <div class="post-category text-line">
-                            <a href="" class="hover" rel="category">lorem</a>
-                          </div>
-                          <!-- /.post-category -->
-                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
-                        </div>
-                        <!-- /.post-header -->
-
-                        <div class="post-content">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.
-                          </p>
-                        </div>
-
-                        <div class="post-footer">
-                          <ul class="post-meta">
-                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>12-12-2024</span></li>
-                            <li class="post-comments"><a href=""><i class="uil uil-comment"></i>12</a></li>
-                          </ul>
-                          <!-- /.post-meta -->
-                        </div>
-                        <!-- /.post-footer -->
-                      </article>
-                      <!-- /article -->
-                    </div>
-                    <!--/.swiper-slide -->
-                    <div class="swiper-slide">
-                      <article>
-                        <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/"> <img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="Foto Pengaduan" /></a>
-                          <figcaption>
-                            <h5 class="from-top mb-0">Baca Selengkapnya</h5>
-                          </figcaption>
-                        </figure>
-                        <div class="post-header">
-                          <div class="post-category text-line">
-                            <a href="" class="hover" rel="category">lorem</a>
-                          </div>
-                          <!-- /.post-category -->
-                          <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="">lorem ipsum</a></h2>
-                        </div>
-                        <!-- /.post-header -->
-
-                        <div class="post-content">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.
-                          </p>
-                        </div>
-
-                        <div class="post-footer">
-                          <ul class="post-meta">
-                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>12-12-2024</span></li>
-                            <li class="post-comments"><a href=""><i class="uil uil-comment"></i>12</a></li>
-                          </ul>
-                          <!-- /.post-meta -->
-                        </div>
-                        <!-- /.post-footer -->
-                      </article>
-                      <!-- /article -->
-                    </div>
-                    <!--/.swiper-slide -->
+                  <?php }} ?>
 
                 </div>
                 <!-- /.swiper-wrapper -->

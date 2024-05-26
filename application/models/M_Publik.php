@@ -36,18 +36,14 @@ class M_Publik extends CI_Model {
 		return $data;
 	}
 
-	public function get_pengaduan_where($id= ''){
+	public function get_rth_where($id= ''){
 
-		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,sp.color as status_color,ct.nama");
-		$this->db->from('pengaduan p');
-		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
-		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
-		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
-		$this->db->join('contact ct', 'u.id_contact = ct.id_contact', 'left');
-		$this->db->where("p.id_pengaduan={$id}");
-		$this->db->order_by('p.created_at', 'desc');
-
-		$this->db->where('p.visibilitas !=', 3);
+		$this->db->select("r.id_rth, r.nama_rth, r.deskripsi_rth, r.alamat, r.foto_rth, r.create_date , kec.kecamatan, kel.kelurahan");
+		$this->db->from('rth r');
+		$this->db->join('wilayah kec', 'kec.kd_kecamatan = r.kecamatan', 'left');
+		$this->db->join('wilayah kel', 'kel.kd_kelurahan = r.kelurahan', 'left');
+		$this->db->where("r.id_rth={$id}");
+		$this->db->order_by('r.create_date', 'desc');
 
 		$data = $this->db->get()->row();
 

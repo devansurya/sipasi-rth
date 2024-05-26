@@ -3,7 +3,7 @@
     <nav class="d-inline-block" aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a href="<?= base_url('Home'); ?>">Home</a></li>
-        <li class="breadcrumb-item"><a href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('Home/pengaduan'); ?>">RTH</a></li>
         <li class="breadcrumb-item active" aria-current="page">Detail</li>
       </ol>
     </nav>
@@ -21,7 +21,7 @@
               <div class="swiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <figure class="rounded"><img src="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/rthtapos.jpeg" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                    <figure class="rounded"><img src="<?= base_url(); ?>assets/img/upload/<?= $rth->foto_rth; ?>" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $rth->foto_rth; ?>" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
                   </div>
                  
                   <!--/.swiper-slide -->
@@ -40,7 +40,7 @@
           <!-- /column -->
           <div class="col-lg-6">
             <div class="post-header mb-5">
-              <h2 class="post-title display-5">RTH Taman Kelurahan Tapos</h2>
+              <h2 class="post-title display-5"><?= $rth->nama_rth; ?></h2>
               <p class="price fs-20 mb-2"><span class="amount">Kerusakan Fasilitas</span></p>
               <p class="price fs-20 mb-2"><span class="badge bg-info">Baru</span></p>
               <div class="post-category text-line">
@@ -49,7 +49,7 @@
               </div>
             </div>
             <!-- /.post-header -->
-            <p class="mb-6">Rumput dekat lahan parkir ada sedikit kerusakan, mungkin karena banyak anak anak yang bermain di halaman tersebut</p>
+            <p class="mb-6"><?= $rth->deskripsi_rth; ?></p>
             <p>Lokasi : Lahan Parkir Taman Kelurahan Tapos</p>
 
 
