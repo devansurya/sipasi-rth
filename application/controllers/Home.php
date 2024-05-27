@@ -48,9 +48,9 @@ class Home extends CI_Controller
 		}	
 
 		
-		$data['pengaduan'] = $this->M_Publik->get_pengaduan(null,$implode_ktg,$implode_status);
-		$data['kategori'] = $this->M_Publik->get_kategori_pengaduan();
-		$data['status'] = $this->M_Publik->get_status_pengaduan();
+		$data['rth'] = $this->M_Publik->get_rth(null,$implode_ktg,$implode_status);
+		$data['kategori'] = [];
+		$data['status'] = [];
 		$data['content'] = $this->load->view('publik/rth', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
@@ -89,8 +89,27 @@ class Home extends CI_Controller
 		return redirect('Home/detail_pengaduan/'.$id_pengaduan_callback);
 	}
 
+	public function buat_reservasi($id){
+
+		$data['rth'] = $this->M_Publik->get_rth_where($id);
+		// $data['komentar'] = $this->M_Publik->get_komentar($id);
+		$data['content'] = $this->load->view('publik/buat_reservasi', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
+	public function buat_pengaduan($id){
+
+		$data['rth'] = $this->M_Publik->get_rth_where($id);
+		$data['visibilitas'] = $this->M_Ref->getAllResult('visibilitas');
+		$data['kategori'] = $this->M_Ref->getAllResult('jenis_pengaduan');
+		// $data['komentar'] = $this->M_Publik->get_komentar($id);
+		$data['content'] = $this->load->view('publik/buat_pengaduan', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
 	public function kontak(){
-		$data['content'] = $this->load->view('publik/kontak', null, true);
+
+		$data['content'] = $this->load->view('publik/kontak', false, true);
 		$this->load->view('layouts/index', $data);
 	}
 

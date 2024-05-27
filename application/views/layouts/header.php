@@ -28,7 +28,7 @@
                   <a class="nav-link scroll-section" href="<?= base_url('Home'); ?>">Beranda</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" href="<?= base_url('Home/pengaduan'); ?>">RTH</a>
+                  <a class="nav-link scroll-section" href="<?= base_url('Home/rth'); ?>">RTH</a>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" href="<?= base_url('Home/kontak'); ?>">Kontak</a>
