@@ -5,9 +5,10 @@ class M_Pengaduan extends CI_Model {
 
 	public function get($where= ''){
 
-		$this->db->select('p.*, jp.jenis_pengaduan, rth.nama_rth');
+		$this->db->select('p.*, jp.jenis_pengaduan, rth.nama_rth, sp.status');
 		$this->db->from('pengaduan p');
 		$this->db->join('jenis_pengaduan jp', 'p.id_jenispengaduan = jp.id_jenispengaduan', 'left');
+		$this->db->join('status_pengaduan sp', 'p.id_status_pengaduan = sp.id_status', 'left');
 		$this->db->join('rth', 'rth.id_rth = p.id_rth', 'left');
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
 		// $this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
