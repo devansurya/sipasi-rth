@@ -16,7 +16,7 @@
     <div class="row gx-md-8 gx-xl-12 gy-8">
       <h2 class="display-6 fs-30">Semua RTH</h2>
       <aside class="col-lg-3 sidebar">
-        <div class="widget mt-1">
+        <!-- <div class="widget mt-1">
           <h4 class="widget-title mb-3">Kategori</h4>
           <?php foreach ($kategori as $k) { ?>
             <div class="form-check mb-1">
@@ -24,16 +24,18 @@
               <label class="form-check-label"><?= $k['kategori']; ?> <span class="fs-sm text-muted ms-1">(<?= $k['total']; ?>)</span></label>
             </div>
           <?php } ?>
-        </div>
+        </div> -->
         <!-- /.widget -->
         <div class="widget">
-          <h4 class="widget-title mb-3">Status</h4>
-          <?php foreach ($status as $s) { ?>
+          <h4 class="widget-title mb-3">Status Reservasi</h4>
             <div class="form-check mb-1">
-              <input class="form-check-input status-filter" type="checkbox" value="<?= $s['id_status']; ?>" <?php if(empty($status_filter)) { echo 'checked'; } ?> <?php if(in_array($s['id_status'], $status_filter)) { echo 'checked'; } ?>>
-              <label class="form-check-label"><?= $s['status']; ?> <span class="fs-sm text-muted ms-1">(<?= $s['total']; ?>)</span></label>
+              <input class="form-check-input status-filter" type="checkbox" value="1" >
+              <label class="form-check-label">Aktif <span class="fs-sm text-muted ms-1"></span></label>
             </div>
-          <?php } ?>
+             <div class="form-check mb-1">
+              <input class="form-check-input status-filter" type="checkbox" value="0" >
+              <label class="form-check-label">Tidak Aktif <span class="fs-sm text-muted ms-1"></span></label>
+            </div>
           <!-- /.row -->
         </div>
         <!-- /.widget -->
