@@ -76,12 +76,12 @@
                                     ?>
                                         
                                 </td>
-                                <td><?= $data['status_pengaduan'] ?></td>
+                                <td><?= $data['jenis_pengaduan'] ?></td>
                                 <td><?php echo date('d/m/y H:i:s',strtotime($data['create_date'])) ?></td>
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <?php if (strtolower($data['status_pengaduan']) !== 'Selesai' && strtolower($data['status_pengaduan']) !== 'Penanganan'): ?>
+                                    <?php if (strtolower($data['status']) !== 'Selesai' && strtolower($data['status']) !== 'Penanganan'): ?>
                                         <li class="edit"> <a href="<?= base_url("Pengaduan/ubah_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil"></i></a></li>
                                     <?php endif ?>
                                     <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
