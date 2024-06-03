@@ -98,4 +98,30 @@ class M_RTH extends CI_Model {
 		return $data;
 	}
 
+	public function count_rth() {
+		$this->db->select('r.*');
+		$this->db->from('rth r');
+
+		$data = $this->db->count_all_results();
+	
+		return $data;
+	}
+	public function count_pengaduan() {
+		$this->db->select('pengaduan.*');
+		$this->db->from('pengaduan');
+
+		$data = $this->db->count_all_results();
+	
+		return $data;
+	}
+
+	public function count_reservasi() {
+		$this->db->select('reservasi.*');
+		$this->db->from('reservasi');
+
+		$data = $this->db->count_all_results();
+	
+		return $data;
+	}
+
 }
