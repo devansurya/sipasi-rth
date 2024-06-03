@@ -10,36 +10,21 @@
                 <div class="card-body custom-input">
                     <form class="row g-3" method="post" action="<?= base_url('Pengaduan/edit'); ?>/<?= $data->id_pengaduan ?>" enctype="multipart/form-data">
                         <div class="col-6"> 
-                            <label class="form-label" for="first-name">Nama Mahasiswa</label>
-                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->username ?>" disabled>
+                            <label class="form-label" for="first-name">Nama Pengadu</label>
+                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nama_pengadu ?>">
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="exampleFormControlInput1">NIM</label>
-                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nim ?>" disabled>
+                            <label class="form-label" for="exampleFormControlInput1">Nama RTH</label>
+                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nama_rth ?>">
                         </div>
                         <div class="col-4"> 
-                            <label class="col-sm-12 col-form-label" >Kategori Pengaduan</label>
-                            <select class="form-select" name="kategori" required="">
-                                <option >Pilih Kategori</option>
-                                <?php foreach ($kategori as $k): ?>
-                                <option  <?= ($k->id_kategori == $data->id_kategori)? 'selected' : ''; ?> value="<?= $k->id_kategori ?>"><?= $k->kategori ?> </option>
-                                <?php endforeach ?>
-                            </select>
-                        </div>
-                        <div class="col-4"> 
-                            <label class="col-form-label" for="inputPassword2">Privasi Pengaduan</label>
-                            <div class="input-group">
-                                <select class="form-select" name="visibilitas" required="">
-                                    <option value="" selected="" disabled="" >Pilih Privasi</option>
-                                    <?php foreach ($visibilitas as $v): ?>
-                                        <option <?= ($v->id_visibilitas == $data->visibilitas ) ? 'selected' : ''; ?> value="<?= $v->id_visibilitas ?>"><?= $v->visibilitas ?> </option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
+                            <label class="col-sm-12 col-form-label" >Subjek Pengaduan</label>
+                            <input class="form-control" id="first-name" type="text" value="<?= $data->subjek ?>">
+
                         </div>
                         <div class="col-4"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Tanggal Pengaduan</label>
-                            <input class="form-control" type="text" required disabled value="<?= $data->created_at ?>">
+                            <input class="form-control" type="text" required disabled value="<?= $data->create_date ?>">
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="validationDefault04">Bukti Foto</label>
@@ -65,16 +50,8 @@
                             <span class="txt-sm txt-danger">* File harus berupa image dengan ukuran < 2MB</span>
                         </div>
                         <div class="col-12"> 
-                            <label class="col-sm-12 col-form-label" for="inputPassword2">Subjek</label>
-                            <input class="form-control" type="text" name="subjek" required value="<?= $data->subjek ?>">
-                        </div>
-                        <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Deskripsi</label>
-                            <textarea class="form-control"  name="deskripsi" rows="3" ><?= $data->deskripsi ?></textarea>
-                        </div>
-                        <div class="col-12"> 
-                            <label class="form-label" for="exampleFormControlTextarea1">Lokasi</label>
-                            <textarea class="form-control" name="lokasi" id="exampleFormControlTextarea1" rows="3" ><?= $data->lokasi ?></textarea>
+                            <textarea class="form-control"  name="deskripsi" rows="3" ><?= $data->deskripsi_pengaduan ?></textarea>
                         </div>
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>

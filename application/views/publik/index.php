@@ -37,19 +37,19 @@
             <div class="row align-items-center counter-wrapper gy-6 text-center">
               <div class="col-md-4">
                 <img src="./assets/img/icons/lineal/home.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">20</h3>
+                <h3 class="counter"><?= $count_rth; ?></h3>
                 <p>RTH</p>
               </div>
               <!--/column -->
               <div class="col-md-4">
                 <img src="./assets/img/icons/lineal/files.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">50</h3>
+                <h3 class="counter"><?= $count_pengaduan; ?></h3>
                 <p>Pengaduan</p>
               </div>
               <!--/column -->
               <div class="col-md-4">
                 <img src="./assets/img/icons/lineal/briefcase-2.svg" class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-                <h3 class="counter">50</h3>
+                <h3 class="counter"><?= $count_reservasi; ?></h3>
                 <p>Reservasi</p>
               </div>
               <!--/column -->

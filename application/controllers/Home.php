@@ -15,6 +15,10 @@ class Home extends CI_Controller
 
 	public function index(){
 		$data['rth'] = $this->M_RTH->get();
+		$data['count_rth'] = $this->M_RTH->count_rth();
+		$data['count_pengaduan'] = $this->M_RTH->count_pengaduan();
+		$data['count_reservasi'] = $this->M_RTH->count_reservasi();
+
 		// $data['jumlah_pengaduan_all'] = $this->M_Ref->getCountWhere('pengaduan',null,null);
 		// $data['jumlah_pengaduan_selesai'] = $this->M_Ref->getCountWhere('pengaduan','status',3);
 		// $data['jumlah_pengaduan_proses'] = $this->M_Ref->getCountWhere('pengaduan','status',2);

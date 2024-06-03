@@ -50,8 +50,8 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $d['nama_rth']?></td>
-                                    <td><?= $d['kecamatan']?></td>
-                                    <td><?= $d['kelurahan']?></td>
+                                    <td><?= $d['kec_rth']?></td>
+                                    <td><?= $d['kel_rth']?></td>
                                     <td>
                                         <?php if($d['status_reservasi'] == 1){ ?>
                                             Aktif
