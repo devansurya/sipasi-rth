@@ -44,83 +44,76 @@
       </div>
       </aside>
       <div class="col-lg-9 rth-content">
+        <div class="row">
+          <?php foreach ($rth as $r) { ?>
+            <div class="col-lg-6">
+              <div class="card mb-2 rth-card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
+                        <div class="swiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <figure class="rounded overflow-hidden" style="height: 200px; width: 100%;">
+                                <img src="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" alt="" class="w-100 h-100" style="object-fit: cover;" />
+                                <a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" data-glightbox data-gallery="product-group">
+                                  <i class="uil uil-focus-add"></i>
+                                </a>
+                              </figure>
 
-        <?php foreach ($rth as $r) { ?>
-          <div class="card card-border-end border-primary mb-2 rth-card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
-                    <div class="swiper">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <figure class="rounded" style="height: 200px"><img src="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                            </div>
+                            <!--/.swiper-slide -->
+                          </div>
+                          <!--/.swiper-wrapper -->
                         </div>
-
-                        <!--/.swiper-slide -->
+                        <!-- /.swiper -->
+                        <div class="swiper swiper-thumbs">
+                          <!--/.swiper-wrapper -->
+                        </div>
+                        <!-- /.swiper -->
                       </div>
-                      <!--/.swiper-wrapper -->
+                      <!-- /.swiper-container -->
                     </div>
-                    <!-- /.swiper -->
-                    <div class="swiper swiper-thumbs">
-
-                      <!--/.swiper-wrapper -->
+                    <!-- /column -->
+                    <div class="col-lg-12">
+                      <div class="post-header mt-2 mb-3">
+                        <h2 class="post-title display-5 fs-23"><?= $r['nama_rth']; ?></h2>
+                        <p class="price fs-18 mb-2">Status Reservasi : <?= $r['status_reservasi'] == 1 ? '<span class="badge bg-info">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></p>
+                       <!--  <div class="post-category text-line">
+                          <a href="javascript:;" rel="category">
+                            <i class="uil uil-file-alt fs-15"></i> Ditambahkan <?php echo date('d M Y', strtotime($r['create_date'])); ?>
+                          </a>
+                        </div> -->
+                      </div>
+                      <!-- /.post-header -->
+                      <p class="mb-2">
+                        <?php
+                        $text = $r['deskripsi_rth'];
+                        $limit = 100;
+                        if (strlen($text) > $limit) {
+                          $shortenedText = substr($text, 0, $limit);
+                          $shortenedText .= " ...";
+                          echo $shortenedText;
+                        } else {
+                          echo $text;
+                        }
+                        ?>
+                      </p>
+                      <!-- /form -->
                     </div>
-                    <!-- /.swiper -->
                   </div>
-                  <!-- /.swiper-container -->
                 </div>
-                <!-- /column -->
-                <div class="col-lg-6">
-                  <div class="post-header mb-5">
-                    <!-- <p class="price fs-18 mb-2 float-end">Status Reservasi : <?= $r['status_reservasi'] == 1 ? '<span class="badge bg-info">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></p> -->
-                    <h2 class="post-title display-5 fs-23"><?= $r['nama_rth']; ?></h2>
-                    <p class="price fs-18 mb-2">Status Reservasi : <?= $r['status_reservasi'] == 1 ? '<span class="badge bg-info">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></p>
-
-                    <div class="post-category text-line">
-
-                      <a href="javascript:;" rel="category"><i class="uil uil-file-alt fs-15"></i> Ditambahkan <?php echo date('d M Y', strtotime($r['create_date'])); ?></a>
-                    </div>
-                  </div>
-                  <!-- /.post-header -->
-                  <p class="mb-2"> 
-                    <?php 
-                    $text = $r['deskripsi_rth'];
-                    $limit = 100;
-
-                    if (strlen($text) > $limit) {
-                      $shortenedText = substr($text, 0, $limit);
-
-                      $shortenedText .= " ...";
-
-                      echo $shortenedText;
-                    } else {
-                      echo $text; 
-                    }
-
-                    ?></p>
-
-
-                  <!-- /form -->
+                <div class="card-footer text-end">
+                  <a href="<?= base_url('Home/detail_rth'); ?>/<?= $r['id_rth']; ?>" class="btn btn-primary btn-sm">
+                    <i class="uil uil-arrow-right"></i> Selengkapnya
+                  </a>
                 </div>
               </div>
             </div>
-            <div class="row card-footer">
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <ul class="post-meta mt-2 mb-2">
-                  <!-- <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo date('d M Y H:i', strtotime($r['create_date'])); ?></span></li> -->
-                  <!-- <li class="post-comments"><a href="<?= base_url('Home/detail_rth') ?>/<?= $r['id_rth']; ?>"><i class="uil uil-comment"></i></a></li> -->
-                </ul>
-              </div>
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <a href="<?= base_url('Home/detail_rth'); ?>/<?= $r['id_rth']; ?>" class="btn btn-expand btn-primary rounded-pill float-end mb-2">
-                  <i class="uil uil-arrow-right"></i>
-                  <span>Baca Selengkapnya</span>
-                </a>
-              </div>
-            </div>
+          <?php } ?>
+
           </div>
-        <?php } ?>
         <?php if(!empty($rth)){ ?>
             <nav class="d-flex mt-10 float-end" aria-label="pagination">
               <ul class="pagination">
@@ -187,7 +180,7 @@
 
 
 
-            var itemsPerPage = 5;
+            var itemsPerPage = 4;
             var $items = $(".rth-content .rth-card");
             var totalPages = Math.ceil($items.length / itemsPerPage);
             var currentPage = 1;

@@ -92,6 +92,7 @@ class Home extends CI_Controller
 	public function buat_reservasi($id){
 
 		$data['rth'] = $this->M_Publik->get_rth_where($id);
+		$data['fasilitas'] = $this->M_Ref->getWhere('fasilitas_reservasi','id_rth',$id);
 		// $data['komentar'] = $this->M_Publik->get_komentar($id);
 		$data['content'] = $this->load->view('publik/buat_reservasi', $data, true);
 		$this->load->view('layouts/index', $data);
