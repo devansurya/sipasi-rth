@@ -24,6 +24,29 @@
             <form class="contact-form needs-validation" method="post" action="./assets/php/contact.php" novalidate>
               <div class="messages"></div>
               <div class="row gx-4">
+                <div class="col-12 mb-4"> 
+                  <select class="form-select" name="fasilitas" required="" id="fasilitas">
+                    <option value="" selected="" disabled="" >Pilih Fasilitas</option>
+                    <?php foreach ($fasilitas as $fs): ?>
+                      <option value="<?= $fs['id_fasilitas_reservasi']; ?>"><?= $fs['nama']; ?> </option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+                
+                <div class="col-md-6" id="luas-container" style="display: none">
+                  <div class="form-floating mb-4">
+                    <input id="luas" type="text" name="luas" class="form-control" placeholder="" readonly="">
+                    <label for="luas">Luas</label>
+                    
+                  </div>
+                </div>
+                <div class="col-md-6" id="kapasitas-container" style="display: none">
+                  <div class="form-floating mb-4">
+                    <input id="kapasitas" type="text" name="name" class="form-control" placeholder="" readonly="">
+                    <label for="kapasitas">Kapasitas</label>
+                    
+                  </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
                     <input id="form_name" type="text" name="name" class="form-control" placeholder="Jane" required>
@@ -103,6 +126,28 @@
           </div>
           <!--/column -->
           <div class="col-lg-4">
+            <div id="preview-container" class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="false" data-thumbs="false" style="display: none">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <figure class="rounded overflow-hidden" style="height: 200px; width: 100%;">
+                          <img id="preview-image" src="" alt="" class="w-100 h-100" style="object-fit: cover;" />
+                          <!-- <a id="preview-image-link" class="item-link" href="" data-glightbox data-gallery="product-group">
+                            <i class="uil uil-focus-add"></i>
+                          </a> -->
+                        </figure>
+
+                      </div>
+                      <!--/.swiper-slide -->
+                    </div>
+                    <!--/.swiper-wrapper -->
+                  </div>
+                  <!-- /.swiper -->
+                  <div class="swiper swiper-thumbs">
+                    <!--/.swiper-wrapper -->
+                  </div>
+                  <!-- /.swiper -->
+                </div>
             <div class="">
               <figure class="overlay overlay-1 hover-scale rounded" style="height: 200px;"><a href="<?= base_url('Home/detail_rth') ?>/<?= $rth->id_rth; ?>"> <img src="<?= base_url(); ?>assets/img/upload/<?= $rth->foto_rth; ?>" alt="Foto Pengaduan" /></a>
                 <figcaption>
@@ -156,3 +201,45 @@
   </div>
 </section>
 <!-- /section -->
+
+<script>
+  $(document).ready(function() {
+    $('#fasilitas').change(function() {
+      var fasilitasId = $(this).val();
+      if (fasilitasId) {
+        $.ajax({
+          url: '<?= base_url();?>/Home/get_fasilitas_detail', 
+          type: 'POST',
+          data: { id_fasilitas: fasilitasId },
+          dataType: 'json',
+          success: function(response) {
+            if (response) {
+              $('#luas').val(response.luas + ' m²');
+              $('#kapasitas').val(response.kapasitas + ' orang');
+              $('#luas-container').show();
+              $('#kapasitas-container').show();
+
+              if (response.foto) {
+                $('#preview-image').attr('src', '<?= base_url(); ?>assets/img/upload/' + response.foto);
+                $('#preview-image-link').attr('href', '<?= base_url(); ?>assets/img/upload/' + response.foto);
+                $('#preview-container').show('slow');
+              } else {
+                $('#preview-container').hide('slow');
+                $('#preview-image').attr('src', '');
+                $('#preview-image-link').attr('href', '');
+              }
+            }
+          },
+          error: function(xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+          }
+        });
+      } else {
+        $('#luas-container').hide();
+        $('#kapasitas-container').hide();
+        $('#luas').val('');
+        $('#kapasitas').val('');
+      }
+    });
+  });
+</script>

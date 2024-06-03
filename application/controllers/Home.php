@@ -137,4 +137,11 @@ class Home extends CI_Controller
 
 		return redirect('Home/kontak');
 	}
+
+	public function get_fasilitas_detail(){
+		$id = $this->input->post('id_fasilitas');
+		$data = $this->M_Ref->getWhereRow('fasilitas_reservasi','id_fasilitas_reservasi',$id);
+
+		echo json_encode($data);
+	}
 }
