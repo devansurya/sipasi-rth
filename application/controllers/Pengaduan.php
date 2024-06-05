@@ -44,7 +44,7 @@ class Pengaduan extends CI_Controller
 		$this->load->view('layouts-admin/index', $data);
 	}
 
-	public function detail_pengaduan($id){
+	public function detail_pengaduan($id = null){
 		if (!is_numeric($id)) return $this->output->set_status_header(400);
 
 		if($this->input->get('notif')){
@@ -75,8 +75,6 @@ class Pengaduan extends CI_Controller
 	public function ubah_pengaduan($id=null){
 		if (!$id) return $this->output->set_status_header(404);
 		$data['data'] =  $this->M_Pengaduan->get_one($id);
-		$data['visibilitas'] = $this->M_Ref->getAllResult('visibilitas');
-		$data['kategori'] = $this->M_Ref->getAllResult('kategori_pengaduan');
 		$data['content'] = $this->load->view('pages/pengaduan/edit', $data, true);
 
 		return $this->load->view('layouts-admin/index', $data);

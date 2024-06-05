@@ -60,7 +60,7 @@
                       </div>
                       <div>
                         <h5 class="mb-1">E-mail</h5>
-                        <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">siduma@gmail.com</a></p>
+                        <p class="mb-0"><a href="mailto:sipasirth@email.com" class="link-body">sipasirth@gmail.com</a></p>
                         
                       </div>
                     </div>
@@ -80,7 +80,7 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
             <h2 class="display-4 mb-3 text-center">Kontak Kami</h2>
-            <p class="lead text-center mb-10">Silahkan berikan saran atau ajukan pertanyaan terkait aplikasi SIDUMA.</p>
+            <p class="lead text-center mb-10">Silahkan berikan saran atau ajukan pertanyaan terkait aplikasi SIPASI.</p>
             <form class="contact-form" method="post" action="<?= base_url('Home/hubungi_kami'); ?>">
               <div class="messages"></div>
               <div class="row gx-4">

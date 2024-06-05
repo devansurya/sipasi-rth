@@ -3,51 +3,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Publik extends CI_Model {
 
-	public function get_pengaduan($limit = null,$ktg = null,$status = null){
+	public function get_rth($limit = null,$ktg = null,$status = null){
 
-		$this->db->select('p.*, kp.kategori, u.username, sp.status,sp.color as status_color, c.nim, c.nama,COUNT(k.id_komentar) as jumlah_komentar');
-		$this->db->from('pengaduan p');
-		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
-		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
-		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
-		$this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
-		$this->db->join('komentar k', 'k.id_pengaduan = p.id_pengaduan', 'left');
+		$this->db->select("r.id_rth, r.nama_rth, r.deskripsi_rth, r.alamat, r.foto_rth, r.status_reservasi, r.create_date , kec.kecamatan, kel.kelurahan");
+		$this->db->from('rth r');
+		$this->db->join('wilayah kec', 'kec.kd_kecamatan = r.kecamatan', 'left');
+		$this->db->join('wilayah kel', 'kel.kd_kelurahan = r.kelurahan', 'left');
+		
 
-		if($limit){
-			$this->db->limit($limit);
-		}
+		// if($limit){
+		// 	$this->db->limit($limit);
+		// }
 
-		if($ktg){
-			$this->db->where('p.id_kategori IN '.$ktg);
-		}
+		// if($ktg){
+		// 	$this->db->where('p.id_kategori IN '.$ktg);
+		// }
 
-		if($status){
-			$this->db->where('p.status IN '.$status);
-		}
+		// if($status){
+		// 	$this->db->where('p.status IN '.$status);
+		// }
 
-		$this->db->where('p.visibilitas !=', 3);
+		// $this->db->where('p.visibilitas !=', 3);
 
-		$this->db->order_by('p.created_at', 'desc');
+		$this->db->order_by('r.create_date', 'desc');
 
-		$this->db->group_by('p.id_pengaduan');
+		$this->db->group_by('r.id_rth');
 
 		$data = $this->db->get()->result_array();
 
 		return $data;
 	}
 
-	public function get_pengaduan_where($id= ''){
+	public function get_rth_where($id= ''){
 
-		$this->db->select("p.*,sp.id_status, ct.nim,ct.email, kp.kategori, u.username, sp.status,sp.color as status_color,ct.nama");
-		$this->db->from('pengaduan p');
-		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
-		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
-		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
-		$this->db->join('contact ct', 'u.id_contact = ct.id_contact', 'left');
-		$this->db->where("p.id_pengaduan={$id}");
-		$this->db->order_by('p.created_at', 'desc');
-
-		$this->db->where('p.visibilitas !=', 3);
+		$this->db->select("r.id_rth, r.nama_rth, r.deskripsi_rth, r.alamat, r.foto_rth, r.status_reservasi, r.create_date , kec.kecamatan, kel.kelurahan");
+		$this->db->from('rth r');
+		$this->db->join('wilayah kec', 'kec.kd_kecamatan = r.kecamatan', 'left');
+		$this->db->join('wilayah kel', 'kel.kd_kelurahan = r.kelurahan', 'left');
+		$this->db->where("r.id_rth={$id}");
+		$this->db->order_by('r.create_date', 'desc');
 
 		$data = $this->db->get()->row();
 

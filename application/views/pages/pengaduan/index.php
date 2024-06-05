@@ -38,12 +38,12 @@
                         <thead>
                             <tr>
                             <th>No</th>
-                            <?php if($this->session->userdata('id_role') != 2){ ?>
-                                <th>Nama / NIM</th>
+                            <?php if($this->session->userdata('id_role') != 3){ ?>
+                                <th>Nama Pengadu</th>
                             <?php } ?>
-                            <th width="150">Subject</th>
+                            <th>RTH</th>
+                            <th>Jenis Pengaduan</th>
                             <th width="150">Deskripsi</th>
-                            <th>Kategori</th>
                             <th>Status</th>
                             <th>Tanggal</th>
                             <th>Action</th>
@@ -54,11 +54,13 @@
                             <tr>
                                 <td><?= $no; ?></td>
                                 <?php if($this->session->userdata('id_role') != 2){ ?>
-                                    <td><?= $data['nama'] ?><br><?= $data['nim'] ?></td>
+                                    <td><?= $data['nama_pengadu'] ?></td>
                                 <?php } ?>
+                                <td><?= $data['nama_rth'] ?></td>
+                                <td><?= $data['jenis_pengaduan'] ?></td>
                                 <td>
                                     <?php 
-                                    $text = $data['subjek'];
+                                    $text = $data['deskripsi_pengaduan'];
                                     $limit = 100;
 
                                     if (strlen($text) > $limit) {
@@ -74,31 +76,12 @@
                                     ?>
                                         
                                 </td>
-                                <td>
-                                    <?php 
-                                    $text = $data['deskripsi'];
-                                    $limit = 100;
-
-                                    if (strlen($text) > $limit) {
-                                        $shortenedText = substr($text, 0, $limit);
-
-                                        $shortenedText .= " ...";
-
-                                        echo $shortenedText;
-                                    } else {
-                                        echo $text; 
-                                    }
-
-                                    ?>
-                                        
-                                </td>
-                                <td><?= $data['kategori'] ?></td>
-                                <td><?= getStatusbadge($data['status']) ?></td>
-                                <td><?php echo date('d/m/y H:i:s',strtotime($data['created_at'])) ?></td>
+                                <td><?= $data['jenis_pengaduan'] ?></td>
+                                <td><?php echo date('d/m/y H:i:s',strtotime($data['create_date'])) ?></td>
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <?php if (strtolower($data['status']) !== 'selesai' && strtolower($data['status']) !== 'penanganan'): ?>
+                                    <?php if (strtolower($data['status']) !== 'Selesai' && strtolower($data['status']) !== 'Penanganan'): ?>
                                         <li class="edit"> <a href="<?= base_url("Pengaduan/ubah_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil"></i></a></li>
                                     <?php endif ?>
                                     <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>

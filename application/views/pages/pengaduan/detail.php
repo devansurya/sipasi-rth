@@ -12,15 +12,15 @@
                         <input class="form-control" type="hidden" name="id_user" required  value="<?= $data->id_user ?>">
                         <div class="col-6"> 
                             <label class="form-label" for="first-name">Nama Mahasiswa</label>
-                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->username ?>"  disabled>
+                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nama_pengadu ?>"  disabled>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="exampleFormControlInput1">NIM</label>
-                            <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nim ?>" disabled>
+                            <label class="form-label" for="exampleFormControlInput1">Nama RTH</label>
+                            <input class="form-control" id="first-name" type="text" value="<?= $data->nama_rth ?>" disabled>
                         </div>
-                        <div class="col-4"> 
-                            <label class="col-sm-12 col-form-label" for="inputPassword2">Kategori Pengaduan</label>
-                            <input class="form-control" type="text" required value="<?= $data->kategori ?>" disabled>
+                        <div class="col-4">
+                            <label class="form-label" for="exampleFormControlInput1">Subjek Pengaduan</label>
+                            <input class="form-control" id="first-name" type="text" value="<?= $data->subjek ?>" disabled>
                         </div>
                         <div class="col-4"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Status Privasi</label>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-4"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Tanggal Pengaduan</label>
-                            <input class="form-control" type="text" required disabled value="<?= $data->created_at ?>">
+                            <input class="form-control" type="text" required disabled value="<?= $data->create_date ?>">
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="validationDefault04">Bukti Foto</label>
@@ -41,23 +41,15 @@
                         </div>
                         
                         <div class="col-12"> 
-                            <label class="col-sm-12 col-form-label" for="inputPassword2">Subjek</label>
-                            <input class="form-control" type="text" required disabled value="<?= $data->subjek ?>">
-                        </div>
-                        <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly disabled><?= $data->deskripsi ?></textarea>
-                        </div>
-                        <div class="col-12"> 
-                            <label class="form-label" for="exampleFormControlTextarea1">Lokasi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly disabled><?= $data->lokasi ?></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly disabled><?= $data->deskripsi_pengaduan ?></textarea>
                         </div>
                         <div class="col-12 mb-3"> 
                             <label class="form-label" for="validationDefault04">Status Pengaduan</label>
                             <select <?php if($this->session->userdata('role') != 'Admin') { echo 'disabled'; } ?> class="form-select" id="validationDefault04" name="status" required="">
                                 <option selected="" disabled="" >Pilih Status</option>
                                 <?php foreach ($list_status as $status): ?>
-                                <option value="<?= $status->id_status ?>" <?php if($status->id_status === $data->id_status) echo "selected" ?>><?= $status->status ?> </option>
+                                <option value="<?= $status->id_status ?>" <?php if($status->id_status === $data->id_status_pengaduan) echo "selected" ?>><?= $status->status ?> </option>
                                 <?php endforeach ?>
                             </select>
                         </div>

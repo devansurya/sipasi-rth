@@ -3,18 +3,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_RTH extends CI_Model {
 
-	public function get($where= ''){
-
-		$this->db->select('r.*');
+	public function get($where = '') {
+		// Select the required fields from rth and joined tables
+		$this->db->select('r.*, d_kec.kecamatan as kec_rth, d_kel.kelurahan as kel_rth');
 		$this->db->from('rth r');
-
-		if (!empty($where)) $this->db->where($where);
+		$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
+		$this->db->join('(SELECT kd_kelurahan, kelurahan FROM wilayah GROUP BY kd_kelurahan) d_kel', 'r.kelurahan = d_kel.kd_kelurahan', 'left');
+	
+		// Add where clause if provided
+		if (!empty($where)) {
+			$this->db->where($where);
+		}
+	
+		// Order the results by create_date in descending order
 		$this->db->order_by('r.create_date', 'desc');
-
+	
+		// Execute the query and fetch the result set
 		$data = $this->db->get()->result_array();
-
+	
 		return $data;
 	}
+	
 
 	public function update($id,$data){
 		if($this->session->userdata('id_role') == 2){
@@ -86,6 +95,32 @@ class M_RTH extends CI_Model {
 
 		$data = $this->db->count_all_results();
 
+		return $data;
+	}
+
+	public function count_rth() {
+		$this->db->select('r.*');
+		$this->db->from('rth r');
+
+		$data = $this->db->count_all_results();
+	
+		return $data;
+	}
+	public function count_pengaduan() {
+		$this->db->select('pengaduan.*');
+		$this->db->from('pengaduan');
+
+		$data = $this->db->count_all_results();
+	
+		return $data;
+	}
+
+	public function count_reservasi() {
+		$this->db->select('reservasi.*');
+		$this->db->from('reservasi');
+
+		$data = $this->db->count_all_results();
+	
 		return $data;
 	}
 

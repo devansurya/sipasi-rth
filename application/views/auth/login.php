@@ -38,12 +38,15 @@
     <div class="container-fluid">
       <div class="row">
 
-        <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url('assets-admin/images/login/2.jpg'); ?>" alt="looginpage"><img class="img-fluid for-light mt-4 ms-4" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" width="150" alt="loginlogo"></div>
-        <div class="col-xl-5 p-0">
+        <!-- <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url('assets-admin/images/login/2.jpg'); ?>" alt="looginpage"><img class="img-fluid for-light mt-4 ms-4" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" width="150" alt="loginlogo"></div> -->
+        <div class="col-xl-12 p-0">
           <div class="login-card login-dark">
             <div>
               <!-- <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light" src="<?= base_url('assets-admin/images/logo/logo.png'); ?>" alt="looginpage"><img class="img-fluid for-dark" src="<?= base_url('assets/img/logo-detimihan.png'); ?>../assets/images/logo/logo_dark.png" alt="looginpage"></a></div> -->
               <div class="login-main"> 
+                <center>
+                  <img class="img-fluid for-light mb-3" src="<?= base_url() ?>/assets-admin/images/logo/logo.png" width="150" alt="loginlogo" style="margin-top: -25px;">
+                </center>
                 <form class="theme-form" action="<?= base_url('Auth') ?>" method="POST">
                   <h4>Sign in to account</h4>
                   <p>Enter your Email & password to login</p>

@@ -14,7 +14,9 @@ class Auth extends CI_Controller
         if($this->session->userdata('id_role') == 1){
             redirect('Dashboard');
         }elseif($this->session->userdata('id_role') == 2){
-            redirect('Mahasiswa');
+            redirect('Dashboard');
+        }elseif($this->session->userdata('id_role') == 3){
+            redirect('Dashboard');
         }
 
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
@@ -52,7 +54,9 @@ class Auth extends CI_Controller
                     if ($user['id_role'] == 1) {
                         redirect('Dashboard');
                     } elseif ($user['id_role'] == 2) {
-                        redirect('Mahasiswa');
+                        redirect('Dashboard');
+                    } elseif ($user['id_role'] == 3) {
+                        redirect('Dashboard');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Password salah.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');
