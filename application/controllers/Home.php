@@ -112,6 +112,49 @@ class Home extends CI_Controller
 		$this->load->view('layouts/index', $data);
 	}
 
+	public function add_pengaduan(){
+
+		$config['upload_path'] = './assets/img/upload/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		// $config['max_size'] = '3000';
+		// $config['max_width'] = '1024';
+		// $config['max_height'] = '1000';
+		$config['file_name'] = 'img' . time();
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('lampiran')) {
+			$image = $this->upload->data();
+			$gambar = $image['file_name'];
+		} else {
+			$gambar = null;
+		}
+
+		$data = array(
+			'nama_pengadu' => $this->input->post('nama'),
+			'email_pengadu' => $this->input->post('email'),
+			'id_jenispengaduan' => $this->input->post('jenis'),
+			'id_rth' => $this->input->post('id_rth'),
+			'id_user' => $this->session->userdata('id'),
+			'id_status_pengaduan' => 1,
+			'subjek' => $this->input->post('subjek'),
+			'deskripsi_pengaduan' => $this->input->post('deskripsi'),
+			'foto' => $gambar,
+			'lokasi' => $this->input->post('lokasi'),
+			'visibilitas' => $this->input->post('visibilitas'),
+
+		);
+		$insert = $this->M_Ref->insertTable('pengaduan', $data);
+
+		if($insert){
+			$this->setflashdata('pengaduan_message', 'Berhasil Tambah Pengaduan');
+			redirect('Home/buat_pengaduan/' . $this->input->post('id_rth'));
+		}
+		else{
+			$this->setflashdata('pengaduan_message', 'Gagal Tambah Pengaduan', 'error');
+			redirect('Home/buat_pengaduan' . $this->input->post('id_rth'));
+		}
+	}
+
 	public function kontak(){
 
 		$data['content'] = $this->load->view('publik/kontak', false, true);
@@ -144,4 +187,13 @@ class Home extends CI_Controller
 
 		echo json_encode($data);
 	}
+
+	public function setflashdata($flashId='message', $message='', $type='success')
+    {
+        $this->session->set_flashdata($flashId, "
+            <div class=\"alert alert-{$type} dark alert-dismissible fade show\" role=\"alert\">
+                {$message}
+                <button class=\"btn-close\" type=\"button\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
+            </div>");
+    }
 }

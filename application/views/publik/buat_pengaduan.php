@@ -14,17 +14,42 @@
 <section class="wrapper bg-light">
 
   <div class="container py-8 py-md-10">
-    <center><h2 class="">Buat Pengaduan</h2></center>
+    <center><h2 class="">Buat Pengaduan <?php if(!$this->session->userdata('id')){ ?> Publik <?php } ?></h2></center>
     <center><h3 class="text-primary mb-5"><?= $rth->nama_rth; ?></h3></center>
     <div class="row">
 
       <div class="col-xl-10 mx-auto mt-5">
         <div class="row gy-10 gx-lg-8 gx-xl-12">
           <div class="col-lg-8">
-            <form class="contact-form needs-validation" method="post" action="./assets/php/contact.php" novalidate>
-              <div class="messages"></div>
+            <form class="pengaduan-form" method="post" action="<?= base_url('Home/add_pengaduan'); ?>" enctype="multipart/form-data">
+              <div class="messages">
+                <?php if ($this->session->flashdata('pengaduan_message')): ?>
+                  <?php echo $this->session->flashdata('pengaduan_message'); ?>
+                  <?php $this->session->unset_userdata('pengaduan_message'); ?>
+                <?php endif; ?>
+              </div>
+
               <div class="row gx-4">
-                <div class="col-md-6">
+                <input type="hidden" class="form-control" name="id_rth" placeholder="Masukkan id" value="<?= $rth->id_rth; ?>">
+                <?php if(!$this->session->userdata('id')){ ?>
+                  <span class="fs-14">Anda melakukan pengaduan sebagai akun publik <span class="example-popover text-primary" type="button" data-bs-html="true" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="right" title="Pengaduan Publik" data-offset="-20px -20px" data-bs-content="Pada mode ini pengaduan anda akan tetap tersampaikan kepada petugas, tetapi anda tidak bisa menerima status tracking pengaduan anda">Pelajari selengkapnya</span></span>
+                  <span class="fs-14">Sudah memiliki akun? <a href="<?= base_url('Auth'); ?>">Masuk</a></span>
+                  <div class="col-md-6 mt-2">
+                    <label class="form-label" for="exampleFormControlTextarea1">Nama *</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="nama" placeholder="Masukkan nama" required="">
+                    </div>
+                  </div>
+                  <div class="col-md-6 mt-2">
+                    <label class="form-label" for="exampleFormControlTextarea1">Email *</label>
+                    <div class="input-group">
+                      <input type="email" class="form-control" name="email" placeholder="Masukkan email" required="">
+                    </div>
+                  </div>
+                  
+                  
+                <?php } ?>
+                <div class="col-md-6 mt-2">
                   <label class="form-label" for="exampleFormControlTextarea1">Status Privasi *</label>
                   <div class="input-group">
                     <select class="form-select" name="visibilitas" required="">
@@ -37,7 +62,7 @@
                 </div>
                 <div class="col-12"> 
                   <label class="col-sm-12 col-form-label" for="inputPassword2">Jenis Pengaduan *</label>
-                  <select class="form-select" name="Jenis" required="">
+                  <select class="form-select" name="jenis" required="">
                     <option value="" selected="" disabled="" >Pilih Jenis Pengaduan</option>
                     <?php foreach ($kategori as $k): ?>
                       <option value="<?= $k->id_jenispengaduan ?>"><?= $k->jenis_pengaduan ?> </option>
@@ -59,13 +84,15 @@
                 <div class="col-12 mt-2"> 
                   <label class="form-label" for="exampleFormControlTextarea1">Lampiran</label>
                   <input type="file" class="form-control" id="lampiran" name="lampiran" accept="image/*">
-                  <span class="txt-sm txt-danger">* File harus berupa image dengan ukuran < 2MB</span>
+                  <span class="txt-sm txt-danger fs-14">* File harus berupa image dengan ukuran < 2MB</span>
                 </div>
                 <div class="col-12 mt-2" style="display: none" id="preview-container"> 
                   <label class="form-label" for="exampleFormControlTextarea1">Preview</label>
-                  <div class="gallery my-gallery card-body row" itemscope="">
-                    <figure class="col-xl-4 col-md-5 col-7" itemprop="associatedMedia" itemscope=""><a id="preview-image-link" href="" itemprop="contentUrl" data-size="1600x950"><img id="preview-image" class="img-thumbnail" src="" itemprop="thumbnail" alt="Image description"></a>
+                  <div class="" itemscope="">
+                    <!-- <figure class="col-xl-4 col-md-5 col-7" itemprop="associatedMedia" itemscope=""><a id="preview-image-link" href="" itemprop="contentUrl" data-size="1600x950"><img id="preview-image" class="img-thumbnail" src="" itemprop="thumbnail" alt="Image description"></a>
 
+                    </figure> -->
+                    <figure class="col-7 rounded"><a id="preview-image-link" href=""> <img  id="preview-image" class="" src="" itemprop="thumbnail" alt="Image description"></a>
                     </figure>
                   </div>
                 </div>
