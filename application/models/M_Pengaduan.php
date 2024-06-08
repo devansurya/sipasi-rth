@@ -13,7 +13,7 @@ class M_Pengaduan extends CI_Model {
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
 		// $this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
 
-		if($this->session->userdata('id_role') == 2){
+		if($this->session->userdata('id_role') == 3){
 			$this->db->where('p.id_user', $this->session->userdata('id'));
 		}
 
@@ -39,18 +39,18 @@ class M_Pengaduan extends CI_Model {
 
 	public function get_all($limit = null){
 
-		$this->db->select('p.*, kp.kategori, u.username, sp.status, c.nim, c.nama');
+		$this->db->select('p.*, kp.jenis_pengaduan, u.email, sp.status, c.nama');
 		$this->db->from('pengaduan p');
-		$this->db->join('kategori_pengaduan kp', 'p.id_kategori = kp.id_kategori', 'left');
-		$this->db->join('status_pengaduan sp', 'sp.id_status = p.status', 'left');
+		$this->db->join('jenis_pengaduan kp', 'p.id_jenispengaduan = kp.id_jenispengaduan', 'left');
+		$this->db->join('status_pengaduan sp', 'sp.id_status = p.id_status_pengaduan', 'left');
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
-		$this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
+		$this->db->join('user_profile c', 'c.id_user = u.id_user', 'left');
 
 		if($limit){
 			$this->db->limit($limit);
 		}
 
-		$this->db->order_by('p.created_at', 'desc');
+		$this->db->order_by('p.create_date', 'desc');
 
 		$data = $this->db->get()->result_array();
 

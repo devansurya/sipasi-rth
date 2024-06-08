@@ -60,25 +60,28 @@
                     </select> <span class="example-popover input-group-text" type="button" data-bs-html="true" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="right" title="Privasi Pengaduan" data-offset="-20px -20px" data-bs-content="1. Publik<br> Pengaduan ini akan ditampilkan pada Portal SIPASI RTH dan dapat dilihat oleh siapapun beserta informasi pembuat. <br><br> 2. Anonim<br> Pengaduan ini tetap ditampilkan pada Portal SIPASI RTH dan dapat dilihat oleh siapapun, namun informasi pembuat akan di sembunyikan. <br><br> 3. Private<br> Pengaduan ini akan disembunyikan dari Portal SIPASI RTH, namun tetap masuk ke dalam sistem."><i class="uil uil-question-circle" ></i></span>
                   </div>
                 </div>
-                <div class="col-12"> 
+                <div class="col-12 form-group"> 
                   <label class="col-sm-12 col-form-label" for="inputPassword2">Jenis Pengaduan *</label>
-                  <select class="form-select" name="jenis" required="">
+                  <select class="form-select" name="jenis" required="" id="jenis_pengaduan">
                     <option value="" selected="" disabled="" >Pilih Jenis Pengaduan</option>
                     <?php foreach ($kategori as $k): ?>
-                      <option value="<?= $k->id_jenispengaduan ?>"><?= $k->jenis_pengaduan ?> </option>
+                      <option value="<?= $k->id_jenispengaduan ?>" data-deskripsi="<?= $k->deskripsi; ?>"><?= $k->jenis_pengaduan ?> </option>
                     <?php endforeach ?>
                   </select>
                 </div>
+                <div class="form-group mt-2 d-none" id="descriptionContainer">
+                  <p id="description" class="alert alert-info fs-14"></p>
+                </div>
                 <div class="col-12 mt-2"> 
-                  <label class="form-label" for="exampleFormControlTextarea1">Subjek *</label>
-                  <input type="text" class="form-control" name="subjek" placeholder="Masukkan subjek pengaduan" required="">
+                  <label class="form-label" for="exampleFormControlTextarea1">Judul *</label>
+                  <input type="text" class="form-control" name="subjek" placeholder="Masukkan judul pengaduan" required="">
                 </div>
                 <div class="col-12 mt-2"> 
                   <label class="form-label" for="exampleFormControlTextarea1">Deskripsi *</label>
                   <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="Deskripsi dapat memuat info berupa detail permasalahan, waktu kejadian, jenis pelanggaran, dsb." required=""></textarea>
                 </div>
                 <div class="col-12 mt-2"> 
-                  <label class="form-label" for="exampleFormControlTextarea1">Lokasi *</label>
+                  <label class="form-label" for="exampleFormControlTextarea1">Detail Lokasi *</label>
                   <textarea class="form-control" name="lokasi" id="exampleFormControlTextarea1" rows="3" placeholder="Lokasi dapat memuat info berupa nama jalan, nama gedung, ciri khusus di sekitar, dll" required=""></textarea>
                 </div>
                 <div class="col-12 mt-2"> 
@@ -193,4 +196,17 @@
                 previewContainer.hide();
             }
         }
+
+        $('#jenis_pengaduan').change(function() {
+          var selectedOption = $(this).find('option:selected');
+          var description = selectedOption.data('deskripsi');
+
+          if (description) {
+            $('#description').text(description);
+            $('#descriptionContainer').removeClass('d-none');
+          } else {
+            $('#description').text('');
+            $('#descriptionContainer').addClass('d-none');
+          }
+        });
 </script>

@@ -20,8 +20,8 @@
           <h4 class="widget-title mb-3">Kategori</h4>
           <?php foreach ($kategori as $k) { ?>
             <div class="form-check mb-1">
-              <input class="form-check-input kategori-filter" type="checkbox" value="<?= $k['id_kategori']; ?>" <?php if(empty($kategori_filter)) { echo 'checked'; } ?> <?php if(in_array($k['id_kategori'], $kategori_filter)) { echo 'checked'; } ?>>
-              <label class="form-check-label"><?= $k['kategori']; ?> <span class="fs-sm text-muted ms-1">(<?= $k['total']; ?>)</span></label>
+              <input class="form-check-input kategori-filter" type="checkbox" value="<?= $k['id_jenispengaduan']; ?>" <?php if(empty($kategori_filter)) { echo 'checked'; } ?> <?php if(in_array($k['id_jenispengaduan'], $kategori_filter)) { echo 'checked'; } ?>>
+              <label class="form-check-label"><?= $k['jenis_pengaduan']; ?> <span class="fs-sm text-muted ms-1">(<?= $k['total']; ?>)</span></label>
             </div>
           <?php } ?>
         </div>
@@ -41,73 +41,76 @@
         <button type="button" id="btn-filter" class="btn btn-primary btn-sm rounded-pill w-100">Filter</button>
       </div>
       </aside>
-      <div class="col-lg-9 pengaduan-content">
+      <div class="col-lg-9 pengaduan-content" id="row-pengaduan">
+        <?php if(!empty($pengaduan)){ ?>
+          <?php foreach ($pengaduan as $p) { ?>
+            <div class="card card-border-end border-primary mb-2 pengaduan-card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
+                      <div class="swiper">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <figure class="rounded" style="height: 200px"><img src="<?= base_url(); ?>assets/img/upload/<?= $p['foto'] ?>" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $p['foto'] ?>" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                          </div>
 
-        <?php foreach ($pengaduan as $p) { ?>
-          <div class="card card-border-end border-primary mb-2 pengaduan-card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
-                    <div class="swiper">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <figure class="rounded" style="height: 200px"><img src="<?= base_url(); ?>assets/img/upload/<?= $p['foto'] ?>" alt="" /><a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $p['foto'] ?>" data-glightbox data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                          <!--/.swiper-slide -->
                         </div>
-
-                        <!--/.swiper-slide -->
+                        <!--/.swiper-wrapper -->
                       </div>
-                      <!--/.swiper-wrapper -->
-                    </div>
-                    <!-- /.swiper -->
-                    <div class="swiper swiper-thumbs">
+                      <!-- /.swiper -->
+                      <div class="swiper swiper-thumbs">
 
-                      <!--/.swiper-wrapper -->
+                        <!--/.swiper-wrapper -->
+                      </div>
+                      <!-- /.swiper -->
                     </div>
-                    <!-- /.swiper -->
+                    <!-- /.swiper-container -->
                   </div>
-                  <!-- /.swiper-container -->
+                  <!-- /column -->
+                  <div class="col-lg-6">
+                    <div class="post-header mb-5">
+                      <p class="price fs-20 mb-2 float-end"><span class="badge bg-<?= $p['status_color']; ?>"><?= $p['status']; ?></span></p>
+                      <h2 class="post-title display-5 fs-23"><?= $p['subjek']; ?></h2>
+                      <p class="price fs-18 mb-2"><span class="amount"><?= $p['jenis_pengaduan']; ?></span></p>
+
+                      <div class="post-category text-line">
+
+                        <a href="javascript:;" rel="category"><i class="uil uil-file-alt fs-15"></i> Oleh : <?= $p['visibilitas'] == 1 ? $p['nama'] : 'Anonim'; ?></a>
+                      </div>
+                    </div>
+                    <!-- /.post-header -->
+                    <p class="mb-6"><?= $p['deskripsi_pengaduan']; ?></p>
+
+
+
+
+                    <!-- /form -->
+                  </div>
                 </div>
-                <!-- /column -->
-                <div class="col-lg-6">
-                  <div class="post-header mb-5">
-                    <p class="price fs-20 mb-2 float-end"><span class="badge bg-<?= $p['status_color']; ?>"><?= $p['status']; ?></span></p>
-                    <h2 class="post-title display-5 fs-23"><?= $p['subjek']; ?></h2>
-                    <p class="price fs-18 mb-2"><span class="amount"><?= $p['kategori']; ?></span></p>
-
-                    <div class="post-category text-line">
-
-                      <a href="javascript:;" rel="category"><i class="uil uil-file-alt fs-15"></i> Oleh : <?= $p['visibilitas'] == 1 ? $p['nama'] : 'Anonim'; ?></a>
-                    </div>
-                  </div>
-                  <!-- /.post-header -->
-                  <p class="mb-6"><?= $p['deskripsi']; ?></p>
-
-
-
-
-                  <!-- /form -->
+              </div>
+              <div class="row card-footer">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <ul class="post-meta mt-2 mb-2">
+                    <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo date('d M Y H:i', strtotime($p['create_date'])); ?></span></li>
+                    <li class="post-comments"><a href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>"><i class="uil uil-comment"></i><?= $p['jumlah_komentar']; ?></a></li>
+                  </ul>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <a href="<?= base_url('Home/detail_pengaduan'); ?>/<?= $p['id_pengaduan']; ?>" class="btn btn-expand btn-primary rounded-pill float-end mb-2">
+                    <i class="uil uil-arrow-right"></i>
+                    <span>Baca Selengkapnya</span>
+                  </a>
                 </div>
               </div>
             </div>
-            <div class="row card-footer">
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <ul class="post-meta mt-2 mb-2">
-                  <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo date('d M Y H:i', strtotime($p['created_at'])); ?></span></li>
-                  <li class="post-comments"><a href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>"><i class="uil uil-comment"></i><?= $p['jumlah_komentar']; ?></a></li>
-                </ul>
-              </div>
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <a href="<?= base_url('Home/detail_pengaduan'); ?>/<?= $p['id_pengaduan']; ?>" class="btn btn-expand btn-primary rounded-pill float-end mb-2">
-                  <i class="uil uil-arrow-right"></i>
-                  <span>Baca Selengkapnya</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <?php } ?>
+        <?php }else{ ?>
+          <center>Pengaduan tidak ada.</center>
         <?php } ?>
         <?php if(!empty($pengaduan)){ ?>
-            <nav class="d-flex mt-10 float-end" aria-label="pagination">
+            <nav class="d-flex mt-10 float-end" aria-label="pagination" id="pagination-pengaduan">
               <ul class="pagination">
                 <li class="page-item" id="prev-li">
                   <a class="page-link" aria-label="Previous">
@@ -148,6 +151,15 @@
                 // Clear the array before checking again
                 checkedKategori = [];
                 checkedStatus = [];
+
+                var lengthStatus = $('.status-filter:checked').length;
+                var lengthKategori = $('.kategori-filter:checked').length;
+                if (lengthKategori === 0 || lengthStatus === 0) {
+                    $('#row-pengaduan').html('<center>Tidak ada Pengaduan.</center>')
+                    $('#pagination-pengaduan').hide();
+                    return false;
+                }
+
 
                 // Iterate through each checkbox
                 $('.kategori-filter:checked').each(function() {

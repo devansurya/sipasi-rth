@@ -47,9 +47,19 @@
                     
                   </div>
                 </div>
+
+                <div class="col-12 mb-4"> 
+                  <select class="form-select" name="jenis" required="">
+                    <option value="" selected="" disabled="" >Pilih Jenis Pengaduan</option>
+                    <?php foreach ($jenis as $j): ?>
+                      <option value="<?= $j->id_jenisreservasi ?>"><?= $j->jenis_reservasi ?> </option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
-                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Jane" required>
+                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Jane" value="<?= $this->session->userdata('id') ? $this->session->userdata('nama') : ''; ?>" readonly required>
                     <label for="form_name">Nama *</label>
                     
                     <div class="invalid-feedback">
@@ -71,7 +81,7 @@
                 <!-- /column -->
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
-                    <input id="form_email" type="email" name="email" class="form-control" placeholder="jane.doe@example.com" required>
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="jane.doe@example.com" value="<?= $this->session->userdata('id') ? $this->session->userdata('email') : ''; ?>" readonly required>
                     <label for="form_email">Email *</label>
                     
                     <div class="invalid-feedback">
@@ -82,7 +92,7 @@
                 <!-- /column -->
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
-                    <input id="form_email" type="number" name="email" class="form-control" placeholder="jane.doe@example.com" required>
+                    <input id="form_email" type="number" name="email" class="form-control" placeholder="jane.doe@example.com" value="<?= $this->session->userdata('id') ? $this->session->userdata('telp') : ''; ?>" readonly required>
                     <label for="form_email">No Telp *</label>
                     
                     <div class="invalid-feedback">
@@ -216,8 +226,8 @@
             if (response) {
               $('#luas').val(response.luas + ' m²');
               $('#kapasitas').val(response.kapasitas + ' orang');
-              $('#luas-container').show();
-              $('#kapasitas-container').show();
+              $('#luas-container').show('slow');
+              $('#kapasitas-container').show('slow');
 
               if (response.foto) {
                 $('#preview-image').attr('src', '<?= base_url(); ?>assets/img/upload/' + response.foto);
@@ -235,8 +245,8 @@
           }
         });
       } else {
-        $('#luas-container').hide();
-        $('#kapasitas-container').hide();
+        $('#luas-container').hide('slow');
+        $('#kapasitas-container').hide('slow');
         $('#luas').val('');
         $('#kapasitas').val('');
       }

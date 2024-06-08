@@ -29,11 +29,11 @@
         <div class="widget">
           <h4 class="widget-title mb-3">Status Reservasi</h4>
             <div class="form-check mb-1">
-              <input class="form-check-input status-filter" type="checkbox" value="1" >
+              <input class="form-check-input status-filter" type="checkbox" value="1" <?php if(empty($status_filter)) { echo 'checked'; } ?> <?php if(in_array(1, $status_filter)) { echo 'checked'; } ?>>
               <label class="form-check-label">Aktif <span class="fs-sm text-muted ms-1"></span></label>
             </div>
              <div class="form-check mb-1">
-              <input class="form-check-input status-filter" type="checkbox" value="0" >
+              <input class="form-check-input status-filter" type="checkbox" value="0" <?php if(empty($status_filter)) { echo 'checked'; } ?> <?php if(in_array(0, $status_filter)) { echo 'checked'; } ?>>
               <label class="form-check-label">Tidak Aktif <span class="fs-sm text-muted ms-1"></span></label>
             </div>
           <!-- /.row -->
@@ -44,42 +44,43 @@
       </div>
       </aside>
       <div class="col-lg-9 rth-content">
-        <div class="row">
-          <?php foreach ($rth as $r) { ?>
-            <div class="col-lg-6">
-              <div class="card mb-2 rth-card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
-                        <div class="swiper">
-                          <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                              <figure class="rounded overflow-hidden" style="height: 200px; width: 100%;">
-                                <img src="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" alt="" class="w-100 h-100" style="object-fit: cover;" />
-                                <a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" data-glightbox data-gallery="product-group">
-                                  <i class="uil uil-focus-add"></i>
-                                </a>
-                              </figure>
+        <div class="row" id="row-rth">
+          <?php if(!empty($rth)){ ?>
+            <?php foreach ($rth as $r) { ?>
+              <div class="col-lg-6">
+                <div class="card mb-2 rth-card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false" data-nav="true" data-thumbs="true">
+                          <div class="swiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <figure class="rounded overflow-hidden" style="height: 200px; width: 100%;">
+                                  <img src="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" alt="" class="w-100 h-100" style="object-fit: cover;" />
+                                  <a class="item-link" href="<?= base_url(); ?>assets/img/upload/<?= $r['foto_rth']; ?>" data-glightbox data-gallery="product-group">
+                                    <i class="uil uil-focus-add"></i>
+                                  </a>
+                                </figure>
 
+                              </div>
+                              <!--/.swiper-slide -->
                             </div>
-                            <!--/.swiper-slide -->
+                            <!--/.swiper-wrapper -->
                           </div>
-                          <!--/.swiper-wrapper -->
+                          <!-- /.swiper -->
+                          <div class="swiper swiper-thumbs">
+                            <!--/.swiper-wrapper -->
+                          </div>
+                          <!-- /.swiper -->
                         </div>
-                        <!-- /.swiper -->
-                        <div class="swiper swiper-thumbs">
-                          <!--/.swiper-wrapper -->
-                        </div>
-                        <!-- /.swiper -->
+                        <!-- /.swiper-container -->
                       </div>
-                      <!-- /.swiper-container -->
-                    </div>
-                    <!-- /column -->
-                    <div class="col-lg-12">
-                      <div class="post-header mt-2 mb-3">
-                        <h2 class="post-title display-5 fs-23"><?= $r['nama_rth']; ?></h2>
-                        <p class="price fs-18 mb-2">Status Reservasi : <?= $r['status_reservasi'] == 1 ? '<span class="badge bg-info">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></p>
+                      <!-- /column -->
+                      <div class="col-lg-12">
+                        <div class="post-header mt-2 mb-3">
+                          <h2 class="post-title display-5 fs-23"><?= $r['nama_rth']; ?></h2>
+                          <p class="price fs-18 mb-2">Status Reservasi : <?= $r['status_reservasi'] == 1 ? '<span class="badge bg-info">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></p>
                        <!--  <div class="post-category text-line">
                           <a href="javascript:;" rel="category">
                             <i class="uil uil-file-alt fs-15"></i> Ditambahkan <?php echo date('d M Y', strtotime($r['create_date'])); ?>
@@ -112,10 +113,14 @@
               </div>
             </div>
           <?php } ?>
+        <?php }else{ ?>
+
+          <center>Tidak ada RTH.</center>
+        <?php } ?>
 
           </div>
         <?php if(!empty($rth)){ ?>
-            <nav class="d-flex mt-10 float-end" aria-label="pagination">
+            <nav class="d-flex mt-10 float-end" aria-label="pagination" id="pagination-rth">
               <ul class="pagination">
                 <li class="page-item" id="prev-li">
                   <a class="page-link" aria-label="Previous">
@@ -154,27 +159,25 @@
             // Event handler for button click
             $('#btn-filter').on('click', function() {
                 // Clear the array before checking again
-                checkedKategori = [];
                 checkedStatus = [];
 
-                // Iterate through each checkbox
-                $('.kategori-filter:checked').each(function() {
-                    checkedKategori.push($(this).val());
-                });
+                var checked = $('.status-filter:checked').length;
+                if (checked === 0) {
+                    $('#row-rth').html('<center>Tidak ada RTH.</center>')
+                    $('#pagination-rth').hide();
+                    return false;
+                }
 
+                
                 $('.status-filter:checked').each(function() {
                     checkedStatus.push($(this).val());
                 });
-
-                var jsonKategori = JSON.stringify(checkedKategori);
-
-                var encryptedKategori = window.btoa(jsonKategori);
 
                 var jsonStatus = JSON.stringify(checkedStatus);
 
                 var encryptedStatus = window.btoa(jsonStatus);
 
-                location.href = "<?= base_url(); ?>Home/rth?ktg="+encryptedKategori+"&status="+encryptedStatus;
+                location.href = "<?= base_url(); ?>Home/rth?status="+encryptedStatus;
             });
 
 

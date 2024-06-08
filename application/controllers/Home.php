@@ -10,11 +10,14 @@ class Home extends CI_Controller
 		$this->load->model('M_Publik');
 		$this->load->model('M_Ref');
 		$this->load->model('M_RTH');
+		$this->load->model('M_Pengaduan');
+
 
 	}
 
 	public function index(){
 		$data['rth'] = $this->M_RTH->get();
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan(9);
 		$data['count_rth'] = $this->M_RTH->count_rth();
 		$data['count_pengaduan'] = $this->M_RTH->count_pengaduan();
 		$data['count_reservasi'] = $this->M_RTH->count_reservasi();
@@ -28,6 +31,32 @@ class Home extends CI_Controller
 	}
 
 	public function rth(){
+
+		$status = $this->input->get('status');
+		$data['status_filter'] = [];
+		$implode_status = null;
+
+		if($status){
+			
+
+			$status = base64_decode($status);
+			$status = json_decode($status, true);
+			$data['status_filter'] = $status;
+			$implode_status = '('.implode(',', $status).')';
+		}
+
+		// var_dump($status);
+		// die($implode_status);
+
+		
+		$data['rth'] = $this->M_Publik->get_rth(null,null,$implode_status);
+		$data['kategori'] = [];
+		$data['status'] = [];
+		$data['content'] = $this->load->view('publik/rth', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
+	public function pengaduan(){
 
 		$ktg = $this->input->get('ktg');
 		$data['kategori_filter'] = [];
@@ -52,10 +81,10 @@ class Home extends CI_Controller
 		}	
 
 		
-		$data['rth'] = $this->M_Publik->get_rth(null,$implode_ktg,$implode_status);
-		$data['kategori'] = [];
-		$data['status'] = [];
-		$data['content'] = $this->load->view('publik/rth', $data, true);
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan(null,$implode_ktg,$implode_status);
+		$data['kategori'] = $this->M_Publik->get_kategori_pengaduan();
+		$data['status'] = $this->M_Publik->get_status_pengaduan();
+		$data['content'] = $this->load->view('publik/pengaduan', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 
@@ -63,6 +92,14 @@ class Home extends CI_Controller
 		$data['rth'] = $this->M_Publik->get_rth_where($id);
 		// $data['komentar'] = $this->M_Publik->get_komentar($id);
 		$data['content'] = $this->load->view('publik/detail_rth', $data, true);
+		$this->load->view('layouts/index', $data);
+	}
+
+	public function detail_pengaduan($id){
+
+		$data['pengaduan'] = $this->M_Publik->get_pengaduan_where($id);
+		$data['komentar'] = $this->M_Publik->get_komentar($id);
+		$data['content'] = $this->load->view('publik/detail_pengaduan', $data, true);
 		$this->load->view('layouts/index', $data);
 	}
 
@@ -97,6 +134,7 @@ class Home extends CI_Controller
 
 		$data['rth'] = $this->M_Publik->get_rth_where($id);
 		$data['fasilitas'] = $this->M_Ref->getWhere('fasilitas_reservasi','id_rth',$id);
+		$data['jenis'] = $this->M_Ref->getAllResult('jenis_reservasi');
 		// $data['komentar'] = $this->M_Publik->get_komentar($id);
 		$data['content'] = $this->load->view('publik/buat_reservasi', $data, true);
 		$this->load->view('layouts/index', $data);
