@@ -175,39 +175,42 @@ class Pengaduan extends CI_Controller
 		$id_user = $this->input->post('id_user');
 
 		$data =  array(
-			'status' => $status
+			'id_status_pengaduan' => $status
 		);
 		$this->db->where('id_pengaduan', $id);
 		$update = $this->db->update('pengaduan', $data);
-		if($update){
-			if($status != '1'){
-				$pesan = null;
-				$color = 'primary';
-				if($status == 2){
-					$pesan = 'Pengaduan anda sedang dalam status penanganan';
-					$color = 'warning';
-				}elseif($status == 3){
-					$pesan = 'Pengaduan anda telah selesai';
-					$color = 'success';
-				}
+		
+		$this->setflashdata('pengaduan_message', 'Berhasil Update Status Pengaduan');
+		redirect('Pengaduan');
+		// if($update){
+		// 	if($status != '1'){
+		// 		$pesan = null;
+		// 		$color = 'primary';
+		// 		if($status == 2){
+		// 			$pesan = 'Pengaduan anda sedang dalam status penanganan';
+		// 			$color = 'warning';
+		// 		}elseif($status == 3){
+		// 			$pesan = 'Pengaduan anda telah selesai';
+		// 			$color = 'success';
+		// 		}
 
-				$data = array(
-					'id_user' => $id_user,
-					'id_pengaduan' => $id,
-					'pesan' => $pesan,
-					'color' => $color
+		// 		$data = array(
+		// 			'id_user' => $id_user,
+		// 			'id_pengaduan' => $id,
+		// 			'pesan' => $pesan,
+		// 			'color' => $color
 
-				);
-				$insert = $this->M_Ref->insertTable('notifikasi', $data);
+		// 		);
+		// 		$insert = $this->M_Ref->insertTable('notifikasi', $data);
 
-			}
-			$this->setflashdata('pengaduan_message', 'Berhasil Update Status Pengaduan');
-			redirect('Pengaduan');
-		}
-		else{
-			$this->setflashdata('pengaduan_message', 'Gagal Update Status Pengaduan', 'error');
-			redirect('Pengaduan');
-		}
+		// 	}
+		// 	$this->setflashdata('pengaduan_message', 'Berhasil Update Status Pengaduan');
+		// 	redirect('Pengaduan');
+		// }
+		// else{
+		// 	$this->setflashdata('pengaduan_message', 'Gagal Update Status Pengaduan', 'error');
+		// 	redirect('Pengaduan');
+		// }
 	}
 
 	public function setflashdata($flashId='message', $message='', $type='success')
