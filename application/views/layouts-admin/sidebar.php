@@ -136,7 +136,7 @@
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-table"></use>
                         </svg><span>Pengaduan</span></a>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Pengaduan')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Reservasi')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-table"></use>
                         </svg>
@@ -190,7 +190,7 @@
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-table"></use>
                         </svg><span>Pengaduan</span></a>
                     </li>
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Pengaduan')?>">
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Reservasi')?>">
                         <svg class="stroke-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-table"></use>
                         </svg>

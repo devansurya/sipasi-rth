@@ -96,18 +96,27 @@ class CI_Controller {
 			->get()
 			->row_array();
 
-			// $notifikasi = $CI->db->select('*,TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS menit,TIMESTAMPDIFF(HOUR, created_at, NOW()) AS jam')
-			// ->from('notifikasi n')
-			// ->where('n.id_user', $CI->session->userdata('id'))
-			// ->where('TIMESTAMPDIFF(HOUR, created_at, NOW()) < 2')
-			// ->limit(3)
-			// ->get()
-			// ->result_array();
+			if($CI->input->get('notif')){
+				$dataUpdate =  array(
+					'status_baca' => 1
+				);
+				$CI->db->where('id_notifikasi', $CI->input->get('notif'));
+				$updateNotif = $CI->db->update('notifikasi', $dataUpdate);
+			}
+
+			$notifikasi = $CI->db->select('*,TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS menit,TIMESTAMPDIFF(HOUR, created_at, NOW()) AS jam')
+			->from('notifikasi n')
+			->where('n.id_user', $CI->session->userdata('id'))
+			->where('TIMESTAMPDIFF(HOUR, created_at, NOW()) < 2')
+			->where('n.status_baca', 0)
+			->limit(3)
+			->get()
+			->result_array();
 
 
 			$CI->load->vars(array(
 				'profile'    => $profile,
-				// 'notifikasi'    => $notifikasi,
+				'notifikasi'    => $notifikasi,
 			));
 		} else {
 			$CI->load->vars(array(
