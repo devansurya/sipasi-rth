@@ -131,7 +131,9 @@ class Home extends CI_Controller
 	}
 
 	public function buat_reservasi($id){
-
+		if (!$this->session->userdata('id')) {
+            redirect('Auth');
+        }
 		$data['rth'] = $this->M_Publik->get_rth_where($id);
 		$data['fasilitas'] = $this->M_Ref->getWhere('fasilitas_reservasi','id_rth',$id);
 		$data['jenis'] = $this->M_Ref->getAllResult('jenis_reservasi');
@@ -190,6 +192,29 @@ class Home extends CI_Controller
 		else{
 			$this->setflashdata('pengaduan_message', 'Gagal Tambah Pengaduan', 'error');
 			redirect('Home/buat_pengaduan' . $this->input->post('id_rth'));
+		}
+	}
+
+	public function add_reservasi(){
+
+		$data = array(
+			'id_jenisreservasi' => $this->input->post('jenis'),
+			'id_user' => $this->session->userdata('id'),
+			'id_rth' => $this->input->post('id_rth'),
+			'id_fasilitas_reservasi' => $this->input->post('fasilitas'),
+			'tanggal_reservasi' => $this->input->post('tanggal'),
+			'deskripsi_reservasi' => $this->input->post('deskripsi')
+
+		);
+		$insert = $this->M_Ref->insertTable('reservasi', $data);
+
+		if($insert){
+			$this->setflashdata('reservasi_message', 'Berhasil buat reservasi anda, silahkan <a class="text-info fs-14" href="' . base_url('Dashboard') . '">klik di sini</a> untuk melihat detail reservasi anda');
+			redirect('Home/buat_reservasi/' . $this->input->post('id_rth'));
+		}
+		else{
+			$this->setflashdata('reservasi_message', 'Gagal buat reservasi', 'error');
+			redirect('Home/buat_reservasi' . $this->input->post('id_rth'));
 		}
 	}
 
