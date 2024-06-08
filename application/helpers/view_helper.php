@@ -11,6 +11,15 @@
 			case 'selesai':
 				$html = "<span class=\"badge rounded-pill badge-light-success\">{$statusName}</span>";
 				break;
+			case 'proses':
+				$html = "<span class=\"badge rounded-pill badge-warning text-light\">{$statusName}</span>";
+				break;
+			case 'disetujui':
+				$html = "<span class=\"badge rounded-pill badge-success text-light\">{$statusName}</span>";
+				break;
+			case 'ditolak':
+				$html = "<span class=\"badge rounded-pill badge-danger text-light\">{$statusName}</span>";
+				break;
 			default:
 				$html = "<span class=\"badge rounded-pill badge-light-info\">-</span>";
 				break;

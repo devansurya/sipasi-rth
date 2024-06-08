@@ -1,0 +1,33 @@
+{
+    "rubik": {
+        "italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_italic_52a827da89ca9cc5802f61bc5130dbfe",
+        "500_italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_500_italic_e3af3fe29c49c0f5ab4fab85176b9a87",
+        "bold_italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_bold_italic_78dc1dbf909f98674340230a3c39fa1b",
+        "normal": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_normal_c61264b92c656fd940787da5b1c92fc7",
+        "500": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_500_91d84482f7b560fef2e808cae6771530",
+        "bold": "rubik_bold_730f9bbb39869f9ea91cedbe79838377"
+    },
+    "roboto": {
+        "300_italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_300_italic_60fd1c5c48964f53c185886d78f6dd92",
+        "italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_italic_d5c10dd70a66238a4d11751aca1ac2f6",
+        "500_italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_500_italic_cb3389574fec6f0962ed3b8e8df3657a",
+        "bold_italic": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_bold_italic_3c4c982d93d98be963531fd17b72c633",
+        "300": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_300_21960201651f2ea862182ff34dfd5ead",
+        "normal": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_normal_9fa47a070a8b30b595086d70bb7ac78c",
+        "500": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_500_d0dcda9e813eb9b854a1cc044831f6fe",
+        "bold": "C:\\laragon\\www\\sipasi-rth\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_bold_3d0ad20d45ace845335f9e6c390a09d9",
+        "900": "roboto_900_509a5e5b153550862359e315131088d5"
+    },
+    "fontawesome": {
+        "normal": "fontawesome_normal_548457aadcbf4fa5390c2498dcdba5cd"
+    },
+    "icofont": {
+        "normal": "icofont_normal_1195332e0f114482affb0e84c8b409ea"
+    },
+    "themify": {
+        "normal": "themify_normal_ac9bd1c8675fea9903f5313d765d460d"
+    },
+    "slick": {
+        "normal": "slick_normal_8bb57fa86bca75fc0f193067d2e8133c"
+    }
+}

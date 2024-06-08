@@ -25,6 +25,48 @@
                 </svg>
             </div>
             </li>
+            <?php if($this->session->userdata('id_role') == 3) { ?>
+                <li class="onhover-dropdown">
+                    <div class="notification-box">
+                        <svg>
+                            <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#notification"></use>
+                            </svg><?php if(count($notifikasi) > 0) { ?><span class="badge rounded-pill badge-secondary"><?= count($notifikasi); ?> </span><?php } ?>
+                        </div>
+                        <div class="onhover-show-div notification-dropdown">
+                            <h6 class="f-18 mb-0 dropdown-title">Notitications                               </h6>
+                            <ul>
+                                <?php if(!empty($notifikasi)){
+                                    foreach ($notifikasi as $n) { ?>
+                                        <?php if($n['type'] == 'pengaduan') : ?>
+                                            <a class="mb-2 " href="<?= base_url("Pengaduan/detail_pengaduan/{$n['id_ref']}")?>?notif=<?= $n['id_notifikasi']; ?>">
+                                                <?php else: ?>
+                                                    <a class="mb-2 " href="<?= base_url("Reservasi/detail_reservasi/{$n['id_ref']}")?>?notif=<?= $n['id_notifikasi']; ?>">
+                                                    <?php endif; ?>
+                                                    <li class="b-l-<?= $n['color']; ?> border-4 text-start mb-2">
+                                                        <p class="font-dark"><?= $n['pesan']; ?></p>
+                                                        <p class="font-<?= $n['color']; ?>">
+                                                            <?php if($n['jam'] > 0){ ?>
+
+                                                                <?= $n['jam']; ?> jam
+
+                                                            <?php }else{ ?>
+                                                                <?php if($n['menit'] > 0){ ?>
+                                                                    <?= $n['menit']; ?> menit
+                                                                <?php }else{ ?>
+                                                                    Baru saja
+                                                                <?php } ?>
+                                                            <?php } ?>
+
+                                                        </p>
+                                                    </li>
+                                                </a>
+                                            <?php }}else{ ?>
+                                                <p class="text-center">Belum ada notifikasi</p>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                </li>
+                            <?php } ?>
         
             <li class="profile-nav onhover-dropdown pe-0 py-0">
             <div class="media profile-media"><img class="img-40 rounded-circle" src="<?= base_url('upload-profile/'. $profile['foto_profile'])?>" alt="">
@@ -32,7 +74,7 @@
                     <p class="mb-0"><?= $this->session->userdata('role') ? $this->session->userdata('role') : ''; ?> <i class="middle fa fa-angle-down"></i></p>
                 </div>
             </div>
-            <ul class="profile-dropdown onhover-show-div">
+            <ul style="margin-top: -25px" class="profile-dropdown onhover-show-div">
                 <?php if($this->session->userdata('role') == 'Mahasiswa') : ?>
                     <li><a href="<?= base_url('User/Profile/' . $this->session->userdata('id')); ?>"><i data-feather="user"> </i><span>Profile</span></a></li>
                 <?php endif;?>
