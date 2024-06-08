@@ -21,8 +21,14 @@
       <div class="col-xl-10 mx-auto mt-5">
         <div class="row gy-10 gx-lg-8 gx-xl-12">
           <div class="col-lg-8">
-            <form class="contact-form needs-validation" method="post" action="./assets/php/contact.php" novalidate>
-              <div class="messages"></div>
+            <form class="reservasi-form" method="post" action="<?= base_url('Home/add_reservasi'); ?>">
+              <div class="messages">
+                <?php if ($this->session->flashdata('reservasi_message')): ?>
+                  <?php echo $this->session->flashdata('reservasi_message'); ?>
+                  <?php $this->session->unset_userdata('reservasi_message'); ?>
+                <?php endif; ?>
+              </div>
+              <input type="hidden" name="id_rth" value="<?= $rth->id_rth; ?>">
               <div class="row gx-4">
                 <div class="col-12 mb-4"> 
                   <select class="form-select" name="fasilitas" required="" id="fasilitas">
@@ -50,7 +56,7 @@
 
                 <div class="col-12 mb-4"> 
                   <select class="form-select" name="jenis" required="">
-                    <option value="" selected="" disabled="" >Pilih Jenis Pengaduan</option>
+                    <option value="" selected="" disabled="" >Pilih Jenis Kebutuhan</option>
                     <?php foreach ($jenis as $j): ?>
                       <option value="<?= $j->id_jenisreservasi ?>"><?= $j->jenis_reservasi ?> </option>
                     <?php endforeach ?>
@@ -70,7 +76,7 @@
                 <!-- /column -->
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
-                    <input id="form_lastname" type="date" name="surname" class="form-control" placeholder="Doe" required>
+                    <input id="form_lastname" type="date" name="tanggal" class="form-control" placeholder="Doe" required>
                     <label for="form_lastname">Tanggal Reservasi *</label>
                     
                     <div class="invalid-feedback">
@@ -92,7 +98,7 @@
                 <!-- /column -->
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
-                    <input id="form_email" type="number" name="email" class="form-control" placeholder="jane.doe@example.com" value="<?= $this->session->userdata('id') ? $this->session->userdata('telp') : ''; ?>" readonly required>
+                    <input id="form_email" type="number" name="telp" class="form-control" placeholder="jane.doe@example.com" value="<?= $this->session->userdata('id') ? $this->session->userdata('telp') : ''; ?>" readonly required>
                     <label for="form_email">No Telp *</label>
                     
                     <div class="invalid-feedback">
@@ -103,8 +109,8 @@
                 <!-- /column -->
                 <div class="col-12">
                   <div class="form-floating mb-4">
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
-                    <label for="form_message">Kepentingan *</label>
+                    <textarea id="form_message" name="deskripsi" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
+                    <label for="form_message">Detail Tujuan Reservasi *</label>
                     
                     <div class="invalid-feedback">
                       Silahkan isi kepentingan anda
