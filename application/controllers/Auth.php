@@ -7,7 +7,7 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_Dokumentasi');
-		$this->load->model('M_Guru');
+		$this->load->model('M_Publik');
 	}
 
 	public function index(){
@@ -16,7 +16,7 @@ class Auth extends CI_Controller
         }elseif($this->session->userdata('id_role') == 2){
             redirect('Dashboard');
         }elseif($this->session->userdata('id_role') == 3){
-            redirect('Dashboard');
+            redirect('Home');
         }
 
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
@@ -33,7 +33,7 @@ class Auth extends CI_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $user = $this->db->select('user.id_user, user.email, user.password, user_role.id_role, user_profile.nama, role.role, user.is_active')
+        $user = $this->db->select('user.id_user, user.email, user.password, user_role.id_role, user_profile.nama, role.role, user.is_active, user_profile.no_telp')
 		->from('user')->join('user_profile', 'user.id_user = user_profile.id_user', 'left')
         ->join('user_role', 'user.id_user = user_role.id_user', 'left')
         ->join('role', 'user_role.id_role = role.id_role', 'left')
@@ -49,6 +49,7 @@ class Auth extends CI_Controller
                         'role' => $user['role'],
                         'nama' => $user['nama'],
                         'password' => $user['password'],
+                        'telp' => $user['no_telp']
                     ];
                     $this->session->set_userdata($data);
                     if ($user['id_role'] == 1) {
@@ -56,7 +57,7 @@ class Auth extends CI_Controller
                     } elseif ($user['id_role'] == 2) {
                         redirect('Dashboard');
                     } elseif ($user['id_role'] == 3) {
-                        redirect('Dashboard');
+                        redirect('Home');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-secondary dark alert-dismissible fade show" role="alert">Password salah.<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>');

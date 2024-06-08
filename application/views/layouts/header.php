@@ -27,8 +27,13 @@
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" href="<?= base_url('Home'); ?>">Beranda</a>
                 </li>
-                <li class="nav-item dropdown dropdown-mega">
-                  <a class="nav-link scroll-section" href="<?= base_url('Home/rth'); ?>">RTH</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Layanan</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Home/rth'); ?>">RTH</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Home/pengaduan'); ?>">Pengaduan</a></li>
+                    
+                  </ul>
                 </li>
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link scroll-section" href="<?= base_url('Home/kontak'); ?>">Kontak</a>
@@ -61,7 +66,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><?= !empty($profile) ? $profile['nama'] : ''; ?> </a>
                   <ul class="dropdown-menu">
-                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/index'); ?>">Reservasiku</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Dashboard'); ?>">Reservasiku</a></li>
                     <li class="nav-item"><a class="dropdown-item" href="<?= base_url('Auth/logout'); ?>">Keluar</a></li>
                   </ul>
                 </li>

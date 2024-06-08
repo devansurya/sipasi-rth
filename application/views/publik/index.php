@@ -68,7 +68,7 @@
       </div>
     </section>
 
-    <section class="wrapper bg-gradient-primary" id="pengaduan-terbaru-section">
+    <section class="wrapper bg-gradient-primary" id="rth-section">
       <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
         <div class="row text-center">
           <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -141,7 +141,7 @@
               <!-- /.swiper -->
             </div>
             <!-- /.swiper-container -->
-            <a style="margin-top: -10px" href="<?= base_url('Home/pengaduan'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
+            <a style="margin-top: -10px" href="<?= base_url('Home/rth'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
               <i class="uil uil-arrow-right"></i>
               <span>Semua RTH</span>
             </a>
@@ -152,50 +152,89 @@
       <!-- /.container -->
     </section>
         <!--/.card -->
-        <section class="wrapper bg-light">
-      <div class="container ">
-        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
-          <div class="col-md-8 col-lg-6 position-relative">
-            <div class="shape bg-soft-primary rounded-circle rellax w-20 h-20" data-rellax-speed="1" style="top: -2rem; left: -1.9rem;"></div>
-            <figure class="rounded"><img src="./assets/img/photos/about10.jpg" srcset="./assets/img/photos/about10@2x.jpg 2x" alt=""></figure>
-          </div>
-          <!--/column -->
-          <div class="col-lg-6">
-            <h2 class="display-4 mb-3">Who Are We?</h2>
-            <p class="lead fs-lg">We are a digital and branding company that believes in the power of <span class="underline">creative strategy</span> and along with great design.</p>
-            <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-            <div class="row gx-xl-10 gy-6">
-              <div class="col-md-6">
-                <div class="d-flex flex-row">
-                  <div>
-                    <img src="./assets/img/icons/lineal/target.svg" class="svg-inject icon-svg icon-svg-sm me-4" alt="" />
-                  </div>
-                  <div>
-                    <h4 class="mb-1">Our Mission</h4>
-                    <p class="mb-0">Dapibus eu leo quam ornare curabitur blandit tempus.</p>
-                  </div>
-                </div>
+        <section class="wrapper bg-light" id="pengaduan-terbaru-section">
+          <div class="container pt-12 pt-lg-8 pb-14 pb-md-17">
+            <div class="row text-center">
+              <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <h2 class="fs-16 text-uppercase text-primary mb-3"></h2>
+                <h3 class="display-3 mb-10 px-xxl-10">Pengaduan Terbaru</h3>
               </div>
-              <!--/column -->
-              <div class="col-md-6">
-                <div class="d-flex flex-row">
-                  <div>
-                    <img src="./assets/img/icons/lineal/award-2.svg" class="svg-inject icon-svg icon-svg-sm me-4" alt="" />
-                  </div>
-                  <div>
-                    <h4 class="mb-1">Our Values</h4>
-                    <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.</p>
-                  </div>
-                </div>
-              </div>
-              <!--/column -->
+              <!-- /column -->
             </div>
-            <!--/.row -->
+            <!-- /.row -->
+            <div class="position-relative">
+              <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: -1.7rem; left: -1.7rem;"></div>
+              <div class="swiper-container grid-view nav-color mb-6" data-margin="30" data-dots="true" data-nav="true" data-items-md="3" data-items-md="2" data-items-xs="1">
+                <div class="swiper">
+                  <div class="swiper-wrapper delay-section">
+                    <?php if(isset($pengaduan)){
+                      foreach($pengaduan as $p){ ?>
+                        <div class="swiper-slide">
+                          <article>
+                            <figure class="overlay overlay-1 hover-scale rounded mb-5" style="height: 200px;"><a href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>"> <img src="<?= base_url(); ?>assets/img/upload/<?= $p['foto']; ?>" alt="Foto Pengaduan" /></a>
+                              <figcaption>
+                                <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                              </figcaption>
+                            </figure>
+                            <div class="post-header">
+                              <div class="post-category text-line">
+                                <a href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>" class="hover" rel="category"><?= $p['jenis_pengaduan']; ?></a>
+                              </div>
+                              <!-- /.post-category -->
+                              <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>"><?= $p['subjek']; ?></a></h2>
+                            </div>
+                            <!-- /.post-header -->
+
+                            <div class="post-content">
+                              <p>
+                                <?php 
+                                $text = $p['deskripsi_pengaduan'];
+                                $limit = 200;
+
+                                if (strlen($text) > $limit) {
+                                  $shortenedText = substr($text, 0, $limit);
+
+                                  $shortenedText .= " ...";
+
+                                  echo $shortenedText;
+                                } else {
+                                  echo $text; 
+                                }
+
+                                ?>
+                              </p>
+                            </div>
+
+                            <div class="post-footer">
+                              <ul class="post-meta">
+                                <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo date('d M Y', strtotime($p['create_date'])); ?></span></li>
+                                <li class="post-comments"><a href="<?= base_url('Home/detail_pengaduan') ?>/<?= $p['id_pengaduan']; ?>"><i class="uil uil-comment"></i><?= $p['jumlah_komentar']; ?></a></li>
+                              </ul>
+                              <!-- /.post-meta -->
+                            </div>
+                            <!-- /.post-footer -->
+                          </article>
+                          <!-- /article -->
+                        </div>
+                        <!--/.swiper-slide -->
+                      <?php }} ?>
+
+                </div>
+                <!-- /.swiper-wrapper -->
+              </div>
+              <!-- /.swiper -->
+            </div>
+            <!-- /.swiper-container -->
+            <a style="margin-top: -10px" href="<?= base_url('Home/pengaduan'); ?>" class="btn btn-expand btn-primary rounded-pill float-end">
+              <i class="uil uil-arrow-right"></i>
+              <span>Semua Pengaduan</span>
+            </a>
           </div>
-          <!--/column -->
+
+          <!--/.row -->
         </div>
-      </div>
-    </section>
+        <!-- /.container -->
+      </section>
         <!--/.row -->
         <section class="wrapper bg-gradient-reverse-primary">
       <div class="container pb-14 pb-md-16">
