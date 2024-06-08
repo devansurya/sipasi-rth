@@ -30,19 +30,19 @@
                             <form>
                                 <div class="row mb-2">
                                     <div class="profile-title">
-                                        <div class="media"><img class="img-70 rounded-circle" alt="" src="<?= base_url('upload-profile/'. $profile['image'])?>">
+                                        <div class="media"><img class="img-70 rounded-circle" alt="" src="<?= base_url('upload-profile/'. $profile['foto_profile'])?>">
                                         <div class="media-body">
                                             <h5 class="mb-1"><?= $profile['nama']; ?></h5>
-                                            <p>Mahasiswa</p>
+                                            <p><?= $profile['role']; ?></p>
                                         </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">NIM</label>
                                             <input class="form-control" type="number" value="<?= $profile['nim']; ?>" disabled>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- <div class="form-footer">
                                     <a href="<?= base_url('User/editProfile/'. $profile['id_user'])?>" class="btn btn-primary btn-block">Update</a>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-xl-8">
                     <form action="<?= base_url('UserManagement/aktivasiAkun')?>" method="POST" class="card">
-                        <input type="hidden" value="<?= $profile['id_contact']; ?>" name="id_contact">
+                        <input type="hidden" value="<?= $profile['id_userprofile']; ?>" name="id_contact">
                         <input type="hidden" value="<?= $profile['id_user']; ?>" name="id_user">
                         <div class="card-header">
                         <h4 class="card-title mb-0">Edit Profile</h4>
@@ -82,7 +82,7 @@
                                 <div class="col-sm-6 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Telp</label>
-                                    <input class="form-control" type="number" placeholder="No Telepon" value="<?= $profile['telp']; ?>" name="telp" disabled>
+                                    <input class="form-control" type="number" placeholder="No Telepon" value="<?= $profile['no_telp']; ?>" name="telp" disabled>
                                 </div>
                                 </div>
                                 <div class="col-md-5">
@@ -100,8 +100,8 @@
                                     <label class="form-label">Aktivasi Akun</label>
                                     <select class="form-control btn-square" name="status">
                                         <option value="">Pilih Status</option>
-                                        <option value="1" <?= ($profile['status'] == 1) ? 'selected' : '' ?>>Aktif</option>
-                                        <option value="0" <?= ($profile['status'] != 1) ? 'selected' : '' ?>>Non Aktif</option>
+                                        <option value="1" <?= ($profile['is_active'] == 1) ? 'selected' : '' ?>>Aktif</option>
+                                        <option value="0" <?= ($profile['is_active'] != 1) ? 'selected' : '' ?>>Non Aktif</option>
                                     </select>
                                 </div>
                                 </div>

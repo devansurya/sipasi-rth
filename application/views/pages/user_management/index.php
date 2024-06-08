@@ -40,7 +40,7 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Tanggal dibuat</th>
-                            <th>Status Akun</th>
+                            <!-- <th>Status Akun</th> -->
                             <th>Action</th>
                             </tr>
                         </thead>
@@ -51,18 +51,18 @@
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['email'] ?></td>
                                 <td><?= $data['role'] ?></td>
-                                <td><?php echo date('d/m/y H:i:s',strtotime($data['created_at'])) ?></td>
-                                <td>
+                                <td><?php echo date('d/m/y H:i:s',strtotime($data['create_date'])) ?></td>
+                                <!-- <td>
                                     <?php if($data['status'] == 1) { ?>
                                         <span class="badge rounded-pill badge-light-info"><p>Aktif</p></span>
                                     <?php }else{ ?>
                                         <span class="badge rounded-pill badge-light-danger"><p>Non Aktif</p></span>
                                     <?php } ?>   
-                                </td>
+                                </td> -->
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("UserManagement/detail_user/{$data['id_user']}")?>"><i class="icon-pencil"></i></a></li>
-                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_user'] ?>', '<?= $data['id_contact'] ?>')"><i class="icon-trash"></i></a></li>
+                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_user'] ?>', '<?= $data['id_userprofile'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
