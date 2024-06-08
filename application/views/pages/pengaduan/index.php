@@ -53,7 +53,7 @@
                             <?php $no = 1; foreach ($data as $data): ?>
                             <tr>
                                 <td><?= $no; ?></td>
-                                <?php if($this->session->userdata('id_role') != 2){ ?>
+                                <?php if($this->session->userdata('id_role') != 3){ ?>
                                     <td><?= $data['nama_pengadu'] ?></td>
                                 <?php } ?>
                                 <td><?= $data['nama_rth'] ?></td>
@@ -76,7 +76,7 @@
                                     ?>
                                         
                                 </td>
-                                <td><?= $data['jenis_pengaduan'] ?></td>
+                                <td><?= getStatusbadge($data['status']) ?></td>
                                 <td><?php echo date('d/m/y H:i:s',strtotime($data['create_date'])) ?></td>
                                 <td> 
                                     <ul class="action"> 
