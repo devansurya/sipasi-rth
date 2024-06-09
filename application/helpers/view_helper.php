@@ -20,6 +20,9 @@
 			case 'ditolak':
 				$html = "<span class=\"badge rounded-pill badge-danger text-light\">{$statusName}</span>";
 				break;
+			case 'dibatalkan':
+				$html = "<span class=\"badge rounded-pill badge-danger text-light\">{$statusName}</span>";
+				break;
 			default:
 				$html = "<span class=\"badge rounded-pill badge-light-info\">-</span>";
 				break;

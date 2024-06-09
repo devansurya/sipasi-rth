@@ -81,7 +81,7 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Reservasi/detail_reservasi/{$data['id_reservasi']}")?>"><i class="icon-eye"></i></a></li>
-                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_reservasi'] ?>')"><i class="icon-trash"></i></a></li>
+                                    <!-- <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_reservasi'] ?>')"><i class="icon-trash"></i></a></li> -->
                                     </ul>
                                 </td>
                             </tr>
