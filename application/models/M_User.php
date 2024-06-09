@@ -7,7 +7,7 @@ class M_User extends CI_Model {
 	{  
 		$data = array('status' => 1);  
 		$this->db->where('md5(email)', $key);  
-		return $this->db->update('contact', $data);  
+		return $this->db->update('user', $data);  
 	}
 
 	public function getProfile($id)

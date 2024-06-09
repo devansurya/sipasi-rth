@@ -17,7 +17,7 @@ class Registrasi extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
         // $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('telp', 'No Telepon', 'required');  
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[contact.email]');  
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');  
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[15]');  
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/register');
@@ -29,41 +29,42 @@ class Registrasi extends CI_Controller
 	private function _registrasi()
     {
        
-        $id_role = 2;
-        $status = 0;
-        $nim = $this->input->post('nim');
+        $id_role = 3;
+        $status = 1;
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
         $telp = $this->input->post('telp');
 
-        $data1 = array(
-            'nim' => $nim,
-            'nama' => $nama,
-            'email' => $email,
-            'telp' => $telp,
-            'status' => $status
-        );
-
-        // Insert data1 to 'contact' table
-        $this->M_Ref->insertTable('contact', $data1);
-
-        // Get the inserted contact ID
-        $id_contact = $this->db->insert_id();
-
         $password = $this->input->post('password');  
-        $passhash = hash('md5', $password);  
-        $saltid = md5($email);
+        $passhash = hash('md5', $password); 
 
         $data2 = array( 
-            'username' => $nim,  
+            'email' => $email,  
             'password' => $passhash,
-            'id_role' => $id_role,
-            'id_contact' => $id_contact  
+            'is_active' => $status  
         );  
 
         $this->M_Ref->insertTable('user', $data2);
+        $id_user = $this->db->insert_id();
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Akun berhasil dibuat. Tunggu di Aktivasi oleh Admin</div>');  
+        $data1 = array(
+            'nama' => $nama,
+            'no_telp' => $telp,
+            'id_user' => $id_user,
+        );
+
+        $this->M_Ref->insertTable('user_profile', $data1); 
+
+        $data3 = array( 
+            'id_role' => $id_role,  
+            'id_user' => $id_user 
+        );  
+
+        $this->M_Ref->insertTable('user_role', $data3);
+
+        $saltid = md5($email);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Akun berhasil dibuat. Silahkan login</div>');  
         redirect('Registrasi');
 
         // Insert data2 to 'user' table
