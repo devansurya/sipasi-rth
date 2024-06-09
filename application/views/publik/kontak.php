@@ -82,7 +82,12 @@
             <h2 class="display-4 mb-3 text-center">Kontak Kami</h2>
             <p class="lead text-center mb-10">Silahkan berikan saran atau ajukan pertanyaan terkait aplikasi SIPASI.</p>
             <form class="contact-form" method="post" action="<?= base_url('Home/hubungi_kami'); ?>">
-              <div class="messages"></div>
+              <div class="messages">
+                <?php if ($this->session->flashdata('kontak_message')): ?>
+                  <?php echo $this->session->flashdata('kontak_message'); ?>
+                  <?php $this->session->unset_userdata('kontak_message'); ?>
+                <?php endif; ?>
+              </div>
               <div class="row gx-4">
                 <div class="col-md-6">
                   <div class="form-floating mb-4">
