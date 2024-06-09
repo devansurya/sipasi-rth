@@ -60,7 +60,7 @@ class RTH extends CI_Controller
 
 			if($aksi){
 				$return = ['status' => true, 'message' => 'Berhasil menambah petugas'];
-				
+
 			}else{
 				$return = ['status' => false, 'message' => 'Gagal menambah petugas'];
 			}
@@ -70,7 +70,7 @@ class RTH extends CI_Controller
 
 			if($aksi){
 				$return = ['status' => true, 'message' => 'Berhasil hapus petugas'];
-				
+
 			}else{
 				$return = ['status' => false, 'message' => 'Gagal menambah petugas'];
 			}
@@ -81,5 +81,169 @@ class RTH extends CI_Controller
 
 		echo json_encode($return);
 	}
+
+	public function edit_rth($id){
+		
+		$data['rth'] = $this->M_Ref->getWhereRow('rth','id_rth',$id);
+		$data['fasilitas'] = $this->M_Ref->getWhere('fasilitas_reservasi','id_rth',$id);
+		$data['content'] = $this->load->view('pages/rth/edit', $data, true);
+
+		return $this->load->view('layouts-admin/index', $data);
+
+	}
+
+	public function add_fasilitas(){
+
+		$config['upload_path'] = './assets/img/upload/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		// $config['max_size'] = '3000';
+		// $config['max_width'] = '1024';
+		// $config['max_height'] = '1000';
+		$config['file_name'] = 'img' . time();
+		$this->load->library('upload', $config);
+
+		$this->upload->initialize($config);
+
+		if ($this->upload->do_upload('foto')) {
+			$image = $this->upload->data();
+			$gambar = $image['file_name'];
+		} else {
+			$gambar = null;
+		}
+
+		if(!$this->input->post('id_fasilitas')){
+			$data = array(
+				'id_rth' => $this->input->post('id_rth'),
+				'nama' => $this->input->post('nama'),
+				'luas' => $this->input->post('luas'),
+				'kapasitas' => $this->input->post('kapasitas'),
+				'deskripsi' => $this->input->post('deskripsi'),
+				'foto' => $gambar,
+
+			);
+			$insert = $this->M_Ref->insertTable('fasilitas_reservasi', $data);
+
+			if($insert){
+				$this->setflashdata('rth_message', 'Fasilitas berhasil ditambahkan');
+			}else{
+				$this->setflashdata('rth_message', 'Fasilitas gagal ditambahkan', 'danger');
+			}
+		}else{
+			$data = array(
+				'id_rth' => $this->input->post('id_rth'),
+				'nama' => $this->input->post('nama'),
+				'luas' => $this->input->post('luas'),
+				'kapasitas' => $this->input->post('kapasitas'),
+				'deskripsi' => $this->input->post('deskripsi')
+
+			);
+
+			if($gambar){
+				$data['foto'] = $gambar;
+			}
+
+
+			$this->db->where('id_fasilitas_reservasi', $this->input->post('id_fasilitas'));
+			$update = $this->db->update('fasilitas_reservasi', $data);
+
+			if($update){
+				$this->setflashdata('rth_message', 'Fasilitas berhasil diupdate');
+			}else{
+				$this->setflashdata('rth_message', 'Fasilitas gagal diupdate', 'danger');
+			}
+
+		}
+
+		redirect('RTH/edit_rth/'. $this->input->post('id_rth'));
+	}
+
+	public function delete_fasilitas($id,$id_rth = null){
+
+		$this->db->where('id_fasilitas_reservasi', $id);
+		$delete = $this->db->delete('fasilitas_reservasi');
+
+		if($delete){
+			$this->setflashdata('rth_message', 'Fasilitas berhasil dihapus');
+		}else{
+			$this->setflashdata('rth_message', 'Fasilitas gagal dihapus', 'danger');
+		}
+		redirect('RTH/edit_rth/'. $id_rth);
+
+	}
+
+	public function get_row_fasilitas(){
+		$data = $this->M_Ref->getWhereRow('fasilitas_reservasi','id_fasilitas_reservasi',$this->input->post('id'));
+		echo json_encode($data);
+	}
+
+	public function update_rth(){
+
+		$config['upload_path'] = './assets/img/upload/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		// $config['max_size'] = '3000';
+		// $config['max_width'] = '1024';
+		// $config['max_height'] = '1000';
+		$config['file_name'] = 'img' . time();
+		$this->load->library('upload', $config);
+
+		$this->upload->initialize($config);
+
+		if ($this->upload->do_upload('lampiran')) {
+			$image = $this->upload->data();
+			$gambar = $image['file_name'];
+		} else {
+			$gambar = null;
+		}
+
+		$data = array(
+			'nama_rth' => $this->input->post('nama_rth'),
+			'deskripsi_rth' => $this->input->post('deskripsi_rth'),
+			'kecamatan' => $this->input->post('kecamatan'),
+			'kelurahan' => $this->input->post('kelurahan'),
+			'alamat' => $this->input->post('alamat'),
+			'status_reservasi' => $this->input->post('status_reservasi') ? 1 : 0,
+
+
+		);
+
+		if($gambar){
+			$data['foto_rth'] = $gambar;
+		}
+
+
+		$this->db->where('id_rth', $this->input->post('id_rth'));
+		$update = $this->db->update('rth', $data);
+
+		if($update){
+			$this->setflashdata('rth_message', 'RTH berhasil diupdate');
+		}else{
+			$this->setflashdata('rth_message', 'RTH gagal diupdate', 'danger');
+		}
+
+		redirect('RTH');
+	}
+
+	public function get_kec(){
+
+		$data = $this->M_Ref->getKec();
+
+		echo json_encode($data);
+	}
+
+	public function get_kel(){
+
+		$data = $this->M_Ref->getKel();
+
+		echo json_encode($data);
+	}
+
+	public function setflashdata($flashId='message', $message='', $type='success')
+    {
+        $this->session->set_flashdata($flashId, "
+            <div class=\"alert alert-{$type} dark alert-dismissible fade show\" role=\"alert\">
+                {$message}
+                <button class=\"btn-close\" type=\"button\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
+            </div>");
+    }
 
 }
