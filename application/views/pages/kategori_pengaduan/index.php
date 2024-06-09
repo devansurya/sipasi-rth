@@ -73,7 +73,7 @@
                 </div>
                 <div class="modal-body dark-modal">
                     <label class="form-label"><h6>Nama Jenis Pengaduan :</h6></label>
-                    <input type="text" name="kategori" class="form-control" required>
+                    <input type="text" name="jenis" class="form-control" required>
                 </div>
                 <div class="modal-body dark-modal">
                     <label class="form-label"><h6>Deskripsi :</h6></label>

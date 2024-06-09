@@ -10,7 +10,7 @@
                         <input type="hidden" value="<?= $kategori['id_jenispengaduan']?>" name="id_jenispengaduan">
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Nama Kategori</label>
-                            <input type="text" class="form-control" name="kategori" value="<?= $kategori['jenis_pengaduan']?>">
+                            <input type="text" class="form-control" name="jenis" value="<?= $kategori['jenis_pengaduan']?>">
                         </div>
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Deskripsi Kategori</label>
