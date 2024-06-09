@@ -6,12 +6,12 @@
         <div class="col-xl-12">
             <div class="card height-equal">
                  <div class="card-header d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Detail Reservasi</h4>
-                <?= getStatusbadge($data->status) ?>
+                <h4 class="mb-0">Edit Reservasi</h4>
             </div>
                 <?= $this->session->flashdata('reservasi_message');unset($_SESSION['reservasi_message']); ?>
                 <div class="container mt-2">
-
+                    <form method="post" action="<?= base_url('Reservasi/update_reservasi'); ?>">
+                        <input type="hidden" name="id_reservasi" value="<?= $data->id_reservasi; ?>">
                     <!-- Informasi Pengguna -->
                     <div class="card mb-4">
                         <div class="card-header">
@@ -44,7 +44,7 @@
                             <table class="table table-detail">
                                 <tr>
                                     <th>Tanggal Reservasi</th>
-                                    <td><?= date('d/m/Y', strtotime($data->tanggal_reservasi)); ?></td>
+                                    <td><input id="form_lastname" type="date" name="tanggal" class="form-control" placeholder="Doe" required value="<?= $data->tanggal_reservasi ? $data->tanggal_reservasi : ''; ?>"></td>
                                 </tr>
                                 <tr>
                                     <th>RTH</th>
@@ -52,7 +52,16 @@
                                 </tr>
                                 <tr>
                                     <th>Fasilitas</th>
-                                    <td><?= $data->nama_fasilitas; ?></td>
+                                    <td><select class="form-select" name="fasilitas" required="" id="fasilitas">
+                                        <option value="" selected="" disabled="" >Pilih Fasilitas</option>
+                                        <?php foreach ($fasilitas as $fs): ?>
+                                            <?php if($fs['id_fasilitas_reservasi'] == $data->id_fasilitas_reservasi) : ?>
+                                              <option selected value="<?= $fs['id_fasilitas_reservasi']; ?>"><?= $fs['nama']; ?> </option>
+                                              <?php else: ?>
+                                                <option value="<?= $fs['id_fasilitas_reservasi']; ?>"><?= $fs['nama']; ?> </option>
+                                            <?php endif; ?>
+                                        <?php endforeach ?>
+                                    </select></td>
                                 </tr>
                                 <tr>
                                     <th>Foto RTH</th>
@@ -60,11 +69,21 @@
                                 </tr>
                                 <tr>
                                     <th>Kategori Reservasi</th>
-                                    <td><?= $data->jenis_reservasi; ?></td>
+                                    <td><select class="form-select" name="jenis" required="">
+                                        <option value="" selected="" disabled="" >Pilih Jenis Kebutuhan</option>
+                                        <?php foreach ($jenis as $j): ?>
+                                            <?php if($j->id_jenisreservasi == $data->id_jenisreservasi) : ?>
+                                              <option selected value="<?= $j->id_jenisreservasi ?>"><?= $j->jenis_reservasi ?> </option>
+                                              <?php else: ?>
+                                                <option value="<?= $j->id_jenisreservasi ?>"><?= $j->jenis_reservasi ?> </option>
+                                            <?php endif; ?>
+                                        <?php endforeach ?>
+                                    </select>
+                              </td>
                                 </tr>
                                 <tr>
                                     <th>Tujuan Penggunaan</th>
-                                    <td><?= $data->deskripsi_reservasi; ?></td>
+                                    <td><textarea id="form_message" name="deskripsi" class="form-control" placeholder="Your message" style="height: 150px" required><?= $data->deskripsi_reservasi ? $data->deskripsi_reservasi : ''; ?></textarea></td>
                                 </tr>
                             </table>
                         </div>
@@ -96,57 +115,15 @@
 
                     <!-- Tombol Aksi -->
                     <div class="text-end mb-4">
-                        <?php if($this->session->userdata('role') == 'Masyarakat') : ?>
-                            <?php if($data->status == 'Proses'): ?>
-                                <a href="<?= base_url('Reservasi/edit_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-primary">Edit</a>
-                                <a href="<?= base_url('Reservasi/batalkan_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-danger">Batalkan</a>
-                            <?php else: ?>
-                                <a href="<?= base_url('Reservasi');?>" class="btn btn-primary">Kembali</a>
-                                <?php if($data->status == 'Disetujui'): ?>
-                                    <a href="<?= base_url('Reservasi/bukti_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Bukti Penerimaan</a>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            
-                        <?php else: ?>
-                            <?php if($data->status != 'Ditolak'): ?>
-                                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#rejectModal">Tolak</button>
-                            <?php endif; ?>
-                            <?php if($data->status != 'Disetujui'): ?>
-                                <a href="<?= base_url('Reservasi/setujui_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Konfirmasi</a>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        
-                        <!-- <a href="konfirmasi_reservasi.html" class="btn btn-success">Konfirmasi Reservasi</a> -->
-                        
+
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
+                </form>
                 </div>
 
             </div>
         </div>
 
-        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModal" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Catatan Penolakan Reservasi</h5>
-                <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" action="<?= base_url('Reservasi/tolak_reservasi'); ?>">
-                <div class="modal-body">
-                    <input type="hidden" name="id_reservasi" value="<?= $data->id_reservasi; ?>">
-                    <div class="form-group">
-                        <label for="rejectNote">Catatan:</label>
-                        <textarea class="form-control" id="rejectNote" name="catatan" rows="3" required></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Kirim</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
         <!-- Root element of PhotoSwipe. Must have class pswp.-->

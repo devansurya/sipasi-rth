@@ -19,22 +19,50 @@ class Reservasi extends CI_Controller
 		$this->load->view('layouts-admin/index', $data);
 	}
 
-	public function detail_reservasi($id = null){
+	public function detail_reservasi($id){
 		if (!is_numeric($id)) return $this->output->set_status_header(400);
 
-		// if($this->input->get('notif')){
-		// 	$dataUpdate =  array(
-		// 		'status_baca' => 1
-		// 	);
-		// 	$this->db->where('id_notifikasi', $this->input->get('notif'));
-		// 	$updateNotif = $this->db->update('notifikasi', $dataUpdate);
-		// }
 		
 		$data['data'] = $this->M_Reservasi->get_one($id);
 		$data['list_status'] = $this->M_Ref->getAllResult('status_reservasi');
 
 		$data['content'] = $this->load->view('pages/reservasi/detail', $data, true);
 		$this->load->view('layouts-admin/index', $data);
+	}
+
+	public function edit_reservasi($id){
+		if (!is_numeric($id)) return $this->output->set_status_header(400);
+
+		
+		$data['data'] = $this->M_Reservasi->get_one($id);
+
+		$data['fasilitas'] = $this->M_Ref->getWhere('fasilitas_reservasi','id_rth',$data['data']->id_rth);
+		$data['jenis'] = $this->M_Ref->getAllResult('jenis_reservasi');
+		$data['content'] = $this->load->view('pages/reservasi/edit', $data, true);
+		$this->load->view('layouts-admin/index', $data);
+	}
+
+	public function update_reservasi(){
+
+		$data = array(
+			'id_jenisreservasi' => $this->input->post('jenis'),
+			'id_fasilitas_reservasi' => $this->input->post('fasilitas'),
+			'tanggal_reservasi' => $this->input->post('tanggal'),
+			'deskripsi_reservasi' => $this->input->post('deskripsi')
+
+		);
+
+		$this->db->where('id_reservasi', $this->input->post('id_reservasi'));
+		$reservasi = $this->db->update('reservasi', $data);
+
+		if($reservasi){
+			
+			$this->setflashdata('reservasi_message', 'Reservasi telah di ubah');
+		}else{
+			$this->setflashdata('reservasi_message', 'Gagal ubah reservasi','error');
+		}
+		redirect('Reservasi/detail_reservasi/'. $this->input->post('id_reservasi'));
+
 	}
 
 	public function tolak_reservasi(){
@@ -90,6 +118,22 @@ class Reservasi extends CI_Controller
 			$this->setflashdata('reservasi_message', 'Reservasi telah di setujui');
 		}else{
 			$this->setflashdata('reservasi_message', 'Gagal setujui reservasi','error');
+		}
+		redirect('Reservasi/detail_reservasi/'. $id);
+	}
+
+	public function batalkan_reservasi($id){
+		$datareservasi = array(
+			'catatan_petugas' => null,
+			'id_status_reservasi' => 4,
+		);
+		$this->db->where('id_reservasi', $id);
+		$reservasi = $this->db->update('reservasi', $datareservasi);
+
+		if($reservasi){
+			$this->setflashdata('reservasi_message', 'Reservasi telah di batalkan');
+		}else{
+			$this->setflashdata('reservasi_message', 'Gagal batalkan reservasi','error');
 		}
 		redirect('Reservasi/detail_reservasi/'. $id);
 	}
