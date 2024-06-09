@@ -3,7 +3,7 @@
         <div class="col-xl-12">
             <div class="card height-equal">
                 <div class="card-header">
-                    <h4>Petugas Baru</h4>
+                    <h4>User Baru</h4>
                 </div>
                 <div class="card-body custom-input">
                     <form class="row g-3" method="POST" action="<?= base_url('UserManagement/tambah'); ?>" enctype="multipart/form-data">
@@ -17,17 +17,17 @@
                             <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telepon" required>
                             <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-                        <div class="col-12"> 
+                        <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Email</label>
                             <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required>
                             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-                        <div class="col-12"> 
+                        <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-                        <div class="col-6"> 
+                        <!-- <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Kecamatan</label>
                             <input type="email" class="form-control" name="email" placeholder="Masukkan Kecamatan" required>
                             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -36,11 +36,10 @@
                             <label class="form-label" for="exampleFormControlTextarea1">Kelurahan</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan Kelurahan" required>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
+                        </div> -->
                         <div class="col-12"> 
                             <label class="form-label" for="exampleFormControlTextarea1">Alamat</label>
-                            <textarea type="password" class="form-control" name="password" placeholder="Masukkan Alamat" required>
-                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?></textarea>
+                            <textarea class="form-control" name="alamat" placeholder="Masukkan Alamat" required><?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?></textarea>
                         </div>
                         <div class="col-12"> 
                             <label class="col-sm-12 col-form-label" for="inputPassword2">Role</label>
