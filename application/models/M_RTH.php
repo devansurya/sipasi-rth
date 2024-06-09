@@ -130,8 +130,12 @@ class M_RTH extends CI_Model {
 		$this->db->from('user u');
 		$this->db->join('user_profile up', 'u.id_user = up.id_user', 'left');
 		$this->db->join('user_role ur', 'ur.id_user = u.id_user', 'left');
-
+		$this->db->join('penempatan_petugas pp', 'u.id_user = pp.id_user', 'left');
 		$this->db->where('ur.id_role', 2);
+        // $this->db->where('pp.id_user IS NULL');
+        // $this->db->or_where('pp.id_rth', $id_rth);
+
+		
 
 		$this->db->order_by('up.nama', 'asc');
 

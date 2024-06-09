@@ -364,12 +364,12 @@
               <!-- /.card -->
               <div class="card accordion-item shadow-lg">
                 <div class="card-header" id="accordion-heading-3-4">
-                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-4" aria-expanded="false" aria-controls="accordion-collapse-3-4">Bagaimana cara mengubah profile akun SIPASI RTH?</button>
+                  <button class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-4" aria-expanded="false" aria-controls="accordion-collapse-3-4">Bagaimana cara tracking proses reservasi yang sudah di ajukan?</button>
                 </div>
                 <!-- /.card-header -->
                 <div id="accordion-collapse-3-4" class="collapse" aria-labelledby="accordion-heading-3-4" data-bs-target="#accordion-3">
                   <div class="card-body">
-                    <p>Kamu bisa masuk ke dalam aplikasi pengelola atau admin SIPASI RTH dan mengubah profile kamu disana.</p>
+                    <p>Kamu bisa masuk ke dalam aplikasi pengelola atau admin SIPASI RTH dan melihat status serta bukti reservasi kamu disana.</p>
                   </div>
                   <!-- /.card-body -->
                 </div>
