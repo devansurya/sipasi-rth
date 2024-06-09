@@ -12,7 +12,7 @@ class KategoriPengaduan extends CI_Controller
 
 	public function index(){
 
-        $data['kategori'] = $this->M_Ref->getAllResult('kategori_pengaduan');
+        $data['jenis'] = $this->M_Ref->getAllResult('jenis_pengaduan');
 
 		$data['content'] = $this->load->view('pages/kategori_pengaduan/index', $data, true);
 		$this->load->view('layouts-admin/index', $data);
@@ -41,7 +41,7 @@ class KategoriPengaduan extends CI_Controller
 
     public function edit_kategori($id)
     {
-        $data['kategori'] = $this->M_Ref->getWhereRow('kategori_pengaduan', 'id_kategori', $id);
+        $data['kategori'] = $this->M_Ref->getWhereRow('jenis_pengaduan', 'id_jenispengaduan', $id);
 
 		$data['content'] = $this->load->view('pages/kategori_pengaduan/edit', $data, true);
 		$this->load->view('layouts-admin/index', $data);
