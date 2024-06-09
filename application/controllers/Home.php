@@ -241,6 +241,13 @@ class Home extends CI_Controller
 
 		$insert = $this->M_Ref->insertTable('kotak_masuk', $data);
 
+		if($insert){
+			$this->setflashdata('kontak_message', 'Berhasil terkirim, periksa email anda secara berkala untuk mendapatkan balasan terkait pesan anda');
+		}
+		else{
+			$this->setflashdata('kontak_message', 'Gagal mengirim pesan', 'error');
+		}
+
 		return redirect('Home/kontak');
 	}
 

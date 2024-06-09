@@ -124,4 +124,20 @@ class M_RTH extends CI_Model {
 		return $data;
 	}
 
+	public function get_petugas(){
+
+		$this->db->select('u.id_user,up.nama,up.no_telp, up.alamat');
+		$this->db->from('user u');
+		$this->db->join('user_profile up', 'u.id_user = up.id_user', 'left');
+		$this->db->join('user_role ur', 'ur.id_user = u.id_user', 'left');
+
+		$this->db->where('ur.id_role', 2);
+
+		$this->db->order_by('up.nama', 'asc');
+
+		$data = $this->db->get()->result();
+
+		return $data;
+	}
+
 }

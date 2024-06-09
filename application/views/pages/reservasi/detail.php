@@ -107,14 +107,18 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             
-                        <?php else: ?>
-                            <?php if($data->status != 'Ditolak'): ?>
-                                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#rejectModal">Tolak</button>
+                            <?php else: ?>
+                               <?php if($data->status == 'Dibatalkan'): ?>
+                                <a href="<?= base_url('Reservasi');?>" class="btn btn-primary">Kembali</a>
+                                <?php else: ?>
+                                    <?php if($data->status != 'Ditolak'): ?>
+                                        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#rejectModal">Tolak</button>
+                                    <?php endif; ?>
+                                    <?php if($data->status != 'Disetujui'): ?>
+                                        <a href="<?= base_url('Reservasi/setujui_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Konfirmasi</a>
+                                    <?php endif; ?>
+                                <?php endif;?>
                             <?php endif; ?>
-                            <?php if($data->status != 'Disetujui'): ?>
-                                <a href="<?= base_url('Reservasi/setujui_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Konfirmasi</a>
-                            <?php endif; ?>
-                        <?php endif; ?>
                         
                         <!-- <a href="konfirmasi_reservasi.html" class="btn btn-success">Konfirmasi Reservasi</a> -->
                         
