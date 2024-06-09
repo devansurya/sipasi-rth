@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="text-end">
-                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalfullscreen-xl"><i data-feather="plus-square"></i>Kategori Baru</button>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalfullscreen-xl"><i data-feather="plus-square"></i>Jenis Baru</button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -41,14 +41,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1; foreach ($kategori as $data): ?>
+                                <?php $no = 1; foreach ($jenis as $data): ?>
                                 <tr>
                                     <td><?= $no; ?></td>
-                                    <td><?= $data->kategori ?></td>
+                                    <td><?= $data->jenis_pengaduan ?></td>
                                     <td> 
                                         <ul class="action"> 
-                                        <li class="edit"> <a href="<?= base_url("KategoriPengaduan/edit_kategori/{$data->id_kategori}")?>"><i class="icon-pencil"></i></a></li>
-                                        <li class="delete"><a href="#" onclick="deleteId('<?= $data->id_kategori ?>')"><i class="icon-trash"></i></a></li>
+                                        <li class="edit"> <a href="<?= base_url("KategoriPengaduan/edit_kategori/{$data->id_jenispengaduan}")?>"><i class="icon-pencil"></i></a></li>
+                                        <li class="delete"><a href="#" onclick="deleteId('<?= $data->id_jenispengaduan ?>')"><i class="icon-trash"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -68,12 +68,16 @@
         <div class="modal-content">
             <form action="<?= base_url('KategoriPengaduan/tambah')?>" method="POST">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="xlModalLabel">Tambah Kategori</h1>
+                    <h1 class="modal-title fs-5" id="xlModalLabel">Tambah Jenis</h1>
                     <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body dark-modal">
-                    <label class="form-label"><h6>Nama Kategori :</h6></label>
-                    <input type="text" name="kategori" class="form-control" required>
+                    <label class="form-label"><h6>Nama Jenis Pengaduan :</h6></label>
+                    <input type="text" name="jenis" class="form-control" required>
+                </div>
+                <div class="modal-body dark-modal">
+                    <label class="form-label"><h6>Deskripsi :</h6></label>
+                    <textarea name="deskripsi" class="form-control" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>

@@ -88,7 +88,7 @@
                         </svg>
                         <svg class="fill-icon">
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-gallery"></use>
-                        </svg><span>Kategori Pengaduan</span></a>
+                        </svg><span>Jenis Pengaduan</span></a>
                     </li>
                 </ul>
             <?php }elseif($this->session->userdata('id_role') == 2) { ?>
