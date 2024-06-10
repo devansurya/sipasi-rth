@@ -75,6 +75,8 @@ class Pengaduan extends CI_Controller
 	public function ubah_pengaduan($id=null){
 		if (!$id) return $this->output->set_status_header(404);
 		$data['data'] =  $this->M_Pengaduan->get_one($id);
+		$data['visibilitas'] = $this->M_Ref->getAllResult('visibilitas');
+		$data['kategori'] = $this->M_Ref->getAllResult('jenis_pengaduan');
 		$data['content'] = $this->load->view('pages/pengaduan/edit', $data, true);
 
 		return $this->load->view('layouts-admin/index', $data);
@@ -101,9 +103,9 @@ class Pengaduan extends CI_Controller
 
 
 		$data = array(
-			'id_kategori' => $this->input->post('kategori'),
+			'id_jenispengaduan' => $this->input->post('kategori'),
 			'subjek' => $this->input->post('subjek'),
-			'deskripsi' => $this->input->post('deskripsi'),
+			'deskripsi_pengaduan' => $this->input->post('deskripsi'),
 			'foto' => $gambar,
 			'lokasi' => $this->input->post('lokasi'),
 			'visibilitas' => $this->input->post('visibilitas'),
