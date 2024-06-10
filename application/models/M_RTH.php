@@ -11,6 +11,7 @@ class M_RTH extends CI_Model {
 			$this->db->join('rth r', 'r.id_rth = pp.id_rth', 'left');
 			$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
 			$this->db->join('(SELECT kd_kelurahan, kelurahan FROM wilayah GROUP BY kd_kelurahan) d_kel', 'r.kelurahan = d_kel.kd_kelurahan', 'left');
+			$this->db->where('pp.id_user', $this->session->userdata('id'));
 		}else{
 			$this->db->from('rth r');
 			$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
