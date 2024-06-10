@@ -13,6 +13,10 @@ class M_Reservasi extends CI_Model {
 		$this->db->join('user u', 'u.id_user = r.id_user', 'left');
 		$this->db->join('user_profile up', 'up.id_user = r.id_user', 'left');
 		// $this->db->join('contact c', 'c.id_contact = u.id_contact', 'left');
+		if($this->session->userdata('id_role') == 2){
+			$this->db->join('penempatan_petugas pp', 'pp.id_rth = rth.id_rth', 'left');
+			$this->db->where('pp.id_user', $this->session->userdata('id'));
+		}
 
 		if($this->session->userdata('id_role') == 3){
 			$this->db->where('r.id_user', $this->session->userdata('id'));
