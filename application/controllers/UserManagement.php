@@ -20,7 +20,7 @@ class UserManagement extends CI_Controller
 	public function tambah(){
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
         // $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[user.username]');
-        $this->form_validation->set_rules('no_telp', 'No Telepon', 'required');  
+        $this->form_validation->set_rules('telp', 'No Telepon', 'required');  
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');  
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[15]');  
         if ($this->form_validation->run() == false) {
@@ -36,6 +36,7 @@ class UserManagement extends CI_Controller
 
 	private function _addUser()
     {
+        $status = 1;
         $id_role = $this->input->post('role');
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');

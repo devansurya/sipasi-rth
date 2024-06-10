@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-6"> 
                             <label class="form-label" for="exampleFormControlTextarea1">No Telepon</label>
-                            <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telepon" required>
+                            <input type="text" class="form-control" name="telp" placeholder="Masukkan No Telepon" required>
                             <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col-6"> 
