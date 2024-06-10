@@ -6,9 +6,16 @@ class M_RTH extends CI_Model {
 	public function get($where = '') {
 		// Select the required fields from rth and joined tables
 		$this->db->select('r.*, d_kec.kecamatan as kec_rth, d_kel.kelurahan as kel_rth');
-		$this->db->from('rth r');
-		$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
-		$this->db->join('(SELECT kd_kelurahan, kelurahan FROM wilayah GROUP BY kd_kelurahan) d_kel', 'r.kelurahan = d_kel.kd_kelurahan', 'left');
+		if($this->session->userdata('id_role') == 2){
+			$this->db->from('penempatan_petugas pp');
+			$this->db->join('rth r', 'r.id_rth = pp.id_rth', 'left');
+			$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
+			$this->db->join('(SELECT kd_kelurahan, kelurahan FROM wilayah GROUP BY kd_kelurahan) d_kel', 'r.kelurahan = d_kel.kd_kelurahan', 'left');
+		}else{
+			$this->db->from('rth r');
+			$this->db->join('(SELECT kd_kecamatan, kecamatan FROM wilayah GROUP BY kd_kecamatan) d_kec', 'r.kecamatan = d_kec.kd_kecamatan', 'left');
+			$this->db->join('(SELECT kd_kelurahan, kelurahan FROM wilayah GROUP BY kd_kelurahan) d_kel', 'r.kelurahan = d_kel.kd_kelurahan', 'left');
+		}
 	
 		// Add where clause if provided
 		if (!empty($where)) {
