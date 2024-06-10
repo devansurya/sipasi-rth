@@ -27,8 +27,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="text-end">
-                            <?php if($this->session->userdata('id_role') != 1){ ?>
-                                <a href="<?= base_url('Pengaduan/tambah'); ?>" class="btn btn-primary"> <i data-feather="plus-square"></i>Pengaduan Baru</a>
+                            <?php if($this->session->userdata('id_role') == 3){ ?>
+                                <a href="<?= base_url('Home/rth'); ?>" class="btn btn-primary"> <i data-feather="plus-square"></i>Pengaduan Baru</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -85,10 +85,10 @@
                                 <td> 
                                     <ul class="action"> 
                                     <li class="edit"> <a href="<?= base_url("Pengaduan/detail_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-eye"></i></a></li>
-                                    <?php if (strtolower($data['status']) !== 'Selesai' && strtolower($data['status']) !== 'Penanganan'): ?>
+                                    <?php if ($data['status'] !== 'Selesai' && $data['status'] !== 'Penanganan'): ?>
                                         <li class="edit"> <a href="<?= base_url("Pengaduan/ubah_pengaduan/{$data['id_pengaduan']}")?>"><i class="icon-pencil"></i></a></li>
+                                        <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
                                     <?php endif ?>
-                                    <li class="delete"><a href="#" onclick="deleteId('<?= $data['id_pengaduan'] ?>')"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>

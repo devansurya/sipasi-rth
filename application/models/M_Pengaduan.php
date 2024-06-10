@@ -13,6 +13,11 @@ class M_Pengaduan extends CI_Model {
 		$this->db->join('user u', 'u.id_user = p.id_user', 'left');
 		$this->db->join('user_profile up', 'u.id_user = up.id_user', 'left');
 
+		if($this->session->userdata('id_role') == 2){
+			$this->db->join('penempatan_petugas pp', 'pp.id_rth = rth.id_rth', 'left');
+			$this->db->where('pp.id_user', $this->session->userdata('id'));
+		}
+
 		if($this->session->userdata('id_role') == 3){
 			$this->db->where('p.id_user', $this->session->userdata('id'));
 		}
