@@ -30,8 +30,8 @@
                             <div class="media media-wrapper justify-content-between">
                             <div class="media-body"> 
                                 <div class="greeting-user">
-                                    <h4 class="f-w-600">Selamat datang di Sistem Pengaduan Mahasiswa</h4><br>
-                                    <p>Aplikasi Pengaduan Mahasiswa adalah platform yang memungkinkan mahasiswa untuk melaporkan masalah atau permasalahan yang mereka hadapi di lingkungan kampus. Dengan aplikasi ini, mahasiswa dapat dengan mudah mengajukan pengaduan terkait fasilitas, akademik, keamanan, atau masalah lainnya yang memengaruhi pengalaman belajar mereka. </p>    
+                                    <h4 class="f-w-600">Selamat datang di Sistem Pemeliharaan dan Reservasi RTH</h4><br>
+                                    <p>Sistem yang dapat memudahkan pengguna dalam menjaga kebersihan dan keamanan dari RTH (Ruang Terbuka Hijau), serta memanfaatkannya untuk kegiatan sosial atau rekreasi yang lebih terorganisir.</p>    
                                 </div>
                             </div>
                             <div>  

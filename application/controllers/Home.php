@@ -209,7 +209,7 @@ class Home extends CI_Controller
 		$insert = $this->M_Ref->insertTable('reservasi', $data);
 
 		if($insert){
-			$this->setflashdata('reservasi_message', 'Berhasil buat reservasi anda, silahkan <a class="text-info fs-14" href="' . base_url('Dashboard') . '">klik di sini</a> untuk melihat detail reservasi anda');
+			$this->setflashdata('reservasi_message', 'Berhasil buat reservasi anda, silahkan <a class="text-info fs-14" href="' . base_url('Reservasi') . '">klik di sini</a> untuk melihat detail reservasi anda');
 			redirect('Home/buat_reservasi/' . $this->input->post('id_rth'));
 		}
 		else{

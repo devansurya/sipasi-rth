@@ -100,7 +100,7 @@ class UserManagement extends CI_Controller
 
     public function delete($id_user, $id_contact)
     {
-        $this->M_Ref->deleteData('contact', 'id_contact',$id_contact);
+        $this->M_Ref->deleteData('user_profile', 'id_user',$id_user);
         $this->M_Ref->deleteData('user', 'id_user',$id_user);
         
         $this->session->set_flashdata('user_management_message', '<div class="alert alert-light-danger" role="alert"> Data berhasil dihapus.</div>');  

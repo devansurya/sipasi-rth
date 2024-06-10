@@ -3,7 +3,7 @@
     <div class="page-title">
         <div class="row">
         <div class="col-6">
-            <h4>Kategori Pengaduan</h4>
+            <h4>Kategori Reservasi</h4>
         </div>
         <div class="col-6">
             <ol class="breadcrumb">
@@ -12,7 +12,7 @@
                     <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
                 </svg></a></li>
             <li class="breadcrumb-item">Application</li>
-            <li class="breadcrumb-item active">Kategori Pengaduan</li>
+            <li class="breadcrumb-item active">Kategori Reservasi</li>
             </ol>
         </div>
         </div>
@@ -20,8 +20,8 @@
     </div>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <?= $this->session->flashdata('kategori_pengaduan_message') ?>
-        <?php $this->session->unset_userdata('kategori_pengaduan_message'); ?>
+        <?= $this->session->flashdata('kategori_reservasi_message') ?>
+        <?php $this->session->unset_userdata('kategori_reservasi_message'); ?>
         <div class="row">
             <!-- Zero Configuration  Starts-->
             <div class="col-xl-12 col-md-12 box-col-12 file-content">
@@ -38,7 +38,6 @@
                                 <tr>
                                 <th>No</th>
                                 <th>Nama Kategori</th>
-                                <th>Deskripsi</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
@@ -46,12 +45,11 @@
                                 <?php $no = 1; foreach ($jenis as $data): ?>
                                 <tr>
                                     <td><?= $no; ?></td>
-                                    <td><?= $data->jenis_pengaduan ?></td>
-                                    <td><?= $data->deskripsi; ?></td>
+                                    <td><?= $data->jenis_reservasi ?></td>
                                     <td> 
                                         <ul class="action"> 
-                                        <li class="edit"> <a href="<?= base_url("KategoriPengaduan/edit_kategori/{$data->id_jenispengaduan}")?>"><i class="icon-pencil"></i></a></li>
-                                        <li class="delete"><a href="#" onclick="deleteId('<?= $data->id_jenispengaduan ?>')"><i class="icon-trash"></i></a></li>
+                                        <li class="edit"> <a href="<?= base_url("KategoriReservasi/edit_kategori/{$data->id_jenisreservasi}")?>"><i class="icon-pencil"></i></a></li>
+                                        <li class="delete"><a href="#" onclick="deleteId('<?= $data->id_jenisreservasi ?>')"><i class="icon-trash"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -69,18 +67,14 @@
 <div class="modal fade" id="exampleModalfullscreen-xl" tabindex="-1" aria-labelledby="xlModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-xl-down">
         <div class="modal-content">
-            <form action="<?= base_url('KategoriPengaduan/tambah')?>" method="POST">
+            <form action="<?= base_url('KategoriReservasi/tambah')?>" method="POST">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="xlModalLabel">Tambah Jenis</h1>
                     <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body dark-modal">
-                    <label class="form-label"><h6>Nama Jenis Pengaduan :</h6></label>
+                    <label class="form-label"><h6>Nama Jenis Reservasi :</h6></label>
                     <input type="text" name="jenis" class="form-control" required>
-                </div>
-                <div class="modal-body dark-modal">
-                    <label class="form-label"><h6>Deskripsi :</h6></label>
-                    <textarea name="deskripsi" class="form-control" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
@@ -104,7 +98,7 @@
           confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             console.log(result);
-            if (result.isConfirmed) window.location = `<?= base_url('KategoriPengaduan/delete/')?>${id}`;
+            if (result.isConfirmed) window.location = `<?= base_url('KategoriReservasi/delete/')?>${id}`;
         });
     }
 </script>

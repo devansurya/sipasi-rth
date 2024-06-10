@@ -177,7 +177,8 @@ class Pengaduan extends CI_Controller
 		$id_user = $this->input->post('id_user');
 
 		$data =  array(
-			'id_status_pengaduan' => $status
+			'id_status_pengaduan' => $status,
+			'status_publish' => $this->input->post('status_publish')
 		);
 		$this->db->where('id_pengaduan', $id);
 		$update = $this->db->update('pengaduan', $data);

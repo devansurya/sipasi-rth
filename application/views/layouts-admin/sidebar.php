@@ -90,6 +90,14 @@
                         <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-gallery"></use>
                         </svg><span>Jenis Pengaduan</span></a>
                     </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?= base_url('KategoriReservasi')?>">
+                        <svg class="stroke-icon">
+                        <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#stroke-gallery"></use>
+                        </svg>
+                        <svg class="fill-icon">
+                        <use href="<?= base_url(); ?>/assets-admin/svg/icon-sprite.svg#fill-gallery"></use>
+                        </svg><span>Jenis Reservasi</span></a>
+                    </li>
                 </ul>
             <?php }elseif($this->session->userdata('id_role') == 2) { ?>
                 <ul class="sidebar-links" id="simple-bar">

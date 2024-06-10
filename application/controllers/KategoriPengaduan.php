@@ -22,7 +22,7 @@ class KategoriPengaduan extends CI_Controller
     {
         $data = array(
 			'jenis_pengaduan' => $this->input->post('jenis'),
-			'deskripsi' => $this->input->post('kategori'),
+			'deskripsi' => $this->input->post('deskripsi'),
 		);
 		$insert = $this->M_Ref->insertTable('jenis_pengaduan', $data);
 

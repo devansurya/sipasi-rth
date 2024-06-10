@@ -115,7 +115,7 @@
                                         <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#rejectModal">Tolak</button>
                                     <?php endif; ?>
                                     <?php if($data->status != 'Disetujui'): ?>
-                                        <a href="<?= base_url('Reservasi/setujui_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Konfirmasi</a>
+                                        <a href="<?= base_url('Reservasi/setujui_reservasi/');?><?= $data->id_reservasi; ?>" class="btn btn-success">Setujui</a>
                                     <?php endif; ?>
                                 <?php endif;?>
                             <?php endif; ?>

@@ -53,6 +53,15 @@
                                 <?php endforeach ?>
                             </select>
                         </div>
+
+                        <div class="col-12 mb-3"> 
+                            <label class="form-label" for="validationDefault04">Status Publish</label>
+                            <select <?php if($this->session->userdata('role') == 'Masyarakat') { echo 'disabled'; } ?> class="form-select" id="validationDefault04" name="status_publish" required="">
+                                <option selected="" disabled="" >Pilih Status</option>
+                                <option value="1" <?php if($data->status_publish == '1') echo "selected" ?>>Publish </option>
+                                <option value="1" <?php if($data->status_publish == '0') echo "selected" ?>>Non Publish </option>
+                            </select>
+                        </div>
                         
                         <div class="col-12">
                             <a href="<?= base_url('pengaduan')?>" class="btn btn-danger">Kembali</a>

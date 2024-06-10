@@ -146,6 +146,7 @@ class M_RTH extends CI_Model {
 		
 
 		$this->db->order_by('up.nama', 'asc');
+		$this->db->group_by('u.id_user');
 
 		$data = $this->db->get()->result();
 

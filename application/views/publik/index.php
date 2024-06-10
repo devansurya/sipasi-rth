@@ -406,7 +406,7 @@
         });
 
         $("#btn-jelajahi").on('click', function() {
-          $("html, body").animate({ scrollTop: $("#pengaduan-terbaru-section").offset().top }, 1000);
+          $("html, body").animate({ scrollTop: $("#rth-section").offset().top }, 1000);
         });
 
       });
