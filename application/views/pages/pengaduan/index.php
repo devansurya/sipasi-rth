@@ -54,7 +54,11 @@
                             <tr>
                                 <td><?= $no; ?></td>
                                 <?php if($this->session->userdata('id_role') != 3){ ?>
-                                    <td><?= $data['nama_pengadu'] ?></td>
+                                    <?php if($data['nama_pengadu'] == NULL) { ?>
+                                        <td><?= $data['nama'] ?></td>
+                                    <?php }else{ ?>
+                                        <td><?= $data['nama_pengadu'] ?></td>
+                                    <?php } ?>
                                 <?php } ?>
                                 <td><?= $data['nama_rth'] ?></td>
                                 <td><?= $data['jenis_pengaduan'] ?></td>
