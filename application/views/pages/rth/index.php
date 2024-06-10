@@ -61,10 +61,10 @@
                                     </td>
                                     <td>
                                         <ul class="action"> 
-                                            <li class="edit"> <a href=""><i class="icon-eye"></i></a></li>
+                                            <!-- <li class="edit"> <a href=""><i class="icon-eye"></i></a></li> -->
                                             <li class="edit"> <a href="<?= base_url('RTH/edit_rth/');?><?= $d['id_rth']; ?>"><i class="icon-pencil"></i></a></li>
                                             <li class="text-primary"><a href="<?= base_url('RTH/penempatan_petugas/'); ?><?= $d['id_rth']; ?>" onclick=""><i class="icon-user"></i></a></li>
-                                            <li class="delete"><a href="#" onclick=""><i class="icon-trash"></i></a></li>
+                                            <li class="delete"><a href="<?= base_url('RTH/delete_rth/');?><?= $d['id_rth']; ?>" onclick="return confirm('Anda yakin untuk menghapus rth ini?')"><i class="icon-trash"></i></a></li>
 
                                         </ul>
                                     </td>

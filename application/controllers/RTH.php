@@ -176,6 +176,52 @@ class RTH extends CI_Controller
 		echo json_encode($data);
 	}
 
+	public function tambah_rth(){
+
+		$config['upload_path'] = './assets/img/upload/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		// $config['max_size'] = '3000';
+		// $config['max_width'] = '1024';
+		// $config['max_height'] = '1000';
+		$config['file_name'] = 'img' . time();
+		$this->load->library('upload', $config);
+
+		$this->upload->initialize($config);
+
+		if ($this->upload->do_upload('lampiran')) {
+			$image = $this->upload->data();
+			$gambar = $image['file_name'];
+		} else {
+			$gambar = null;
+		}
+
+		$data = array(
+			'nama_rth' => $this->input->post('nama_rth'),
+			'deskripsi_rth' => $this->input->post('deskripsi_rth'),
+			'kecamatan' => $this->input->post('kecamatan'),
+			'kelurahan' => $this->input->post('kelurahan'),
+			'alamat' => $this->input->post('alamat'),
+			'status_reservasi' => $this->input->post('status_reservasi') ? 1 : 0,
+
+
+		);
+
+		if($gambar){
+			$data['foto_rth'] = $gambar;
+		}
+
+
+		$insert = $this->M_Ref->insertTable('rth', $data);
+
+		if($insert){
+			$this->setflashdata('rth_message', 'RTH berhasil dibuat');
+		}else{
+			$this->setflashdata('rth_message', 'RTH gagal dibuat', 'danger');
+		}
+
+		redirect('RTH');
+	}
+
 	public function update_rth(){
 
 		$config['upload_path'] = './assets/img/upload/';
@@ -218,6 +264,20 @@ class RTH extends CI_Controller
 			$this->setflashdata('rth_message', 'RTH berhasil diupdate');
 		}else{
 			$this->setflashdata('rth_message', 'RTH gagal diupdate', 'danger');
+		}
+
+		redirect('RTH');
+	}
+
+	public function delete_rth($id){
+
+		$this->db->where('id_rth', $id);
+		$delete = $this->db->delete('rth');
+
+		if($delete){
+			$this->setflashdata('rth_message', 'RTH berhasil dihapus');
+		}else{
+			$this->setflashdata('rth_message', 'RTH gagal dihapus', 'danger');
 		}
 
 		redirect('RTH');
