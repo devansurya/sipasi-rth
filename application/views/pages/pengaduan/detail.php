@@ -11,7 +11,7 @@
                     <form class="row g-3" method="post" action="<?= base_url('Pengaduan/ubah_status'); ?>/<?= $data->id_pengaduan ?>">
                         <input class="form-control" type="hidden" name="id_user" required  value="<?= $data->id_user ?>">
                         <div class="col-6"> 
-                            <label class="form-label" for="first-name">Nama Mahasiswa</label>
+                            <label class="form-label" for="first-name">Nama Pengadu</label>
                             <input class="form-control" id="first-name" type="text" placeholder="First name" aria-label="First name" value="<?= $data->nama_pengadu ?>"  disabled>
                         </div>
                         <div class="col-6">
@@ -19,7 +19,7 @@
                             <input class="form-control" id="first-name" type="text" value="<?= $data->nama_rth ?>" disabled>
                         </div>
                         <div class="col-4">
-                            <label class="form-label" for="exampleFormControlInput1">Subjek Pengaduan</label>
+                            <label class="form-label col-form-label" for="exampleFormControlInput1">Subjek Pengaduan</label>
                             <input class="form-control" id="first-name" type="text" value="<?= $data->subjek ?>" disabled>
                         </div>
                         <div class="col-4"> 

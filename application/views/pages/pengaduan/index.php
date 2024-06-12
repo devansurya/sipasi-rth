@@ -26,6 +26,9 @@
             <div class="col-xl-12 col-md-12 box-col-12 file-content">
                 <div class="card">
                     <div class="card-header">
+                        <?php if($this->session->userdata('id_role') == 1){ ?>
+                            <a href="<?= base_url('Pengaduan/laporan_pengaduan'); ?>" class="btn btn-primary"> <i data-feather="printer"></i>Cetak PDF</a>
+                        <?php } ?>
                         <div class="text-end">
                             <?php if($this->session->userdata('id_role') == 3){ ?>
                                 <a href="<?= base_url('Home/rth'); ?>" class="btn btn-primary"> <i data-feather="plus-square"></i>Pengaduan Baru</a>

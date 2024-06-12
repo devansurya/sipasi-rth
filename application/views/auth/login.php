@@ -51,6 +51,7 @@
                   <h4>Sign in to account</h4>
                   <p>Enter your Email & password to login</p>
                   <?= $this->session->flashdata('message') ?>
+                  <?php $this->session->unset_userdata('message'); ?>
                   <div class="form-group">
                     <label class="col-form-label">Email</label>
                     <input class="form-control" type="text" required="" name="email">

@@ -21,6 +21,7 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <?= $this->session->flashdata('kotak_masuk_message') ?>
+        <?php $this->session->unset_userdata('kotak_masuk_message'); ?>
         <div class="row">
             <!-- Zero Configuration  Starts-->
             <div class="col-xl-12 col-md-12 box-col-12 file-content">

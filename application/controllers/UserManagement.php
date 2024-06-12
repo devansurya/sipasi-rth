@@ -77,7 +77,7 @@ class UserManagement extends CI_Controller
 
 	public function detail_user($id)
 	{
-        $dataq['profile'] = $this->M_User->getProfile($id);
+        $dataq['profile_user'] = $this->M_User->getProfile($id);
 
 		$data['content'] = $this->load->view('pages/user_management/detail-user', $dataq, true);
 		$this->load->view('layouts-admin/index', $data);
@@ -88,11 +88,11 @@ class UserManagement extends CI_Controller
         $status = $this->input->post('status');
 
         $data = array(
-            'status' => $status,
+            'is_active' => $status,
         );
 
-        $this->db->where('id_contact', $this->input->post('id_contact'));
-        $this->db->update('contact', $data);
+        $this->db->where('id_user', $this->input->post('id_user'));
+        $this->db->update('user', $data);
 
         $this->session->set_flashdata('user_management_message', '<div class="alert alert-light-success" role="alert"> Akun berhasil diUpdate.</div>'); 
         redirect('UserManagement'); 

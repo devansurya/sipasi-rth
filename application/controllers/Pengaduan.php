@@ -216,6 +216,19 @@ class Pengaduan extends CI_Controller
 		// }
 	}
 
+	public function laporan_pengaduan(){
+
+		$data['data'] = $this->M_Pengaduan->get();
+
+		$this->load->library('pdfgenerator');
+        $data['title'] = "Data Random";
+        $file_pdf = $data['title'];
+        $paper = 'A4';
+        $orientation = "landscape";
+        $html = $this->load->view('pdf/laporan_pengaduan', $data, true);
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+	}
+
 	public function setflashdata($flashId='message', $message='', $type='success')
     {
         $this->session->set_flashdata($flashId, "
