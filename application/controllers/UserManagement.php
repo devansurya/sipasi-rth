@@ -24,7 +24,7 @@ class UserManagement extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');  
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[15]');  
         if ($this->form_validation->run() == false) {
-            $data['role'] = $this->M_Ref->getAllResult('role');
+            $data['role'] = $this->M_Ref->getWhereNot('role','id_role','3');
 			$data['content'] = $this->load->view('pages/user_management/tambah', $data, true);
 
 			return $this->load->view('layouts-admin/index', $data);

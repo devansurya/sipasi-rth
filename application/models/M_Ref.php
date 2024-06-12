@@ -45,6 +45,15 @@ class M_Ref extends CI_Model {
 		return $query;
 	}
 
+	public function getWhereNot($table,$field,$where)
+	{
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->where($field . ' != "' . $where . '"');
+		$query = $this->db->get()->result();
+		return $query;
+	}
+
 	public function getCountWhere($table,$field = null,$where = null)
 	{
 		
